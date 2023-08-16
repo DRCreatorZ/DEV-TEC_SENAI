@@ -1,0 +1,1 @@
+se Imc<20 && faixa >=2 && faixa

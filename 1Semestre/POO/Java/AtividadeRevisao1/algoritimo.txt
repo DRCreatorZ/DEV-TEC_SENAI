@@ -1,0 +1,10 @@
+exemplo1
+    1. Ler um número informado pelo usuário;
+    2. Se núemro for > que 1, entao mostre " numero é maior que 10";
+    3. Senao entao mostre "numero n é > que 10";
+
+exemplo2
+    1. Ler horas trabalhadas no mes;
+    2. Ler o valor da hora trabalhada;
+    3. Calcular a hora extra;
+    4. Calcular o salário total;

@@ -1,0 +1,20 @@
+treino = leve
+} else if (imc = peso normal){
+treino = moderada
+} else if (imc=ganhar peso){
+treino = dificil
+}
+
+
+
+
+
+
+
+if (idade >=16 && <=25){
+idade = idade1
+} else if (idade >=26 && <=35)
+idade = idade2
+} else if
+
+if treino = leve && idade = idade1

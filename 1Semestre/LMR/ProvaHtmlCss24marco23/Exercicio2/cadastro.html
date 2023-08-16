@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Cadastro</title>
+</head>
+<link rel="stylesheet" href="style.css">
+
+<body id="bodyCadastro">
+    <FORM ACTION="tatusa@email.com" METHOD="POST" ENCTYPE="text/plain" NAME="cadastro">
+        <div class="entrada">
+            <h3> Por favor, preencha os campos abaixo e depois clique no botão Enviar. Caso
+                necessite apagar os dados, dê um clique no botão Limpar.<br> Muito Obrigado!
+                <br><br><br>
+            </h3>
+            Seu Nome: <input type="name" name="nome" id="pnome" placeholder="nome" class="entrada">
+            <br><br>
+            Seu e-mail: <input type="email" name="e-mail" id="pmail" placeholder="e-mail" class="entrada">
+            <br><br>
+            Seu Celular: <input type="tel" name="celular" id="pmail" placeholder="celular" class="entrada">
+            <br><br>
+            Criar Senha: <input type="password" name="senha" id="psenha" placeholder="senha" class="entrada">
+            <br><br>
+        </div>
+        <div class="entrada">
+            Sexo:<br>
+            <INPUT TYPE="RADIO" NAME="sexo" VALUE="f"> Feminino <br>
+            <INPUT TYPE="RADIO" NAME="sexo" VALUE="m"> Masculino <br><br>
+            Estado Civil:<br>
+            <INPUT TYPE="RADIO" NAME="civil" VALUE="s"> Solteiro <br>
+            <INPUT TYPE="RADIO" NAME="civil" VALUE="c"> Casado <br>
+            <INPUT TYPE="RADIO" NAME="civil" VALUE="e"> Enrolado <br><br>
+        </div>
+        <div class="entrada">
+            Escolaridade: <SELECT NAME="escolaridade">
+                <OPTION VALUE="EnsinoFundamental"> Ensino Fundamental
+                <OPTION VALUE="EnsinoMedio"> Ensino Médio
+                <OPTION VALUE="EnsinoTecnico">Ensino Técnico
+                <OPTION VALUE="EnsinoSuperior"> Ensino Superior
+            </SELECT>
+    
+            </SELECT><br><br>
+            Observações Gerais:<br>
+            <TEXTAREA NAME="observacoes" ROWS="5" COLS="60"></TEXTAREA><br>
+            <INPUT TYPE="SUBMIT" VALUE="Enviar os dados" class="botao">
+            <INPUT TYPE="RESET" VALUE="Limpar os dados" class="botao">
+            <input type="button" value="Voltar" onclick="parent.location='index.html'" class="botao">
+        </div>
+    </FORM>
+</body>
+
+</html>

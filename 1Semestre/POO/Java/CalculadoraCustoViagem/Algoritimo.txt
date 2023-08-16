@@ -1,0 +1,16 @@
+Algoritimo para calcular gasto de combustivel em viagem
+
+Informar a distancia percorrida na viagem (em Km);
+Informar o preço do combustivel (em R$);
+Informar a média de consumo de combustivel(em Km/L) do carro;
+Dividir a distancia percorrida pelo valor da media de consumo de combustivel;
+Multiplique o resultado pelo valor do combustivel e terá o valor gasto.
+Imprimir o Custo de Viagem
+
+Pseudo Codigo
+distanciaViagem=400
+precoCombustivel=5
+mediaConsumo=15
+custoViagem=distanciaViagem/mediaConsumo*precoCombustivel
+Imprimir custoViagem
+

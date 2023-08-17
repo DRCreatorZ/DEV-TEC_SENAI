@@ -6,13 +6,13 @@
 //B - Exame - media >=5
 //C - Reprovado - media <5
 
-$nota01 = 05;
-$nota02 = 03;
+$nota01 = 06;
+$nota02 = 06;
 $nota03 = 06;
-$nota04 = 02;
+$nota04 = 06;
 $resultado = 0;
 
-$media = $nota01+$nota02+$nota03+$nota04;
+$media = ($nota01+$nota02+$nota03+$nota04)/4;
 	echo "Media = ".$media." - ";
 
 if ($media >= 7) {
@@ -39,7 +39,7 @@ switch ($resultado) {
 //Exercício 2
 //Crie duas variáveis $sexo e $tempo_de_serviço e sabendo que homens só se aposentam com pelo menos 35 anos de serviço e mulheres com pelo menos 30, crie o script PHP que diz se a pessoa pode aposentar ou não.
 
-	$sexo = "mulher";
+	$sexo = "homem";
 	$tempoDeServiço= 30;
 
 	if ($sexo == "mulher" && $tempoDeServiço >=30) {

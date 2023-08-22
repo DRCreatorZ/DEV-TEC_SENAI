@@ -4,5 +4,6 @@ public class App {
         new FrameAWT();
         new JFrameSwing();
         new JOptionPaneSwing();
+        new Container();
     }
 }

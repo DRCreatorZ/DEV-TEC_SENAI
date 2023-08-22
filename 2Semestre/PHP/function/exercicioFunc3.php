@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 function nPar () {
@@ -9,4 +10,13 @@ function nPar () {
 	}
 }
 echo nPar();
+=======
+<?php
+
+function nPar ($par) {
+	$numeros = array (1,2,3,4,5,6,7,8,9);
+
+}
+
+>>>>>>> 07498f7f1c994d1723759421fc2cf39c13733e53
 ?>

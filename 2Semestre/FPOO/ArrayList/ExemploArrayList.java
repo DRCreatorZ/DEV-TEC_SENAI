@@ -10,7 +10,7 @@ public class ExemploArrayList {
     public static void main(String[] args) {
         // criando a ArrayList de String com obj de nome de carros
         ArrayList<String> carros = new ArrayList<String>();// ArrayList
-        List carros1 = new ArrayList<>();// coleção
+        //List carros1 = new ArrayList<>();// coleção
         // adicionar elementos na coleção
         carros.add(JOptionPane.showInputDialog("Insira um nome de um carro"));
         carros.add("Fusca");

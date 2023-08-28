@@ -1,7 +1,8 @@
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
-        //new LayoutCalculadora();
-        new BorderLayoutExemplo(); 
+        //new FlowLayoutExemplo2();
+        new LayoutCalculadora();
+        //new BorderLayoutExemplo(); 
     }
 }

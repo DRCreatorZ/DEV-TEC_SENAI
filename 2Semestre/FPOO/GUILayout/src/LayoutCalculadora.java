@@ -2,13 +2,22 @@ import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class LayoutCalculadora {
     public LayoutCalculadora() {
         // construir o layout de uma calculadora
         JFrame janelaP = new JFrame("Janela Calculdora");
+        //mudando o Lyout daFrame
+        BorderLayout border = new BorderLayout();
+        janelaP.setLayout(border);
+        JPanel painelV = new JPanel();
         JPanel painelB = new JPanel();// padrao flowlayout
-        janelaP.getContentPane().add(painelB);
+        janelaP.getContentPane().add(painelB, BorderLayout.CENTER);
+        janelaP.getContentPane().add(painelV, BorderLayout.NORTH);
+        //adicionar o textField no PainelV
+         JTextField caixa1 = new JTextField(25);
+        painelV.add(caixa1);
         // set layout do JPanel
         GridLayout grid = new GridLayout(4, 4);
         painelB.setLayout(grid);

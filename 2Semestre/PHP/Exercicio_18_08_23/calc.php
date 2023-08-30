@@ -1,4 +1,7 @@
 <?php
+$n1 = $_GET['n1'];
+$n2 = $_GET['n2'];
+$op = $_GET['op'];
 
 function calculadora($num1, $num2, $operacao) {
     switch ($operacao) {
@@ -23,6 +26,6 @@ function calculadora($num1, $num2, $operacao) {
     }
 }
 
-echo calculadora(5, 1,'subtracao');
+echo calculadora($n1, $n2, $op);
 
 ?>

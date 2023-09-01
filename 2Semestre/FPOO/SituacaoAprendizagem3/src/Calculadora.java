@@ -19,8 +19,8 @@ public class Calculadora {
         janelaP.getContentPane().add(painelC, BorderLayout.EAST);
        
         //adicionar o textField no PainelV
-         JTextField caixa1 = new JTextField(25);
-        painelV.add(caixa1);
+         JTextField visor = new JTextField(25);
+        painelV.add(visor);
         // set layout do JPanel
         GridLayout grid = new GridLayout(4, 4);
         painelB.setLayout(grid);

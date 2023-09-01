@@ -12,7 +12,7 @@ public class GridLayoutExemplo {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         JPanel c = new JPanel();
         frame.getContentPane().add(c);
-        c.setLayout(new GridLayout(2, 2));
+        c.setLayout(new GridLayout(5, 10));
         c.add(new JButton("um"));
         c.add(new JTextField(5));
         c.add(new JButton("dois"));

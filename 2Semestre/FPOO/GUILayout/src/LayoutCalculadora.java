@@ -7,22 +7,22 @@ import javax.swing.JTextField;
 public class LayoutCalculadora {
     public LayoutCalculadora() {
         // construir o layout de uma calculadora
-        JFrame janelaP = new JFrame("Janela Calculdora");
+        JFrame janelaP = new JFrame("Calculdora");
         //mudando o Lyout daFrame
         BorderLayout border = new BorderLayout();
         janelaP.setLayout(border);
         JPanel painelV = new JPanel();
         JPanel painelB = new JPanel();// padrao flowlayout
-        janelaP.getContentPane().add(painelB, BorderLayout.CENTER);
         janelaP.getContentPane().add(painelV, BorderLayout.NORTH);
+        janelaP.getContentPane().add(painelB, BorderLayout.CENTER);
         //adicionar o textField no PainelV
          JTextField caixa1 = new JTextField(25);
         painelV.add(caixa1);
         // set layout do JPanel
-        GridLayout grid = new GridLayout(4, 4);
+        GridLayout grid = new GridLayout(5, 4);
         painelB.setLayout(grid);
         // Vetor com os txtos dos botoes
-        String textBotoes[] = { "C", "9", "8", "7", "/", "6", "5", "4", "*", "3", "2", "1", "-", "+", "0","="};
+        String textBotoes[] = { "C","","",  "/", "9", "8", "7","*", "6", "5", "4", "-", "1", "2", "3","+","","0","","="};
         for (int i = 0; i < textBotoes.length; i++) {
             painelB.add(new JButton(textBotoes[i]));
         }

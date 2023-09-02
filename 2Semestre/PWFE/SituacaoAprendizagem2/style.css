@@ -1,0 +1,67 @@
+html {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-image: url(img/cidade_bg.jpg);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.container span{
+	display: block;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+.preto{
+	padding-left: 50px;
+	padding-top: 50px;
+	width: 150px;
+	height: 375px;
+	background: #000000;
+	border-radius: 20%;
+}
+.poste{
+	margin-left: 22px;
+	padding-left: 50px;
+	padding-top: 50px;
+	width: 10px;
+	height: 100px;
+	background: #000000;
+}
+.container span + span {
+	margin: 10px 0;
+}
+
+.vermelho {
+	background: #D50000;
+}
+
+.amarelo {
+	background: #FFD600;
+}
+
+.verde {
+	background: #558B2F;
+}
+
+.vermelho-ativo {
+	background: red;
+	box-shadow: 0 0 15px 3px red;
+	
+}
+
+.amarelo-ativo {
+	background: #FFFF00;
+	box-shadow: 0 0 15px 3px #FFFF00;
+}
+
+.verde-ativo {
+	background: #76FF03;
+	box-shadow: 0 0 15px 3px #76FF03;
+}

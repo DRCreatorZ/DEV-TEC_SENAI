@@ -2,8 +2,18 @@ const vermelho = document.querySelector('.vermelho');
 const amarelo = document.querySelector('.amarelo');
 const verde = document.querySelector('.verde');
 
+today = new Date();
+function time() {
+	today = new Date();
+	h = today.getHours();
+	m = today.getMinutes();
+	s = today.getSeconds();
+	document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+	setTimeout('time()', 500);
+}
 let contador = 1;
-if ( 1 == 1) {
+
+if (today.getHours() <= 19) {
 	setInterval(() => {
 		if (contador <= 1) {
 			vermelho.classList.add('vermelho-ativo');
@@ -17,7 +27,6 @@ if ( 1 == 1) {
 			verde.classList.remove('verde-ativo');
 			contador = 0;
 		}
-
 		contador += 1;
 	}, 1000);
 } else {
@@ -25,22 +34,12 @@ if ( 1 == 1) {
 		if (contador <= 1) {
 			amarelo.classList.add('amarelo-ativo');
 		} else if (contador === 2) {
-			amarelo.classList.add('amarelo-ativo');
 			amarelo.classList.remove('amarelo-ativo');
 			contador = 0;
 		}
-
 		contador += 1;
 	}, 1000);
 
 }
 
-function time()
-{
-today=new Date();
-h=today.getHours();
-m=today.getMinutes();
-s=today.getSeconds();
-document.getElementById('txt').innerHTML=h+":"+m+":"+s;
-setTimeout('time()',1000);
-}
+

@@ -2,16 +2,22 @@ html {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+	background-image: url(img/cidade_bg.jpg);
 }
 
 body {
-	background-image: url(img/cidade_bg.jpg);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
 }
-
+.txt{
+	font-size: 100px;
+	position: fixed;
+	left: 100px;
+	width: 100px;
+	height: 100px;
+}
 .container span{
 	display: block;
 	width: 100px;

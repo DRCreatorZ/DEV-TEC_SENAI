@@ -13,7 +13,7 @@ function time() {
 }
 let contador = 1;
 
-if (today.getHours() <= 19) {
+if (today.getHours() >= 5) {
 	setInterval(() => {
 		if (contador <= 1) {
 			vermelho.classList.add('vermelho-ativo');

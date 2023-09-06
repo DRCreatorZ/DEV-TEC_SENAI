@@ -1,25 +1,25 @@
 import java.awt.*;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.BorderLayout;
 
-public class Calculadora {
+
+public class Calculadora extends JPanel{
     public Calculadora() {
-        // construir o layout de uma calculadora
-        JFrame janelaP = new JFrame("Janela Calculdora");
+        super(new BorderLayout());
         //mudando o Lyout daFrame
         BorderLayout border = new BorderLayout();
-        janelaP.setLayout(border);
+        this.setLayout(border);
         JPanel painelV = new JPanel();
         JPanel painelB = new JPanel();
         JPanel painelC = new JPanel();// padrao flowlayout
-        janelaP.getContentPane().add(painelV, BorderLayout.NORTH);
-        janelaP.getContentPane().add(painelB, BorderLayout.CENTER);
-        janelaP.getContentPane().add(painelC, BorderLayout.EAST);
+        this.add(painelV, BorderLayout.NORTH);
+        this.add(painelB, BorderLayout.CENTER);
+        this.add(painelC, BorderLayout.EAST);
        
         //adicionar o textField no PainelV
-         JTextField visor = new JTextField(25);
+         JTextField visor = new JTextField(30);
         painelV.add(visor);
         // set layout do JPanel
         GridLayout grid = new GridLayout(4, 4);
@@ -41,11 +41,6 @@ public class Calculadora {
         //for (int i = 0; i < textBotoes2.length; i++) {
            // painelB.add(new JButton(textBotoes2[i]));
         // Vetor com os txtos dos botoes
-        
-        //set do Frame
-        janelaP.setDefaultCloseOperation(2);
-        janelaP.pack();
-        janelaP.setVisible(true);
-        janelaP.setResizable(false);
+       
     }
 }

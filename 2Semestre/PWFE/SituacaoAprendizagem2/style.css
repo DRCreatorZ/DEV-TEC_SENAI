@@ -95,3 +95,99 @@ body {
 	background: #76FF03;
 	box-shadow: 0 0 15px 3px #76FF03;
 }
+@media screen and (max-width: 1000px){
+    .banner {height: 480px; padding: 0px 20px;}
+    .banner .texto {font-size: 24px;}
+    .banner h1 { font-size: 28px;}
+    .banner p {font-size: 14px; margin-top: 90px;}
+    .banner img {width: 40%; height: 300px;margin-top: 90px;}
+    .banner a {padding: 3px 10px; background-color: rgba(15, 113, 94, 0.758); font-size: 12px;
+    color: rgb(246, 211, 69);text-decoration: none;}
+}
+
+@media screen and (max-width: 640px) {
+    .txt{
+	font-size: 80px;
+	position: fixed;
+	left: 120px;
+	width: 50px;
+	height: 0px;
+	z-index: 1;
+}
+
+.caixa2{
+	text-align: center;
+	font-size: 10px;
+	position:fixed;
+	left: 100px;
+	width: 300px;
+	height: 200px;
+	background-color: #cdff03;
+	border-radius: 10px;
+	border:7px;
+	border-style: double;
+}
+.poste2{
+	position:fixed;
+	left: 200px;
+	margin-left: 30px;
+	padding-left: 30px;
+	margin-top: 205px;
+	width: 10px;
+	height: 350px;
+	background: #000000;
+}
+.container span{
+	display: block;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+.caixa{
+	padding-left: 50px;
+	padding-top: 50px;
+	width: 150px;
+	height: 375px;
+	background-color: #000000;
+	border-radius: 20%;
+}
+.poste{
+	margin-left: 22px;
+	padding-left: 50px;
+	padding-top: 50px;
+	width: 10px;
+	height: 100px;
+	background: #000000;
+}
+.container span + span {
+	margin: 10px 0;
+}
+
+.vermelho {
+	background: #D50000;
+}
+
+.amarelo {
+	background: #FFD600;
+}
+
+.verde {
+	background: #558B2F;
+}
+
+.vermelho-ativo {
+	background: red;
+	box-shadow: 0 0 15px 3px red;
+	
+}
+
+.amarelo-ativo {
+	background: #FFFF00;
+	box-shadow: 0 0 15px 3px #FFFF00;
+}
+
+.verde-ativo {
+	background: #76FF03;
+	box-shadow: 0 0 15px 3px #76FF03;
+}
+}

@@ -2,29 +2,34 @@ html {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	background-image: url(img/cidade_bg.jpg);
+	
 }
 
 body {
+	background-image: url(img/cidade_bg.jpg);
+	background-size: no-repeat;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
 }
+.placa{
+	position: relative;
+	right: 200px;
+	flex-direction:column;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
 .txt{
-	font-size: 80px;
-	position: fixed;
-	left: 120px;
-	width: 50px;
-	height: 0px;
-	z-index: 1;
+	font-size: 70px;
 }
 
 .caixa2{
 	text-align: center;
 	font-size: 10px;
-	position:fixed;
-	left: 100px;
+	position:relative;
+	
 	width: 300px;
 	height: 200px;
 	background-color: #cdff03;
@@ -33,12 +38,7 @@ body {
 	border-style: double;
 }
 .poste2{
-	position:fixed;
-	left: 200px;
-	margin-left: 30px;
-	padding-left: 30px;
-	margin-top: 205px;
-	width: 10px;
+	width:50px;
 	height: 350px;
 	background: #000000;
 }
@@ -106,88 +106,93 @@ body {
 }
 
 @media screen and (max-width: 640px) {
-    .txt{
-	font-size: 80px;
-	position: fixed;
-	left: 120px;
-	width: 50px;
-	height: 0px;
-	z-index: 1;
-}
-
-.caixa2{
-	text-align: center;
-	font-size: 10px;
-	position:fixed;
-	left: 100px;
-	width: 300px;
-	height: 200px;
-	background-color: #cdff03;
-	border-radius: 10px;
-	border:7px;
-	border-style: double;
-}
-.poste2{
-	position:fixed;
-	left: 200px;
-	margin-left: 30px;
-	padding-left: 30px;
-	margin-top: 205px;
-	width: 10px;
-	height: 350px;
-	background: #000000;
-}
-.container span{
-	display: block;
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-}
-.caixa{
-	padding-left: 50px;
-	padding-top: 50px;
-	width: 150px;
-	height: 375px;
-	background-color: #000000;
-	border-radius: 20%;
-}
-.poste{
-	margin-left: 22px;
-	padding-left: 50px;
-	padding-top: 50px;
-	width: 10px;
-	height: 100px;
-	background: #000000;
-}
-.container span + span {
-	margin: 10px 0;
-}
-
-.vermelho {
-	background: #D50000;
-}
-
-.amarelo {
-	background: #FFD600;
-}
-
-.verde {
-	background: #558B2F;
-}
-
-.vermelho-ativo {
-	background: red;
-	box-shadow: 0 0 15px 3px red;
+	.placa{
+		display: flex;
+		justify-content: center;
+	}
+	.txt{
+		font-size: 50px;
+		position: fixed;
+		left: 150px;
+		width: 50px;
+		margin-top: 360px;
+		z-index: 1;
+	}
 	
-}
-
-.amarelo-ativo {
-	background: #FFFF00;
-	box-shadow: 0 0 15px 3px #FFFF00;
-}
-
-.verde-ativo {
-	background: #76FF03;
-	box-shadow: 0 0 15px 3px #76FF03;
-}
-}
+	.caixa2{
+		text-align: center;
+		font-size: 7px;
+		position:fixed;
+		left: 130px;
+		width: 200px;
+		height: 150px;
+		background-color: #cdff03;
+		border-radius: 10px;
+		border:7px;
+		border-style: double;
+		margin-top:350px;
+	}
+	.poste2{
+		left: 200px;
+		margin-left: 30px;
+		padding-left: 30px;
+		margin-top: 205px;
+		width: 10px;
+		height: 350px;
+		background: #000000;
+	}
+	.container span{
+		display: block;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+	}
+	.caixa{
+		padding-left: 20px;
+		padding-top: 20px;
+		width: 70px;
+		height: 200px;
+		background-color: #000000;
+		border-radius: 20%;
+		margin-top:-300px;
+	}
+	.poste{
+		margin-left: 10px;
+		padding-left: 20px;
+		padding-top: 100px;
+		width: 10px;
+		height: 200px;
+		background: #000000;
+	}
+	.container span + span {
+		margin: 10px 0;
+	}
+	
+	.vermelho {
+		background: #D50000;
+	}
+	
+	.amarelo {
+		background: #FFD600;
+	}
+	
+	.verde {
+		background: #558B2F;
+	}
+	
+	.vermelho-ativo {
+		background: red;
+		box-shadow: 0 0 15px 3px red;
+		
+	}
+	
+	.amarelo-ativo {
+		background: #FFFF00;
+		box-shadow: 0 0 15px 3px #FFFF00;
+	}
+	
+	.verde-ativo {
+		background: #76FF03;
+		box-shadow: 0 0 15px 3px #76FF03;
+	}
+	}

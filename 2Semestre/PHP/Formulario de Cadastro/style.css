@@ -34,3 +34,9 @@ input [type="text"], input[type="email"], input[type="date"] {
 input[type="radio"] {
     margin-right: 5px;
 }
+.con{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1p solid #ccc;
+    border-radius: 3px;
+}

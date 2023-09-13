@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Formulario de clientes</title>
+    
+</head>
+
+<body>
+        <div class="container">
+            <h2>Formulário de Cliente</h2>
+            <form action="process.php" method="post">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Nome" required><br>
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" placeholder="Endereço" required><br>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="E-mail" required><br>
+
+                <label>Gênero</label>
+                <input type="radio" id="masculino" name="sexo" value="Maculino" required>
+                <label for="masculino">Masculino</label>
+                <input type="radio" id="feminino" name="sexo" value="Feminino" required>
+                <label for="feminino">Feminino</label><br>
+
+                <label for="dataNasc">Data de Nascimento:</label>
+                <input type="date" id="dataNasc" name="dataNasc" placeholder="Data de nascimento" required>
+                
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+</body>
+
+</html>

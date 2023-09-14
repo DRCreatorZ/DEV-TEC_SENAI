@@ -27,19 +27,11 @@ public class Calculadora extends JPanel{
         for (int a = 0; a < textBotoes.length; a++) {
             painelB.add(new JButton(textBotoes[a]));
         }
-        //GridLayout grid2 = new GridLayout(1, 1);
-       // painelC.setLayout(grid2);
         painelC.setLayout(new GridLayout(4, 1));
         painelC.add(new JButton("+"));
         painelC.add(new JButton("-"));
         painelC.add(new JButton("/"));
         painelC.add(new JButton("x"));
-    
 
-       // String textBotoes2[] = {  "0","="};
-        //for (int i = 0; i < textBotoes2.length; i++) {
-           // painelB.add(new JButton(textBotoes2[i]));
-        // Vetor com os txtos dos botoes
-       
     }
 }

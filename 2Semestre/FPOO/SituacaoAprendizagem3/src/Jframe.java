@@ -5,8 +5,8 @@ import javax.swing.JFrame;
         super("Calculadoras");
         this.add(new Jtabbedpane());
         //set frame
-        this.setBounds(500, 100, 300, 200);
+        this.setBounds(500, 500, 370, 230);
         this.setVisible(true);
-        this.setResizable(false);
+        //this.setResizable(false);
     }
 }

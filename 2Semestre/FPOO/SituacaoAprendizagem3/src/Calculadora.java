@@ -2,7 +2,6 @@ import java.awt.*;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.BorderLayout;
 
 
 public class Calculadora extends JPanel{

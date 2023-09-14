@@ -4,13 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
-public class CalculadoraCustoViagem extends JFrame implements ActionListener {
+public class CalculadoraCustoViagem extends JPanel implements ActionListener {
     private JTextField distanciaField, consumoField, precoField;
     private JButton calcularButton, apagarButton, sairButton;
 
     public CalculadoraCustoViagem() {
         super();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(400, 200));//altura e largura
         setLayout(new GridBagLayout());
 
@@ -79,9 +79,9 @@ public class CalculadoraCustoViagem extends JFrame implements ActionListener {
         gbc.anchor = GridBagConstraints.EAST; // Alinhar à direita
         add(botoesPanel, gbc);
 
-        pack();
-        setLocationRelativeTo(null); // Centraliza a janela na tela
-        setVisible(true);
+       // pack();
+      //  setLocationRelativeTo(null); // Centraliza a janela na tela
+        //setVisible(true);
     }
 
     @Override

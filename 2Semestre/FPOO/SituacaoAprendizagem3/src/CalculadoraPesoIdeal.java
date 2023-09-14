@@ -4,107 +4,102 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CalculadoraPesoIdeal extends JPanel implements ActionListener {
-    private JTextField alturaField, idadeField, sexoField, pesoField;
-    private JButton calcularButton, apagarButton, sairButton;
+    private JTextField alturaField, nomeField;  // Declaração dos campos de texto para altura e nome
+    private JComboBox<String> sexoComboBox;   // Declaração do menu suspenso para seleção de sexo
+    private JButton calcularButton, apagarButton;  // Declaração dos botões de calcular e apagar
 
+    // Construtor da classe CalculadoraPesoIdeal
     public CalculadoraPesoIdeal() {
         super();
-        setPreferredSize(new Dimension(400, 200));//altura e largura
-        setLayout(new GridBagLayout());
+        setPreferredSize(new Dimension(400, 200));  // Define o tamanho preferencial do painel
+        setLayout(new GridBagLayout());  // Define o layout do painel como GridBagLayout
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5); // Espaçamento interno
-        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(5, 5, 5, 5);  // Define margens entre os componentes
+        gbc.anchor = GridBagConstraints.WEST;  // Define alinhamento à esquerda
 
-        // Campo e rótulo para Altura
-        gbc.gridx = 0;//coluna
-        gbc.gridy = 0;//linha
-        add(new JLabel("Inserir altura (m):"), gbc);
+        // Adiciona um rótulo e um campo de texto para inserir o nome
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add(new JLabel("Inserir seu Nome:"), gbc);
 
         gbc.gridx = 1;
-        alturaField = new JTextField(10);
-        add(alturaField, gbc);
+        nomeField = new JTextField(10);  // Cria um campo de texto para o nome com 10 colunas
+        add(nomeField, gbc);
 
-        // Campo e rótulo para Idade
+        // Adiciona um rótulo e um campo de texto para inserir a altura
         gbc.gridx = 0;
         gbc.gridy = 1;
-        add(new JLabel("Inserir idade (anos):"), gbc);
+        add(new JLabel("Inserir altura (metros):"), gbc);
 
         gbc.gridx = 1;
-        idadeField = new JTextField(10);
-        add(idadeField, gbc);
+        alturaField = new JTextField(10);  // Cria um campo de texto para a altura com 10 colunas
+        add(alturaField, gbc);
 
-        // Campo e rótulo para Sexo
+        // Adiciona um rótulo e um menu suspenso para selecionar o sexo
         gbc.gridx = 0;
         gbc.gridy = 2;
-        add(new JLabel("Inserir sexo (Mas=1/Fem=2:)"), gbc);
+        add(new JLabel("Escolher sexo:"), gbc);
 
         gbc.gridx = 1;
-        sexoField = new JTextField(10);
-        add(sexoField, gbc);
-       
-        // Botão Apagar
+        String[] sexoOptions = {"Masculino", "Feminino"};
+        sexoComboBox = new JComboBox<>(sexoOptions);  // Cria um menu suspenso com opções de sexo
+        add(sexoComboBox, gbc);
+
+        // Adiciona botão "Apagar" e configura o ActionListener para lidar com eventos
         gbc.gridx = 0;
         gbc.gridy = 4;
-        gbc.gridwidth = 1; //componente deve ocupar horizontalmente
-        gbc.anchor = GridBagConstraints.WEST; // Alinhar à esquerda
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.WEST;
         apagarButton = new JButton("Apagar");
         apagarButton.addActionListener(this);
         add(apagarButton, gbc);
 
-        // Painel para os botões (Calcular, Sair)
+        // Adiciona botão "Peso Ideal" em um painel separado para melhor alinhamento
         JPanel botoesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
-        // Botão Calcular (no centro)
         calcularButton = new JButton("Peso Ideal");
         calcularButton.addActionListener(this);
         botoesPanel.add(calcularButton);
 
-        // Botão Sair (à direita)
-        sairButton = new JButton("Sair");
-        sairButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0); // Fecha a aplicação
-            }
-        });
-        botoesPanel.add(sairButton);
-
-        // Adicionar o painel de botões à grade
         gbc.gridx = 1;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
-        gbc.anchor = GridBagConstraints.EAST; // Alinhar à direita
+        gbc.anchor = GridBagConstraints.EAST;
         add(botoesPanel, gbc);
+
+        // Adiciona botões numéricos e botão "C" em um painel separado
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        add(criarBotoesNumericos(), gbc);  // Utiliza o método para criar e adicionar os botões numéricos
     }
 
+    // Método para criar os botões numéricos e o botão "C"
+    private JPanel criarBotoesNumericos() {
+        JPanel botoesNumericosPanel = new JPanel(new GridLayout(3, 5, 5, 5));  // Cria um painel com layout de grade
+
+        for (int i = 0; i <= 9; i++) {
+            JButton botao = new JButton(String.valueOf(i));  // Cria botões de 0 a 9
+            botao.addActionListener(this);  // Adiciona um ActionListener para lidar com eventos
+            botoesNumericosPanel.add(botao);  // Adiciona o botão ao painel
+        }
+
+        JButton botaoPonto = new JButton(".");  // Cria um botão de ponto
+        botaoPonto.addActionListener(this);  // Adiciona um ActionListener para lidar com eventos
+        botoesNumericosPanel.add(botaoPonto);  // Adiciona o botão de ponto ao painel
+
+        JButton botaoC = new JButton("C");  // Cria um botão "C"
+        botaoC.addActionListener(this);  // Adiciona um ActionListener para lidar com eventos
+        botoesNumericosPanel.add(botaoC);  // Adiciona o botão "C" ao painel
+
+        return botoesNumericosPanel;  // Retorna o painel com os botões numéricos
+    }
+
+    // Método chamado quando um evento ocorre
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == apagarButton) {
-            // Limpa os campos de entrada
-            alturaField.setText("");
-            idadeField.setText("");
-            sexoField.setText("");
-            pesoField.setText("");
-        } else if (e.getSource() == calcularButton) {
-            try {
-                double altura = Double.parseDouble(alturaField.getText());
-                double sexo = Double.parseDouble(sexoField.getText());
-                double pesoIdealHomem = 72.7 * altura - 58;
-                double pesoIdealMulher = 62.1 * altura - 44.7;
-               
-                if (sexo == 1) {
-                    String mensagem = "Seu peso ideal é: " + pesoIdealHomem + "Kg.";
-                    JOptionPane.showMessageDialog(this, mensagem, "Resultado do Cálculo de IMC:", JOptionPane.INFORMATION_MESSAGE);
-                } else if (sexo == 2) {
-                    // Realiza o cálculo do custo da viagem
-                    String mensagem = "Seu peso ideal é: " + pesoIdealMulher + "Kg.";
-                    JOptionPane.showMessageDialog(this, mensagem, "Resultado do Cálculo de IMC:", JOptionPane.INFORMATION_MESSAGE);
-                }
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Por favor, insira valores válidos!", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }   
+        // Lógica para lidar com diferentes eventos (botões pressionados)
+        // ...
     }
-
+}

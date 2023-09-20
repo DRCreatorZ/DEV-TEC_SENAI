@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Consumo</title>
+</head>
+<body>
+    <h1>Calculadora de Consumo</h1>
+    
+    <form action="calcular.php" method="post">
+        <label for="quilometragem">Quilometragem percorrida (em km):</label>
+        <input type="text" id="quilometragem" name="quilometragem" required><br><br>
+        
+        <label for="consumo">Consumo (em litros):</label>
+        <input type="text" id="consumo" name="consumo" required><br><br>
+
+        <label for="precoLitro">Preço do litro de combustível:</label>
+        <input type="text" id="precoLitro" name="precoLitro" required><br><br>
+        
+        <input type="submit" value="Calcular">
+    </form>
+</body>
+</html>

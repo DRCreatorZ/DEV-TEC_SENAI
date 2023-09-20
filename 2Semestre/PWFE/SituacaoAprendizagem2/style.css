@@ -7,7 +7,7 @@ html {
 
 body {
 	background-image: url(img/cidade_bg.jpg);
-	background-size: no-repeat;
+	background-size:cover;
 	display: flex;
 	justify-content: center;
 	align-items: center;

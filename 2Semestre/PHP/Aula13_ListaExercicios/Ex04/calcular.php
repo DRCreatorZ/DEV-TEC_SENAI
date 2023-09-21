@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $resultado = calcularFatorial($numero);
 
-    echo "O fatorial de {$numero} é {$resultado}.";
+    echo "O fatorial de {$numero} é =>{$resultado}.";
 } else {
     echo "Erro ao processar a requisição. Por favor, volte à página inicial.";
 }

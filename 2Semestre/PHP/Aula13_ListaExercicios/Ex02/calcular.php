@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $conta = conta($numero1, $numero2);
     echo "{$conta}";
-    
+
     echo " = {$resultado}";
 } else {
     echo "Erro ao processar a requisição. Por favor, volte à página inicial.";

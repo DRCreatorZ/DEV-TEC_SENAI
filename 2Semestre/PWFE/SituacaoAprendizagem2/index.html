@@ -2,36 +2,56 @@
 <html lang="pt-br">
 
 <head>
+    <!-- Define o conjunto de caracteres da página -->
     <meta charset="UTF-8">
+    <!-- Define a compatibilidade com o Internet Explorer -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Define a largura da viewport e a escala inicial -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da página exibido na guia do navegador -->
     <title>Semáforo</title>
+    <!-- Importa o arquivo de estilos externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body onload="time()">
+    <!-- Início do corpo da página -->
 
+    <!-- Div com a classe "placa" (placa total)-->
     <div class="placa">
+        <!-- Div com a classe "caixa2" (corpo da placa) -->
         <div class="caixa2">
+            <!-- Título de aviso -->
             <h1>ATENÇÃO!!!</h1>
+            <!-- Linha horizontal -->
             <HR></HR>
+            <!-- Mensagem sobre o semáforo amarelo piscante -->
             <h1>Semáforo Amarelo piscante das 00h às 5h!</h1>
+            <!-- Div com a classe "txt" e o ID "txt" -->
             <div class="txt" id="txt"></div>
         </div>
+        <!-- Div com a classe "poste2" (poste da placa) -->
         <div class="poste2"></div>
     </div>
 
+    <!-- Div com a classe "caixa" (corpo de semáforo) -->
     <div class="caixa">
+        <!-- Div com a classe "container" (luzez do semáforo) -->
         <div class="container">
+            <!-- Três spans com as classes "vermelho", "amarelo" e "verde" (cores das luzes) -->
             <span class="vermelho"></span>
             <span class="amarelo"></span>
             <span class="verde"></span>
         </div>
+        <!-- Div com a classe "poste" (poste do semáforo) -->
         <div class="poste">
         </div>
     </div>
+    <!-- Fim do corpo da página -->
+
 </body>
+
+<!-- Importa o arquivo de script externo -->
 <script src="script.js"></script>
 
 </html>

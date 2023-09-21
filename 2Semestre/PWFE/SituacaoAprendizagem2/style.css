@@ -1,8 +1,8 @@
+/* Estilos para o HTML e o corpo da página */
 html {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	
 }
 
 body {
@@ -13,6 +13,8 @@ body {
 	align-items: center;
 	height: 100vh;
 }
+
+/* Estilos e posicionamento para a placa (conjunto total de placa, textos, hora e poste) */
 .placa{
 	position: relative;
 	right: 250px;
@@ -22,10 +24,13 @@ body {
 	display: flex;
 	justify-content: center;
 }
+
+/* Estilos para o texto na placa (hora)*/
 .txt{
 	font-size: 70px;
 }
 
+/* Estilos e posição para a caixa 2 (placa e texto) */
 .caixa2{
 	text-align: center;
 	font-size: 10px;
@@ -37,17 +42,15 @@ body {
 	border:7px;
 	border-style: double;
 }
+
+/* Estilos e posção para o poste 2 (poste da placa) */
 .poste2{
 	width:50px;
 	height: 350px;
 	background: #000000;
 }
-.container span{
-	display: block;
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-}
+
+/* Estilos e posição para a caixa (corpo do semáforo)*/
 .caixa{
 	position: relative;
 	right: 200px;
@@ -58,6 +61,8 @@ body {
 	background-color: #000000;
 	border-radius: 20%;
 }
+
+/* Estilos e posição para o poste (poste do semáforo) */
 .poste{
 	margin-left: 22px;
 	padding-left: 50px;
@@ -66,10 +71,20 @@ body {
 	height: 165px;
 	background: #000000;
 }
+
+/* Estilos para os elementos dentro da classe container */
+.container span{
+	display: block;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+/* Estilos para os elementos dentro da classe container span + span */
 .container span + span {
 	margin: 10px 0;
 }
 
+/* Cores e estilos para as luzes (apagadas) do semáforo */
 .vermelho {
 	background: #D50000;
 }
@@ -82,10 +97,10 @@ body {
 	background: #558B2F;
 }
 
+/* Cores e estilos para as luzes (acesas) do semáforo */
 .vermelho-ativo {
 	background: red;
 	box-shadow: 0 0 15px 3px red;
-	
 }
 
 .amarelo-ativo {
@@ -97,16 +112,8 @@ body {
 	background: #76FF03;
 	box-shadow: 0 0 15px 3px #76FF03;
 }
-@media screen and (max-width: 1000px){
-    .banner {height: 480px; padding: 0px 20px;}
-    .banner .texto {font-size: 24px;}
-    .banner h1 { font-size: 28px;}
-    .banner p {font-size: 14px; margin-top: 90px;}
-    .banner img {width: 40%; height: 300px;margin-top: 90px;}
-    .banner a {padding: 3px 10px; background-color: rgba(15, 113, 94, 0.758); font-size: 12px;
-    color: rgb(246, 211, 69);text-decoration: none;}
-}
 
+/* Estilos para dispositivos com largura máxima de 640px */
 @media screen and (max-width: 640px) {
 	.placa{
 		position: relative;
@@ -193,4 +200,4 @@ body {
 		background: #76FF03;
 		box-shadow: 0 0 15px 3px #76FF03;
 	}
-	}
+}

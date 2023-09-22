@@ -10,13 +10,21 @@ today = new Date();
 function time() {
 	// Atualizando a data e hora atual
 	today = new Date();
-	h = today.getHours();
-	m = today.getMinutes();
-	s = today.getSeconds();
+	h = today.getHours().toString().padStart(2, '0'); // Adiciona zero à esquerda se tiver apenas uma casa
+	m = today.getMinutes().toString().padStart(2, '0'); // Adiciona zero à esquerda se tiver apenas uma casa
+	s = today.getSeconds().toString().padStart(2, '0'); // Adiciona zero à esquerda se tiver apenas uma casa
 
 	// Atualizando o conteúdo do elemento com o ID "txt"
-	document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+	document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
 
+	// Atualizando o fundo de acordo com a hora
+	if (h >= 12 && h < 18) {
+		document.body.style.backgroundImage = "url('img/cidade_tarde_bg.jpg')";
+	} else if (h >= 19 || h < 5) {
+		document.body.style.backgroundImage = "url('img/cidade_noite_bg.jpg')";
+	} else {
+		document.body.style.backgroundImage = "url('img/cidade_bg.jpg')";
+	}
 	// Chama a função "time" novamente após 500 milissegundos (0.5 segundos)
 	setTimeout('time()', 500);
 }
@@ -25,7 +33,7 @@ function time() {
 let contador = 1;
 
 // Verificando se a hora atual é maior ou igual a 5
-if (today.getHours() >= 5) {
+if (today = new Date() >= 5) {
 	// Executando um conjunto de ações a cada 1000 milissegundos (1 segundo)
 	setInterval(() => {
 		// Verificando o valor do contador
@@ -44,6 +52,7 @@ if (today.getHours() >= 5) {
 			amarelo.classList.remove('amarelo-ativo');
 		} else if (contador === 15) {
 			// Removendo a classe 'verde-ativo' do elemento com a classe 'verde'
+			verde.classList.remove('verde-ativo');
 			contador = 0;
 		}
 		// Incrementando o contador
@@ -58,6 +67,7 @@ if (today.getHours() >= 5) {
 			amarelo.classList.add('amarelo-ativo');
 		} else if (contador === 2) {
 			// Removendo a classe 'amarelo-ativo' do elemento com a classe 'amarelo'
+			amarelo.classList.remove('amarelo-ativo');
 			contador = 0;
 		}
 		// Incrementando o contador

@@ -25,10 +25,32 @@ function time() {
 	} else {
 		document.body.style.backgroundImage = "url('img/cidade_bg.jpg')";
 	}
+	 // Verificar se está no horário de manutenção (exemplo: das 2h às 3h)
+	 if (h >= 2 && h < 3) {
+        manutencao(); // Chama a função de manutenção
+    }
 	// Chama a função "time" novamente após 500 milissegundos (0.5 segundos)
 	setTimeout('time()', 500);
 }
 
+let manInterval; // Variável para armazenar o intervalo de manutenção
+
+function manutencao() {
+    // Limpa qualquer intervalo de manutenção existente
+    clearInterval(manInterval);
+	vermelho.classList.remove('vermelho-ativo');
+    amarelo.classList.remove('amarelo-ativo');
+    verde.classList.remove('verde-ativo');
+    // Define um novo intervalo de manutenção de 1 segundo
+    manInterval = setInterval(() => {
+    // Toggle (alterna) a classe 'amarelo-ativo' no elemento com a classe 'amarelo'
+        amarelo.classList.toggle('amarelo-ativo');
+    }, 300);
+}
+function pararManutencao() {
+    clearInterval(manInterval); // Limpa o intervalo de manutenção
+    amarelo.classList.remove('amarelo-ativo'); // Desativa o semáforo amarelo
+}
 // Inicializando o contador como 1
 let contador = 1;
 

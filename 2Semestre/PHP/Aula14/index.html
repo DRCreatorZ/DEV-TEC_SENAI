@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Envio de arquivos</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Aula 14 - A</h2>
+        <form action="upload01.php" method="post" enctype="multipart/form-data">
+            <p>Copiar um arquivo de uma máquina local
+                para o servidor web.</p>
+            <br>
+            <label for="arquivo">Escolha o Arquivo:</label>
+            <input type="file" name="arquivo" />
+            <br>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+    <br>
+    <div class="container">
+        <h2>Aula 14 - B</h2>
+        <form action="upload02.php" method="post" enctype="multipart/form-data">
+            <p>Copiar um arquivo de uma máquina local
+                para o servidor web.</p>
+            <br>
+            <label for="arquivo">Escolha o Arquivo:</label>
+            <input type="file" name="arquivo" />
+            <br>
+            <input type="submit" name="enviar-formulario" value="Enviar">
+        </form>
+    </div>
+    <br>
+    <div class="container">
+        <h2>Aula 14 - B</h2>
+        <form action="upload03.php" method="post" enctype="multipart/form-data">
+            <p>Copiar <b>vários</b> arquivos de uma máquina local
+                para o servidor web.</p>
+            <br>
+            <label for="arquivo">Escolha o Arquivo:</label>
+            <input type="file" name="arquivo" />
+            <br>
+            <input type="submit" name="enviar-formulario" value="Enviar">
+        </form>
+    </div>
+</body>
+</html>

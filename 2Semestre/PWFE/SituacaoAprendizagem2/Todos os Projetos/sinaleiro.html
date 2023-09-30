@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semáforo</title>
+    <link rel="stylesheet" href="styles/sinaleiro.css"> <!-- Inclui um arquivo CSS para estilizar a página -->
+    <link rel="stylesheet" href="styles/botoes.css"> <!-- Inclui outro arquivo CSS para estilização em tela cheia -->
+</head>
+
+<body onload="time()"> <!-- Quando a página é carregada, a função "time()" será chamada -->
+    <div class="botoesNav">
+        <button type="submit" id="botaotelacheia" class="telacheia">
+            <img src="img/fullscreen.png" alt="">
+            <p>FULLSCREEN</p>
+        </button>
+        <a href="index.html">
+            <div class="voltar">
+                <img src="img/voltar.png" alt="">
+                <p>VOLTAR</p>
+            </div>
+        </a>
+    </div>
+    <div class="placa">
+        <!-- Div com a classe "caixa2" (corpo da placa) -->
+        <div class="caixa2">
+            <!-- Título de aviso -->
+            <h1>ATENÇÃO!!!</h1>
+            <!-- Linha horizontal -->
+            <HR>
+            </HR>
+            <!-- Mensagem sobre o semáforo amarelo piscante -->
+            <h1>Semáforo Amarelo piscante das 00h às 5h!</h1>
+            <!-- Div com a classe "txt" e o ID "txt" -->
+            <div class="txt" id="txt"></div>
+        </div>
+        <!-- Div com a classe "poste2" (poste da placa) -->
+        <div class="poste2"></div>
+    </div>
+
+    <!-- Div com a classe "caixa" (corpo de semáforo) -->
+    <div class="caixa">
+        <!-- Div com a classe "container" (luzez do semáforo) -->
+        <div class="container">
+            <!-- Três spans com as classes "vermelho", "amarelo" e "verde" (cores das luzes) -->
+            <span class="vermelho"></span>
+            <span class="amarelo"></span>
+            <span class="verde"></span>
+        </div>
+        <div class="manutencao">
+            <button onclick="manutencao()"></button>
+            <button onclick="pararManutencao()"></button>
+        </div>
+        <!-- Div com a classe "poste" (poste do semáforo) -->
+        <div class="poste">
+        </div>
+    </div>
+    <!-- Fim do corpo da página -->
+</body>
+<script src="js/sinaleiro.js"></script> <!-- Inclui um arquivo JavaScript chamado "sinaleiro.js" -->
+<script src="js/fullscreen.js"></script> <!-- Inclui um arquivo JavaScript chamado "fullscreen.js" -->
+
+</html>

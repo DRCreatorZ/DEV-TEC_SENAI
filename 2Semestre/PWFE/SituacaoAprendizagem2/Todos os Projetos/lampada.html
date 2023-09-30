@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, orientation=landscape">
+    <!-- Configura as metatags para controlar a escala da página e a orientação da tela -->
+    <link rel="stylesheet" href="styles/main.css"> <!-- Inclui um arquivo CSS chamado "main.css" para estilização principal -->
+    <link rel="stylesheet" href="styles/lampada.css"> <!-- Inclui um arquivo CSS chamado "lampada.css" para estilização relacionada à lâmpada -->
+    <link rel="stylesheet" href="styles/botoes.css"> <!-- Inclui um arquivo CSS chamado "fullscreen.css" para estilização em tela cheia -->
+    <title>Games</title> <!-- Define o título da página como "Games" -->
+</head>
+
+<body>
+    <div class="botoesNav">
+        <button type="submit" id="botaotelacheia" class="telacheia">
+            <img src="img/fullscreen.png" alt="">
+            <p>FULLSCREEN</p>
+        </button>
+        <a href="index.html">
+            <div class="voltar">
+                <img src="img/voltar.png" alt="">
+                <p>VOLTAR</p>
+            </div>
+        </a>
+    </div>
+    <!-- Botão para ativar o modo de tela cheia -->
+    <div class="lampada" id="lampada"> <!-- Um contêiner que representa a lâmpada -->
+        <div class="bulbo"></div> <!-- Representação visual do bulbo da lâmpada -->
+        <div class="luz" id="luz"> <!-- Representação visual da luz da lâmpada, que provavelmente será alterada dinamicamente -->
+            <img src="img/trinco01.png" alt="" class="quebrado" id="quebrado"> <!-- Uma imagem que pode representar a lâmpada quebrada -->
+        </div>
+        <div class="interruptor"> <!-- Representação visual do interruptor -->
+            <div class="caixa">
+                <button type="submit" id="botao"><img src="img/chave.png" alt="" id="chave"></button>
+                <!-- Um botão que pode ser usado como interruptor -->
+            </div>
+        </div>
+    </div>
+    <script src="js/lampada.js"></script> <!-- Inclui um arquivo JavaScript chamado "lampada.js" -->
+    <script src="js/fullscreen.js"></script> <!-- Inclui um arquivo JavaScript chamado "fullscreen.js" -->
+</body>
+
+</html>

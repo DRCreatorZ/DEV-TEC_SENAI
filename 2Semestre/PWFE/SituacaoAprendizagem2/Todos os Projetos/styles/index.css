@@ -1,0 +1,59 @@
+body {
+    background-color: rgb(176, 158, 158);
+    height: 100vh;
+    width: 100vw;
+}
+.container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+.games {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    padding: 5px;
+    transition: transform 100ms linear;
+    background-color: rgba(247, 239, 239, 0.308);
+    border-radius: 10px;
+}
+.Imagem {
+    width: 100%;
+    border-radius: 10px;
+}
+.games:hover {
+    transform: scale(1.01);
+}
+.games:hover .control {
+    display: block;
+}
+.control {
+    width: 40%;
+    border-radius: 5px;
+    position: absolute;
+    display: none;
+    z-index: 1;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: rgba(255, 255, 255, 0.366);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    padding: 5px;
+}
+
+@media only screen and (max-width: 780px) and (orientation: portrait) {
+    body {
+        width: 100%;
+    }
+    .games{
+        width: 90%;
+    }
+    .container {
+        flex-direction: column;
+        margin: 50px 20px;
+    }
+}

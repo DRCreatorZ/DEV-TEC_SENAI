@@ -1,0 +1,45 @@
+.botoesNav {
+  display: flex;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  gap: 10px;
+  z-index: 1;
+}
+
+.telacheia,
+.voltar {
+  border-style: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0px 60px 1px rgba(0, 0, 0, 0.622);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+  & img {
+    height: 50px;
+  } &:hover {
+    box-shadow: 0px 0px 60px 1px rgba(255, 0, 0, 0.622);
+    background-color: rgba(255, 0, 0, 0.334);
+  }
+}
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+  .telacheia,
+  .voltar {
+    gap: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    & img {
+      height: 30px;
+    }
+  }
+}

@@ -32,10 +32,10 @@ function TodoList() {
                 onChange={(e) => setNewTask(e.target.value)}
             />
             {/* Renderiza um campo de entrada de texto onde o usuário
-pode digitar uma nova tarefa.
-O valor do campo é definido como 'newTask', e o 'onChange'
-atualiza o valor de 'newTask'
-com o que o usuário digitar. */}
+                pode digitar uma nova tarefa.
+                O valor do campo é definido como 'newTask', e o 'onChange'
+                atualiza o valor de 'newTask'
+                com o que o usuário digitar. */}
             <button onClick={addTask}>Adicionar Tarefa</button>
             {/* Renderiza um botão que chama a função 'addTask' quando clicado. */}
             <ul>

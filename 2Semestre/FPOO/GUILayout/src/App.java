@@ -9,3 +9,8 @@ public class App {
         new GridLayoutExemplo();
     }
 }
+public class App {
+    public static void main(String[] args) throws Exception {
+        new ExemploNomeSobrenome();
+    }
+}

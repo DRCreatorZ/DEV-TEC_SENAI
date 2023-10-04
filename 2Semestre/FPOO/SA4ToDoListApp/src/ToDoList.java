@@ -50,8 +50,42 @@ public class ToDoList extends JFrame {
         mainPanel.add(inputPanel, BorderLayout.NORTH);
         mainPanel.add(new JScrollPane(taskList), BorderLayout.CENTER);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
-        // Adiciona o painel principal à janela
+       // Adiciona o painel principal à janela
         this.add(mainPanel);
         this.setVisible(true);
+        // Tratamento de Eventos
+
     }
+
+    // métodos (crud)
+    private void addTask() {
+        // Adiciona uma nova task à lista de tasks
+        String taskDescription = taskInputField.getText().trim();// remove espaços vazios
+        if (!taskDescription.isEmpty()) {
+            Task newTask = new Task(taskDescription);
+            tasks.add(newTask);
+            updateTaskList();
+            taskInputField.setText("");
+        }
+    }
+
+    private void deleteTask() {
+        // Exclui a task selecionada da lista de tasks
+        int selectedIndex = taskList.getSelectedIndex();
+        if (selectedIndex >= 0 && selectedIndex < tasks.size()) {
+            tasks.remove(selectedIndex);
+            updateTaskList();
+        }
+    }
+
+    private void markTaskDone() {
+        // Marca a task selecionada como concluída
+        int selectedIndex = taskList.getSelectedIndex();
+        if (selectedIndex >= 0 && selectedIndex < tasks.size()) {
+            Task task = tasks.get(selectedIndex);
+            task.setDone(true);
+            updateTaskList();
+        }
+    }
+    
 }

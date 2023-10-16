@@ -6,14 +6,11 @@ import java.util.List;
 
 public class ToDoList extends JFrame {
 
-    // Declaração de componentes da interface
     private JPanel mainPanel;
     private JTextField taskInputField;
     private JButton addButton;
-    private JList<String> activeTaskList; // Lista de tarefas a concluir
-    private DefaultListModel<String> activeListModel;
-    private JList<String> completedTaskList; // Lista de tarefas concluídas
-    private DefaultListModel<String> completedListModel;
+    private JList<String> taskList;
+    private DefaultListModel<String> listModel;
     private JButton deleteButton;
     private JButton markDoneButton;
     private JComboBox<String> filterComboBox;
@@ -21,22 +18,17 @@ public class ToDoList extends JFrame {
     private List<Task> tasks;
 
     public ToDoList() {
-        // Configurações gerais da janela
         super("To-Do List App");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(550, 300);
 
-        // Inicialização de componentes e listas
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
 
         tasks = new ArrayList<>();
-        activeListModel = new DefaultListModel<>(); // Modelo para tarefas a concluir
-        completedListModel = new DefaultListModel<>(); // Modelo para tarefas concluídas
-        activeTaskList = new JList<>(activeListModel);
-        completedTaskList = new JList<>(completedListModel);
+        listModel = new DefaultListModel<>();
+        taskList = new JList<>(listModel);
 
-        // Configuração dos elementos da interface
         taskInputField = new JTextField();
         addButton = new JButton("Adicionar");
         deleteButton = new JButton("Excluir");
@@ -44,44 +36,28 @@ public class ToDoList extends JFrame {
         filterComboBox = new JComboBox<>(new String[] { "Todas", "Ativas", "Concluídas" });
         clearCompletedButton = new JButton("Limpar Concluídas");
 
-        // Configuração do painel de entrada de tarefas
         JPanel inputPanel = new JPanel(new BorderLayout());
         inputPanel.add(taskInputField, BorderLayout.CENTER);
         inputPanel.add(addButton, BorderLayout.EAST);
 
-        // Configuração do painel de botões
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         buttonPanel.add(deleteButton);
         buttonPanel.add(markDoneButton);
         buttonPanel.add(filterComboBox);
         buttonPanel.add(clearCompletedButton);
 
-        // Adição dos componentes ao painel principal
         mainPanel.add(inputPanel, BorderLayout.NORTH);
 
-        JPanel taskListsPanel = new JPanel(new BorderLayout());
-        taskListsPanel.add(new JScrollPane(activeTaskList), BorderLayout.WEST);
-        taskListsPanel.add(new JScrollPane(completedTaskList), BorderLayout.EAST);
-        mainPanel.add(taskListsPanel, BorderLayout.CENTER);
+        mainPanel.add(new JScrollPane(taskList), BorderLayout.CENTER);
 
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         this.add(mainPanel);
 
-        // Adicionando escutador de cliques duplos na lista de tarefas a concluir
-        activeTaskList.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    markTaskDone(); // Marca a tarefa como concluída
-                }
-            }
-        });
-
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addTaskEnter(); // Adiciona funcionalidade de pressionar Enter para adicionar tarefa
+                addTaskEnter();
                 addTask();
             }
         });
@@ -113,19 +89,27 @@ public class ToDoList extends JFrame {
                 filterTasks();
             }
         });
+
+        taskList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    markTaskDoneDoubleClick();
+                }
+            }
+        });
     }
 
-    // Método para marcar uma tarefa como concluída
-    private void markTaskDone() {
-        int selectedIndex = activeTaskList.getSelectedIndex();
-        if (selectedIndex >= 0 && selectedIndex < tasks.size()) {
-            Task task = tasks.get(selectedIndex);
-            task.setDone(true);
-            updateTaskLists();
+    private void addTask() {
+        String taskDescription = taskInputField.getText().trim();
+        if (!taskDescription.isEmpty()) {
+            Task newTask = new Task(taskDescription);
+            tasks.add(newTask);
+            updateTaskList();
+            taskInputField.setText("");
         }
     }
-    
-    // Método para adicionar funcionalidade de pressionar Enter para adicionar tarefa
+
     private void addTaskEnter() {
         taskInputField.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
@@ -136,20 +120,8 @@ public class ToDoList extends JFrame {
         });
     }
 
-    // Método para adicionar uma nova tarefa
-    private void addTask() {
-        String taskDescription = taskInputField.getText().trim();
-        if (!taskDescription.isEmpty()) {
-            Task newTask = new Task(taskDescription);
-            tasks.add(newTask);
-            updateTaskLists();
-            taskInputField.setText("");
-        }
-    }
-
-    // Método para excluir uma tarefa
     private void deleteTask() {
-        int selectedIndex = activeTaskList.getSelectedIndex();
+        int selectedIndex = taskList.getSelectedIndex();
         if (selectedIndex >= 0 && selectedIndex < tasks.size()) {
             Object[] options = { "NÃO", "SIM" };
             int acao = JOptionPane.showOptionDialog(
@@ -164,31 +136,40 @@ public class ToDoList extends JFrame {
 
             if (acao == 1) {
                 tasks.remove(selectedIndex);
-                updateTaskLists();
+                updateTaskList();
             }
         }
     }
 
-    // Método para filtrar tarefas com base no ComboBox
+    private void markTaskDone() {
+        int selectedIndex = taskList.getSelectedIndex();
+        if (selectedIndex >= 0 && selectedIndex < tasks.size()) {
+            Task task = tasks.get(selectedIndex);
+            task.setDone(true);
+            updateTaskList();
+        }
+    }
+
+    private void markTaskDoneDoubleClick() {
+        int selectedIndex = taskList.getSelectedIndex();
+        if (selectedIndex >= 0 && selectedIndex < tasks.size()) {
+            Task task = tasks.get(selectedIndex);
+            task.setDone(true);
+            updateTaskList();
+        }
+    }
+
     private void filterTasks() {
         String filter = (String) filterComboBox.getSelectedItem();
-        activeListModel.clear();
-        completedListModel.clear();
-
+        listModel.clear();
         for (Task task : tasks) {
-            String taskDescription = task.getDescription() + (task.isDone() ? " (Concluída)" : "");
-            if (filter.equals("Todas") || (filter.equals("Ativas") && !task.isDone())
-                    || (filter.equals("Concluídas") && task.isDone())) {
-                if (task.isDone()) {
-                    completedListModel.addElement(taskDescription);
-                } else {
-                    activeListModel.addElement(taskDescription);
-                }
+            if (filter.equals("Todas") || (filter.equals("Ativas") &&
+                    !task.isDone()) || (filter.equals("Concluídas") && task.isDone())) {
+                listModel.addElement(task.getDescription());
             }
         }
     }
 
-    // Método para limpar tarefas concluídas
     private void clearCompletedTasks() {
         List<Task> completedTasks = new ArrayList<>();
         for (Task task : tasks) {
@@ -205,37 +186,27 @@ public class ToDoList extends JFrame {
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.WARNING_MESSAGE,
                     null,
-                    new Object[] { "NÃO", "SIM" },
+                    new Object[]{"NÃO", "SIM"},
                     "NÃO");
 
             if (acao == 1) {
                 tasks.removeAll(completedTasks);
-                updateTaskLists();
+                updateTaskList();
             }
         }
     }
 
-    // Método para atualizar as listas de tarefas
-    private void updateTaskLists() {
-        activeListModel.clear();
-        completedListModel.clear();
-    
+    private void updateTaskList() {
+        listModel.clear();
         for (Task task : tasks) {
-            String taskDescription = task.getDescription() + (task.isDone() ? " (Concluída)" : "");
-            if (task.isDone()) {
-                completedListModel.addElement(taskDescription);
-            } else {
-                activeListModel.addElement(taskDescription);
-            }
+            listModel.addElement(task.getDescription() + (task.isDone() ? " (Concluída)" : ""));
         }
     }
-    
 
     public void run() {
         this.setVisible(true);
     }
 
-    // Classe Task
     private class Task {
         private String description;
         private boolean done;

@@ -103,14 +103,14 @@ public class ToDoList extends JFrame {
                 markTaskDone();
             }
         });
-        //Listener para o botão "Limpar concluidas"
+        // Listener para o botão "Limpar concluidas"
         clearCompletedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 clearCompletedTasks();
             }
         });
-         // Listener para a lista de seleção (filtrar tarefas)
+        // Listener para a lista de seleção (filtrar tarefas)
         filterComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -207,7 +207,7 @@ public class ToDoList extends JFrame {
                 completedTasks.add(task);
             }
         }
-    //gera mensagem de confirmação para excluir tarefas concluidas
+        // gera mensagem de confirmação para excluir tarefas concluidas
         if (!completedTasks.isEmpty()) {
             int acao = JOptionPane.showOptionDialog(
                     null,
@@ -230,7 +230,11 @@ public class ToDoList extends JFrame {
     private void updateTaskList() {
         listModel.clear();
         for (Task task : tasks) {
-            listModel.addElement(task.getDescription() + (task.isDone() ? " (Concluída)" : ""));
+            String taskDescription = task.getDescription() + (task.isDone() ? " (Concluída)" : "");
+            if (!task.isDone()) {
+                taskDescription += " (Ativa)";
+            }
+            listModel.addElement(taskDescription);
         }
     }
 

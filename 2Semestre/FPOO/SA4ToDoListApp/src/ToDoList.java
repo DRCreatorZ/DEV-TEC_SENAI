@@ -127,7 +127,6 @@ public class ToDoList extends JFrame {
             }
         });
     }
-
     // Adiciona uma tarefa
     private void addTask() {
         try {
@@ -144,7 +143,6 @@ public class ToDoList extends JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao adicionar tarefa", JOptionPane.ERROR_MESSAGE);
         }
     }
-
     // Exclui uma tarefa
     private void deleteTask() {
         int selectedIndex = taskList.getSelectedIndex();
@@ -166,7 +164,6 @@ public class ToDoList extends JFrame {
             }
         }
     }
-
     // Marca uma tarefa como concluída
     private void markTaskDone() {
         int selectedIndex = taskList.getSelectedIndex();
@@ -176,7 +173,6 @@ public class ToDoList extends JFrame {
             updateTaskList();
         }
     }
-
     // Marca uma tarefa como concluída (duplo clique)
     private void markTaskDoneDoubleClick() {
         int selectedIndex = taskList.getSelectedIndex();
@@ -186,7 +182,6 @@ public class ToDoList extends JFrame {
             updateTaskList();
         }
     }
-
     // Filtra as tarefas de acordo com o ComboBox
     private void filterTasks() {
         String filter = (String) filterComboBox.getSelectedItem();
@@ -214,25 +209,24 @@ public class ToDoList extends JFrame {
                 completedTasks.add(task);
             }
         }
-        // gera mensagem de confirmação para excluir tarefas concluidas
-        if (!completedTasks.isEmpty()) {
-            int acao = JOptionPane.showOptionDialog(
-                    null,
-                    "Tem Certeza que deseja Excluir essa Tarefa Concluída?",
-                    "Confirmação",
-                    JOptionPane.DEFAULT_OPTION,
-                    JOptionPane.WARNING_MESSAGE,
-                    null,
-                    new Object[] { "NÃO", "SIM" },
-                    "NÃO");
+    // gera mensagem de confirmação para excluir tarefas concluidas
+    if (!completedTasks.isEmpty()) {
+        int acao = JOptionPane.showOptionDialog(
+                null,
+                "Tem Certeza que deseja Excluir essa Tarefa Concluída?",
+                "Confirmação",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.WARNING_MESSAGE,
+                null,
+                new Object[] { "NÃO", "SIM" },
+                "NÃO");
 
-            if (acao == 1) {
-                tasks.removeAll(completedTasks);
-                updateTaskList();
-            }
+        if (acao == 1) {
+            tasks.removeAll(completedTasks);
+            updateTaskList();
         }
     }
-
+}
     // Atualiza a lista de tarefas na interface gráfica
     private void updateTaskList() {
         listModel.clear();

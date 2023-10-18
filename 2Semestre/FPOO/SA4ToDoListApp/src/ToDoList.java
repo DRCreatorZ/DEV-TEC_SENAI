@@ -103,7 +103,7 @@ public class ToDoList extends JFrame {
                 markTaskDone();
             }
         });
-
+        //Listener para o botão "Limpar concluidas"
         clearCompletedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -149,7 +149,7 @@ public class ToDoList extends JFrame {
     private void deleteTask() {
         int selectedIndex = taskList.getSelectedIndex();
         if (selectedIndex >= 0 && selectedIndex < tasks.size()) {
-            Object[] options = { "NÃO", "SIM" };
+            Object[] options = { "NÃO", "SIM" }; // som ou nao para excluir tarefa
             int acao = JOptionPane.showOptionDialog(
                     null,
                     "Tem Certeza que deseja Excluir?",
@@ -166,8 +166,6 @@ public class ToDoList extends JFrame {
             }
         }
     }
-
-    // Adiciona funcionalidade de pressionar Delete para excluir tarefa
 
     // Marca uma tarefa como concluída
     private void markTaskDone() {
@@ -209,7 +207,7 @@ public class ToDoList extends JFrame {
                 completedTasks.add(task);
             }
         }
-
+    //gera mensagem de confirmação para excluir tarefas concluidas
         if (!completedTasks.isEmpty()) {
             int acao = JOptionPane.showOptionDialog(
                     null,

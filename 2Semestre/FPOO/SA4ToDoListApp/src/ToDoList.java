@@ -192,13 +192,20 @@ public class ToDoList extends JFrame {
         String filter = (String) filterComboBox.getSelectedItem();
         listModel.clear();
         for (Task task : tasks) {
-            if (filter.equals("Todas") || (filter.equals("Ativas") &&
-                    !task.isDone()) || (filter.equals("Concluídas") && task.isDone())) {
-                listModel.addElement(task.getDescription());
+            if (filter.equals("Todas") || (filter.equals("Ativas") && !task.isDone())
+                    || (filter.equals("Concluídas") && task.isDone())) {
+                String taskDescription = task.getDescription();
+
+                if (!task.isDone() && filter.equals("Ativas")) {
+                    taskDescription += " (Ativas)";
+                } else if (task.isDone() && filter.equals("Concluídas")) {
+                    taskDescription += " (Concluídas)";
+                }
+
+                listModel.addElement(taskDescription);
             }
         }
     }
-
     // Limpa as tarefas concluídas
     private void clearCompletedTasks() {
         List<Task> completedTasks = new ArrayList<>();

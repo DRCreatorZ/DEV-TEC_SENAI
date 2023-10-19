@@ -20,48 +20,58 @@ public class ToDoList extends JFrame {
 
     // Construtor da classe TodoList
     public ToDoList() {
-        // Configurações iniciais da janela
-        super("To-Do List App");// Título da janela
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fecha a aplicação quando a janela é fechada
-        this.setSize(550, 300);// Posição e tamanho da janela
-
-        // Inicialização da Janela Principal
+        super("To-Do List App");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setBounds(100, 100, 435, 350);
+        // Adiciona painel principal
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
-
-        // Inicialização das listas de tarefas
+        // cria arrays das tarefas e painel da lista
         tasks = new ArrayList<>();
         listModel = new DefaultListModel<>();
         taskList = new JList<>(listModel);
-
-        // Inicialização de campos de texto, botões e uma lista de seleção
+        // cria campo de inserção de tarefa, botões e filtro
         taskInputField = new JTextField();
         addButton = new JButton("Adicionar");
         deleteButton = new JButton("Excluir");
         markDoneButton = new JButton("Concluir");
         filterComboBox = new JComboBox<>(new String[] { "Todas", "Ativas", "Concluídas" });
         clearCompletedButton = new JButton("Limpar Concluídas");
-
-        // Configuração do painel de entrada de tarefas
+        // adiciona campo de inserção e botão de adesão ao painel
         JPanel inputPanel = new JPanel(new BorderLayout());
         inputPanel.add(taskInputField, BorderLayout.CENTER);
         inputPanel.add(addButton, BorderLayout.EAST);
-
-        // Configuração do painel de botões
+        // adiciona botões ao painel de botão na parte inferior do painel
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         buttonPanel.add(deleteButton);
         buttonPanel.add(markDoneButton);
         buttonPanel.add(filterComboBox);
         buttonPanel.add(clearCompletedButton);
-
-        // Adição dos componentes ao painel principal
-        mainPanel.add(inputPanel, BorderLayout.NORTH);
+        // Crie um painel para conter o JLabel e o inputPanel
+        JPanel titleAndInputPanel = new JPanel(new BorderLayout());
+        // Adiciona o JLabel "Lista de Tarefas" ao painel no norte
+        JLabel titleLabel = new JLabel("Aplicativo de Tarefas");
+        titleAndInputPanel.add(titleLabel, BorderLayout.NORTH);
+        // Adicione o inputPanel ao painel no centro
+        titleAndInputPanel.add(inputPanel, BorderLayout.CENTER);
+        // Adiciona o JLabel "Lista de Tarefas" ao painel no norte
+        JLabel titLabel2 = new JLabel("Painel de Tarefas");
+        titleAndInputPanel.add(titLabel2, BorderLayout.SOUTH);
+        // Agora, adicione o titleAndInputPanel ao mainPanel na região norte
+        mainPanel.add(titleAndInputPanel, BorderLayout.NORTH);
         mainPanel.add(new JScrollPane(taskList), BorderLayout.CENTER);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
-
-        // Adiciona o painel principal à janela
+        // Adicione descrições (tooltips) aos botões
+        addButton.setToolTipText("Adicionar uma nova tarefa");
+        deleteButton.setToolTipText("Excluir a tarefa selecionada");
+        markDoneButton.setToolTipText("Marcar a tarefa como concluída");
+        clearCompletedButton.setToolTipText("Limpar tarefas concluídas");
+        taskInputField
+                .setToolTipText("Digite a tarefa que deseja adicionar e pressione Enter ou clique em 'Adicionar'.");
+        filterComboBox.setToolTipText("Filtrar tarefas por status: Todas, Ativas ou Concluídas");
+        // seta o painel como visivel
         this.add(mainPanel);
-
+        this.setVisible(true);
         // Configuração dos eventos (Listeners)
 
         // Listener para o botão "Adicionar"
@@ -127,6 +137,7 @@ public class ToDoList extends JFrame {
             }
         });
     }
+
     // Adiciona uma tarefa
     private void addTask() {
         try {
@@ -143,6 +154,7 @@ public class ToDoList extends JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro ao adicionar tarefa", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     // Exclui uma tarefa
     private void deleteTask() {
         int selectedIndex = taskList.getSelectedIndex();
@@ -164,13 +176,27 @@ public class ToDoList extends JFrame {
             }
         }
     }
+
     // Marca uma tarefa como concluída
     private void markTaskDone() {
         int selectedIndex = taskList.getSelectedIndex();
         if (selectedIndex >= 0 && selectedIndex < tasks.size()) {
             Task task = tasks.get(selectedIndex);
-            task.setDone(true);
-            updateTaskList();
+            Object[] options = { "NÃO", "SIM" }; // sim ou nao para excluir tarefa
+            int acao = JOptionPane.showOptionDialog(
+                    null,
+                    "Tem Certeza que deseja marcar esta tarefa como CONCLUÍDA?",
+                    "Confirmação",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+
+            if (acao == 1) {
+                task.setDone(true);
+                updateTaskList();
+            }
         }
     }
     // Marca uma tarefa como concluída (duplo clique)
@@ -178,8 +204,21 @@ public class ToDoList extends JFrame {
         int selectedIndex = taskList.getSelectedIndex();
         if (selectedIndex >= 0 && selectedIndex < tasks.size()) {
             Task task = tasks.get(selectedIndex);
-            task.setDone(true);
-            updateTaskList();
+           Object[] options = { "NÃO", "SIM" }; // sim ou nao para excluir tarefa
+            int acao = JOptionPane.showOptionDialog(
+                    null,
+                    "Tem Certeza que deseja marcar esta tarefa como CONCLUÍDA?",
+                    "Confirmação",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+
+            if (acao == 1) {
+                task.setDone(true);
+                updateTaskList();
+            }
         }
     }
     // Filtra as tarefas de acordo com o ComboBox
@@ -201,6 +240,7 @@ public class ToDoList extends JFrame {
             }
         }
     }
+
     // Limpa as tarefas concluídas
     private void clearCompletedTasks() {
         List<Task> completedTasks = new ArrayList<>();
@@ -209,24 +249,25 @@ public class ToDoList extends JFrame {
                 completedTasks.add(task);
             }
         }
-    // gera mensagem de confirmação para excluir tarefas concluidas
-    if (!completedTasks.isEmpty()) {
-        int acao = JOptionPane.showOptionDialog(
-                null,
-                "Tem Certeza que deseja Excluir essa Tarefa Concluída?",
-                "Confirmação",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.WARNING_MESSAGE,
-                null,
-                new Object[] { "NÃO", "SIM" },
-                "NÃO");
+        // gera mensagem de confirmação para excluir tarefas concluidas
+        if (!completedTasks.isEmpty()) {
+            int acao = JOptionPane.showOptionDialog(
+                    null,
+                    "Tem Certeza que deseja Excluir essa Tarefa Concluída?",
+                    "Confirmação",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    new Object[] { "NÃO", "SIM" },
+                    "NÃO");
 
-        if (acao == 1) {
-            tasks.removeAll(completedTasks);
-            updateTaskList();
+            if (acao == 1) {
+                tasks.removeAll(completedTasks);
+                updateTaskList();
+            }
         }
     }
-}
+
     // Atualiza a lista de tarefas na interface gráfica
     private void updateTaskList() {
         listModel.clear();

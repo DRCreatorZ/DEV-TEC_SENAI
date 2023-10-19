@@ -66,12 +66,12 @@ public class ToDoList extends JFrame {
         deleteButton.setToolTipText("Excluir a tarefa selecionada");
         markDoneButton.setToolTipText("Marcar a tarefa como concluída");
         clearCompletedButton.setToolTipText("Limpar tarefas concluídas");
-        taskInputField
-                .setToolTipText("Digite a tarefa que deseja adicionar e pressione Enter ou clique em 'Adicionar'.");
+        taskInputField.setToolTipText("Digite a tarefa que deseja adicionar e pressione Enter ou clique em 'Adicionar'.");
         filterComboBox.setToolTipText("Filtrar tarefas por status: Todas, Ativas ou Concluídas");
         // seta o painel como visivel
         this.add(mainPanel);
         this.setVisible(true);
+        
         // Configuração dos eventos (Listeners)
 
         // Listener para o botão "Adicionar"

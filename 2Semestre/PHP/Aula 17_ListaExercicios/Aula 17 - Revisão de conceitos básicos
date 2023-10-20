@@ -1,0 +1,183 @@
+1)
+$val = -69; //Valor de entrada
+$resultado = "";
+
+if($val > 0){
+  $resultado = "Valor Positivo";
+}elseif($val < 0){
+  $resultado = "Valor Negativo";
+}else{
+  $resultado = "Igual a Zero";
+}
+
+echo $resultado;
+
+
+2)
+$num = 9;
+
+  for($i = 0; $i <= 10; $i++){
+    echo "{$num} * {$i} = " . ($num * $i) . "<br>";
+  }
+
+
+3)
+  $num = 8;
+
+  if($num > 0){
+    $valor = $num;
+    for($i = ($valor - 1); $i > 0; $i--){
+      $valor = $valor * $i;
+    }
+  }else{
+    $valor = 0;
+  }
+
+  echo "!{$num} = {$valor}";
+
+
+4)
+<?php
+
+$num01 = filter_input(INPUT_POST, "txtNumero1");
+$num02 = filter_input(INPUT_POST, "txtNumero2");
+$opera = filter_input(INPUT_POST, "slOperacao");
+$resul = "";
+
+if($num01  && $num02){
+  switch($opera){
+    case "+":
+      $resul = ($num01 + $num02);
+    break;
+    case "-":
+      $resul = ($num01 - $num02);
+    break;
+    case "*":
+      $resul = ($num01 * $num02);
+    break;
+    case "/":
+      $resul = ($num01 / $num02);
+    break;
+  }
+}
+
+?>
+
+ <!DOCTYPE html>
+ <html lang="en" dir="ltr">
+   <head>
+     <meta charset="utf-8">
+     <title>Operações</title>
+     <style>
+      input, select{padding:10px; margin: 5px;}
+     </style>
+   </head>
+   <body>
+     <h1><?=$resul;?></h1>
+     <form method="post">
+       <label>Número 1: <input type="text" name="txtNumero1"/></label><br>
+       <label>Número 2: <input type="text" name="txtNumero2"/></label><br>
+       <label>Operação:
+         <select name="slOperacao">
+           <option value="+">Adição</option>
+           <option value="-">Subtração</option>
+           <option value="*">Multiplicação</option>
+           <option value="/">Divisão</option>
+         </select>
+       </label><br>
+       <input type="submit" name="btnCalcular" value="Calcular">
+     </form>
+   </body>
+ </html>
+
+
+5)
+<?php
+  $num = 2;
+
+  if($num % 2 == 0){
+    echo "Par";
+  }else{
+  echo "Impar";
+  }
+?>
+
+
+6)
+<?php
+  $num1 = 6;
+  $num2 = 7;
+
+  if($num1 > $num2){
+    echo $num1 . " " . $num2;
+  }else{
+    echo $num2 . " " . $num1;
+  }
+?>
+
+
+7)
+<?php
+  $numA = 110;
+  $numB = 12;
+
+  if($numA > $numB){
+    echo "A maior que B";
+  }else{
+    echo "A menor que B";
+  }
+?>
+
+
+8)
+<?php
+  $notas = [5, 10, 4];
+  $smTotal = 0;
+
+  for($i = 0; $i < count($notas); $i++){
+    $smTotal += $notas[$i];
+  }
+
+  $resultado = $smTotal / count($notas);
+
+  if($resultado >= 6){
+    echo "Aprovado, média final {$resultado}";
+  }else{
+    echo "Reprovado, média final {$resultado}";
+  }
+
+?>
+
+
+9)
+<?php
+  $nome = "Fernanda";
+  $idade = 21;
+
+  if($idade >= 18){
+    echo "{$nome} é maior de 18 e tem {$idade} Anos";
+  }else{
+    echo "{$nome} não é maior de 18 e tem {$idade} Anos";
+  }
+?>
+
+
+10)
+<?php
+  $mes = [
+  "Janeiro", "Fevereiro",
+  "Março", "Abril",
+  "Maio", "Junho",
+  "Julho", "Agosto",
+  "Setembro", "Outubro",
+  "Novembro", "Dezembro"];
+
+  $numMes = 8;
+
+  if($numMes >=1 && $numMes <=12){
+    echo $mes[$numMes - 1];
+  }else{
+    echo "Mês inválido";
+  }
+?>
+

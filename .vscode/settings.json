@@ -1,7 +1,8 @@
 {
     "java.project.sourcePaths": [
+        "2Semestre/FPOO/SA4ToDoListApp/src",
         "2Semestre/FPOO/GUIEventos/src",
         "2Semestre/FPOO/GUICardTab/src",
-        "2Semestre/FPOO/SA4ToDoListApp/src"
+        "2Semestre/FPOO/GUISerializacao/src"
     ]
 }

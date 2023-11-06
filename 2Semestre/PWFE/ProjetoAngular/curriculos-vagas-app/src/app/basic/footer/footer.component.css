@@ -1,9 +1,14 @@
-footer {
-    width: 100%;
-    position: fixed;
-    bottom: 0px;
-    background-color: rgb(0, 149, 255);
-    color: white;
-    text-align: center;
-    padding: 10px;
+.footer {
+  background-color: #343a40;
+  /* Cor escura (pode ajustar a cor de acordo com sua preferência) */
+  color: #fff;
+  /* Cor do texto no rodapé */
+  padding: 10px;
+  /* Espaçamento interno para conteúdo do rodapé */
+  text-align: center;
+  /* Alinhar o texto ao centro */
+  position: fixed;
+  bottom: 0;
+  /* Fixa o rodapé no final da página */
+  width: 100%;
 }

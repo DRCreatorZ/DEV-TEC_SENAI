@@ -1,15 +1,17 @@
 // Importa os módulos e classes necessárias
 import { Component, OnInit } from '@angular/core';
-import { VagaService } from '../service/vaga.service';
-import { Vaga } from '../model/vaga.model';
+import { VagaService } from '../../service/vagas.service';
+import { Vaga } from '../../model/vaga.model';
+
 @Component({
   selector: 'app-vagas',
   templateUrl: './vagas.component.html',
   styleUrls: ['./vagas.component.css'],
 })
+
 export class VagasComponent implements OnInit {
   public vagas: Vaga[] = []; // Uma matriz para armazenar as vagas
-  constructor(private _vagasService: VagaService) { }
+  constructor(private _vagasService: VagaService) {}
   // Injeta o serviço de vagas no construtor do componente
   ngOnInit(): void {
     this.listarVagas();

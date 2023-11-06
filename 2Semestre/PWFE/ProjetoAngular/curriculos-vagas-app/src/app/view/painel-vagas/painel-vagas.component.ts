@@ -1,7 +1,6 @@
-// Importa os módulos e classes necessárias
 import { Component, OnInit } from '@angular/core';
-import { Vaga } from '../model/vaga.model';
-import { VagaService } from '../service/vaga.service';
+import { Vaga } from '../../model/vaga.model';
+import { VagaService } from '../../service/vagas.service';
 
 @Component({
   selector: 'app-painel-vagas',
@@ -14,7 +13,7 @@ export class PainelVagasComponent implements OnInit {
   // Uma instância de 'Vaga' para rastrear os dados do formulário
   public vagas: Vaga[] = [];
   // Uma matriz para armazenar as vagas listadas
-  constructor(private _vagasService: VagaService) { }
+  constructor(private _vagasService: VagaService) {}
   // aplica o serviço 'VagaService' no construtor
   ngOnInit(): void {
     this.listarVagas();
@@ -73,6 +72,7 @@ export class PainelVagasComponent implements OnInit {
       () => {
         // Após excluir com sucesso
         this.vaga = new Vaga(0, '', '', '', 0); // Limpa o formulário
+
         this.listarVagas(); // Atualiza a lista de vagas
       },
       (err) => {

@@ -29,23 +29,29 @@ export class CurriculosComponent implements OnInit {
           item.nome,
           item.sobrenome,
           item.email,
-          item.salario
+          item.telefone,
+          item.endereco,
+          item.formacaoAcademica,
+          item.experienciaProfissional,
+          item.habilidades,
+          item.idiomas,
+          item.certificacoes
         );
       });
     });
   }
-  listarVaga(vaga: Vaga) {
+  listarVaga(curriculo: Curriculo) {
     // Função para listar uma vaga individual no formulário para edição
-    this.vaga = vaga;
+    this.curriculo = curriculo;
     // A vaga clicada é definida como a vaga atual no formulário
   }
   cadastrar() {
     // Função para cadastrar uma nova vaga
-    this._vagasService.cadastrarVaga(this.vaga).subscribe(
+    this._curriculosService.cadastrarCurriculo(this.curriculo).subscribe(
       () => {
         // Após cadastrar com sucesso
-        this.vaga = new Vaga(0, '', '', '', 0); // Limpa o formulário
-        this.listarVagas(); // Atualiza a lista de vagas
+        this.curriculo = new Curriculo(0, '', '', '', 0); // Limpa o formulário
+        this.listarCurriculos(); // Atualiza a lista de vagas
       },
       (err) => {
         console.log('Erro ao cadastrar', err);
@@ -55,11 +61,11 @@ export class CurriculosComponent implements OnInit {
   }
   atualizar(id: number) {
     // Função para atualizar uma vaga existente
-    this._vagasService.atualizarVaga(id, this.vaga).subscribe(
+    this._curriculosService.atualizarVaga(id, this.curriculo).subscribe(
       () => {
         // Após atualizar com sucesso
-        this.vaga = new Vaga(0, '', '', '', 0); // Limpa o formulário
-        this.listarVagas(); // Atualiza a lista de vagas
+        this.curriculo = new Curriculo(0, '', '', '', 0); // Limpa o formulário
+        this.listarCurriculos(); // Atualiza a lista de vagas
       },
       (err) => {
         console.log('Erro ao atualizar', err);
@@ -68,12 +74,12 @@ export class CurriculosComponent implements OnInit {
   }
   excluir(id: number) {
     // Função para excluir uma vaga
-    this._vagasService.removerVaga(id).subscribe(
+    this._curriculosService.removerCurriculo(id).subscribe(
       () => {
         // Após excluir com sucesso
-        this.vaga = new Vaga(0, '', '', '', 0); // Limpa o formulário
+        this.curriculo = new Vaga(0, '', '', '', 0); // Limpa o formulário
 
-        this.listarVagas(); // Atualiza a lista de vagas
+        this.listarCurriculos(); // Atualiza a lista de vagas
       },
       (err) => {
         console.log('Erro ao excluir', err);

@@ -4,6 +4,6 @@ import Connection.ConnectionDAO;
 
 public class Main {
     public static void main(String[] args) {
-        new ConnectionDAO().apagarTabela();
+        new ConnectionDAO().inserir("Ana", "ana@email.com");
     }
 }

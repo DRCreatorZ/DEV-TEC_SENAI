@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-parsing-error -->
 <template>
     <!-- O elemento raiz do componente com uma classe condicional com base na temperatura-->
     <div id="clima" :class="typeof weather.main != 'undefined' && weather.main.temp > 22 ? 'warm' : ''">
@@ -10,8 +11,8 @@
 
             </div>
             <!-- Se houver dados de clima disponíveis, exiba-os -->
-            <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
-                <!-- Caixa de localização exibindo nome da cidade e país -->
+            <div class="weather-wrap" v-if="typeof weather.main!='undefined'">
+            <!-- Caixa de localização exibindo nome da cidade e país -->
                 <div class="location-box">
                     <div class="location"> {{ weather.name }} , {{ weather.sys.country
 
@@ -34,7 +35,7 @@
 <script>
 export default {
     // Definindo o nome do componente
-    name: 'Clima',
+    name: 'App',
     // Dados do componente, incluindo chave de API, URL base, consulta de pesquisa, e dados meteorológicos
     data() {
         return {
@@ -84,3 +85,109 @@ export default {
     }
 }
 </script>
+
+<style>
+/* Estilos Globais */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+/* Estilos para o corpo do documento */
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* Estilos para o componente Clima */
+#clima {
+background-image: url('../assets/frio.jpg');
+/* Fundo inicial do componente */
+background-size: cover;
+background-position: bottom;
+transition: 0.4s;
+/* Transição suave ao alterar o fundo */
+}
+/* Estilos adicionais quando a classe 'warm' é aplicada (condicional com base na
+temperatura) */
+#clima.warm {
+background-image: url('../assets/calor.jpg');
+/* Fundo alternativo para temperaturas mais quentes */
+}
+/* Estilos para a seção principal do componente */
+main {
+min-height: 100vh;
+padding: 25px;
+background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0,
+0.75));
+/* Gradiente de fundo */
+}
+/* Estilos para a caixa de pesquisa */
+.search-box {
+width: 100%;
+margin-bottom: 30px;
+}
+/* Estilos para a barra de pesquisa */
+.search-box .search-bar {
+display: block;
+width: 100%;
+padding: 15px;
+color: #313131;
+font-size: 20px;
+appearance: none;
+border: none;
+outline: none;
+background: none;
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+background-color: rgba(255, 255, 255, 0.5);
+border-radius: 0px 16px 0px 16px;
+transition: 0.4s;
+/* Transição suave ao focar na barra de pesquisa */
+
+}
+.search-box .search-bar:focus {
+box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
+background-color: rgba(255, 255, 255, 0.75);
+border-radius: 16px 0px 16px 0px;
+}
+/* Estilos para a caixa de localização */
+.location-box .location {
+color: #fff;
+font-size: 32px;
+font-weight: 500;
+text-align: center;
+text-shadow: 1px 3px rgba(0, 0, 0, 0.25);
+}
+/* Estilos para a caixa de data */
+.location-box .date {
+color: #FFF;
+font-size: 20px;
+font-weight: 400;
+font-style: italic;
+text-align: center;
+}
+/* Estilos para a caixa de informações do clima */
+.weather-box {
+text-align: center;
+}
+/* Estilos para a temperatura */
+.weather-box .temp {
+display: inline-block;
+padding: 10px 25px;
+color: #FFF;
+font-size: 102px;
+font-weight: 800;
+text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+background-color: rgba(255, 255, 255, 0.25);
+border-radius: 16px;
+margin: 30px 0px;
+box-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+}
+/* Estilos para a condição do tempo */
+.weather-box .weather {
+color: #fff;
+font-size: 48px;
+font-weight: 600;
+font-style: italic;
+text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+
+}</style>

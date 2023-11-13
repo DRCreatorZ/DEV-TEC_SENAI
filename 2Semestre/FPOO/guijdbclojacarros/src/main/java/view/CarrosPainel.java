@@ -80,59 +80,44 @@ public class CarrosPainel extends JPanel {
                 }
             }
         });
-        // Cria um objeto operacoes da classe CarrosControl para executar operações no banco de dados
+        // Cria um objeto operacoes da classe CarrosControl para executar operações no
+        // banco de dados
         CarrosControl operacoes = new CarrosControl(carros, tableModel, table);
 
         // Configura a ação do botão "cadastrar" para adicionar um novo registro no
         // bancco de dados
-        cadastrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Chama o método "cadastrar" do objeto operacoes com os valores dos campos de entrada
-
-                operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(),
-
-                        carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
-                // Limpa os campos de entrada após a operação de cadastro
-                carMarcaField.setText("");
-                carModeloField.setText("");
-                carAnoField.setText("");
-                carPlacaField.setText("");
-                carValorField.setText("");
-            }
+        cadastrar.addActionListener(e -> {
+            operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(), carAnoField.getText(),
+                    carPlacaField.getText(), carValorField.getText());
+            // Limpa os campos de entrada após a operação de cadastro
+            carMarcaField.setText("");
+            carModeloField.setText("");
+            carAnoField.setText("");
+            carPlacaField.setText("");
+            carValorField.setText("");
         });
-        // Configura a ação do botão "editar" para atualizar um registro no banco de dados
-        editar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Chama o método "atualizar" do objeto operacoes com os valores dos campos de entrada
-
-                operacoes.atualizar(carMarcaField.getText(), carModeloField.getText(),
-
-                        carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
-                // Limpa os campos de entrada após a operação de atualização
-                carMarcaField.setText("");
-                carModeloField.setText("");
-                carAnoField.setText("");
-                carPlacaField.setText("");
-                carValorField.setText("");
-            }
+        // Configura a ação do botão "editar" para atualizar um registro no banco de
+        // dados
+        editar.addActionListener(e -> {
+            operacoes.atualizar(carMarcaField.getText(), carModeloField.getText(), carAnoField.getText(),
+                    carPlacaField.getText(), carValorField.getText());
+            // Limpa os campos de entrada após a operação de atualização
+            carMarcaField.setText("");
+            carModeloField.setText("");
+            carAnoField.setText("");
+            carPlacaField.setText("");
+            carValorField.setText("");
         });
         // Configura a ação do botão "apagar" para excluir um registro no banco de dados
-        apagar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Chama o método "apagar" do objeto operacoes com o valor do campo de entrada "placa"
+        apagar.addActionListener(e -> {
+            operacoes.apagar(carPlacaField.getText());
+            // Limpa os campos de entrada após a operação de exclusão
+            carMarcaField.setText("");
+            carModeloField.setText("");
+            carAnoField.setText("");
 
-                operacoes.apagar(carPlacaField.getText());
-                // Limpa os campos de entrada após a operação de exclusão
-                carMarcaField.setText("");
-                carModeloField.setText("");
-                carAnoField.setText("");
-
-                carPlacaField.setText("");
-                carValorField.setText("");
-            }
+            carPlacaField.setText("");
+            carValorField.setText("");
         });
     }
 
@@ -148,5 +133,4 @@ public class CarrosPainel extends JPanel {
                     carro.getAno(), carro.getPlaca(), carro.getValor() });
         }
     }
-
 }

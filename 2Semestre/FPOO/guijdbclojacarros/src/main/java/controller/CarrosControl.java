@@ -23,6 +23,8 @@ this.carros = carros;
 this.tableModel = tableModel;
 this.table = table;
 }
+
+//Métodos do modelo CRUD
 // Método para atualizar a tabela de exibição com dados do banco de dados
     private void atualizarTabela() {
         tableModel.setRowCount(0); // Limpa todas as linhas existentes na tabela

@@ -16,6 +16,13 @@ public class JanelaPrincipal extends JFrame {
         jTPane.add("Carros", tab1);
         setBounds(100, 100, 600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+         // criandos as tabs
+        // tab2 clientes
+        ClientesPainel tab2 = new ClientesPainel();
+        jTPane.add("Clientes", tab2);
+        setBounds(100, 100, 600, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     // métodos para tornar a janela visível

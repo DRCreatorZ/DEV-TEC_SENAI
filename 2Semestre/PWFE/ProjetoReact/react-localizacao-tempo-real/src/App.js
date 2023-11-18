@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import MapaAtual from './Mapa/MapaLongitudeLatitude';
+import MapaAtual from './Mapa/MapaCidade';
 // Define o componente principal da aplicação, chamado 'App'.
 function App() {
 return (

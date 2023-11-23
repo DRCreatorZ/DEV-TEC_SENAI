@@ -1,18 +1,13 @@
 package view;
 
 import java.util.List;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
 import connection.CarrosDAO;
 import connection.ClientesDAO;
 import controller.ClientesControl;
-import javafx.event.ActionEvent;
-
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.event.ActionListener;
 import model.Clientes;
 
 public class ClientesPainel extends JPanel {

@@ -133,4 +133,8 @@ public class CarrosDAO {
             ConnectionFactory.closeConnection(connection, stmt);
         }
     }
+
+    public List<Carros> pesquisar(String termoPesquisa) {
+        return null;
+    }
 }

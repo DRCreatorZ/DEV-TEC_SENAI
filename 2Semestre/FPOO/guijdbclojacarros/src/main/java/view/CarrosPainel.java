@@ -1,17 +1,12 @@
 package view;
 
 import java.util.List;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
 import connection.CarrosDAO;
 import controller.CarrosControl;
-import javafx.event.ActionEvent;
-
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.event.ActionListener;
 import model.Carros;
 
 public class CarrosPainel extends JPanel {

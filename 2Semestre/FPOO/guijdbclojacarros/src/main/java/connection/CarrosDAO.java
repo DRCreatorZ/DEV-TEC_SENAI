@@ -10,9 +10,6 @@ import java.util.List;
 
 import model.Carros;
 
-/**
- * CarrosDAO
- */
 public class CarrosDAO {
     // atributo
     private Connection connection;

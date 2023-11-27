@@ -1,3 +1,9 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.project.sourcePaths": [
+        "SA4ToDoListApp/src",
+        "JDBCTeste/src",
+        "JDBCOutrosTestes/src",
+        "guijdbcMercado/src/main/java/app"
+    ]
 }

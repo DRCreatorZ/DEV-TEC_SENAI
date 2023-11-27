@@ -3,28 +3,28 @@ package view;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import connection.CarrosDAO;
-import controller.CarrosControl;
+import connection.ProdutosDAO;
+import controller.ProdutosControl;
 import java.awt.*;
 import java.awt.event.*;
-import model.Carros;
+import model.Produtos;
 
-public class CarrosPainel extends JPanel {
+public class ProdutosPainel extends JPanel {
     // Atributos(componentes)
     private JButton cadastrar, apagar, editar;
     private JTextField carMarcaField, carModeloField, carAnoField, carPlacaField,
             carValorField;
-    private List<Carros> carros;
+    private List<Produtos> carros;
     private JTable table;
     private DefaultTableModel tableModel;
     private int linhaSelecionada = -1;
 
     // Construtor(GUI-JPanel)
-    public CarrosPainel() {
+    public ProdutosPainel() {
         super();
         // entrada de dados
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(new JLabel("Cadastro Carros"));
+        add(new JLabel("Cadastro Produtos"));
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(5, 2));
         inputPanel.add(new JLabel("Marca"));
@@ -57,7 +57,7 @@ public class CarrosPainel extends JPanel {
         jSPane.setViewportView(table);
 
         // Cria o banco de dados caso não tenha sido criado
-        new CarrosDAO().criaTabela();
+        new ProdutosDAO().criaTabela();
         // incluindo elementos do banco na criação do painel
         atualizarTabela();
 
@@ -77,7 +77,7 @@ public class CarrosPainel extends JPanel {
         });
         // Cria um objeto operacoes da classe CarrosControl para executar operações no
         // banco de dados
-        CarrosControl operacoes = new CarrosControl(carros, tableModel, table);
+        ProdutosControl operacoes = new ProdutosControl(carros, tableModel, table);
 
         // Configura a ação do botão "cadastrar" para adicionar um novo registro no
         // bancco de dados
@@ -120,9 +120,9 @@ public class CarrosPainel extends JPanel {
     // Método para atualizar a tabela de exibição com dados do banco de dados
     private void atualizarTabela() {
         tableModel.setRowCount(0); // Limpa todas as linhas existentes na tabela
-        carros = new CarrosDAO().listarTodos();
+        carros = new ProdutosDAO().listarTodos();
         // Obtém os carros atualizados do banco de dados
-        for (Carros carro : carros) {
+        for (Produtos carro : carros) {
             // Adiciona os dados de cada carro como uma nova linha na tabela Swing
             tableModel.addRow(new Object[] { carro.getMarca(), carro.getModelo(),
                     carro.getAno(), carro.getPlaca(), carro.getValor() });

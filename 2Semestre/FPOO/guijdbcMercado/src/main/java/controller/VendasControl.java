@@ -6,7 +6,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import connection.VendasDAO;
-import model.Carros;
+import model.Produtos;
 import model.Vendas;
 
 public class VendasControl {

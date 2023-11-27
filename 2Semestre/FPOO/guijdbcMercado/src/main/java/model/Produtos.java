@@ -1,6 +1,6 @@
 package model;
 
-public class Carros {
+public class Produtos {
     // atributos
     private String marca;
     private String modelo;
@@ -9,7 +9,7 @@ public class Carros {
     private String valor;
 
     // construtor
-    public Carros(String marca, String modelo, String ano, String placa, String valor) {
+    public Produtos(String marca, String modelo, String ano, String placa, String valor) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;

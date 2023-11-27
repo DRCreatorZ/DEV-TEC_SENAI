@@ -3,7 +3,7 @@ package view;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import connection.CarrosDAO;
+import connection.ProdutosDAO;
 import connection.ClientesDAO;
 import controller.ClientesControl;
 import java.awt.*;
@@ -55,7 +55,7 @@ public class ClientesPainel extends JPanel {
         jSPane.setViewportView(table);
 
         // Cria o banco de dados caso não tenha sido criado
-        new CarrosDAO().criaTabela();
+        new ProdutosDAO().criaTabela();
         // incluindo elementos do banco na criação do painel
         atualizarTabela();
 

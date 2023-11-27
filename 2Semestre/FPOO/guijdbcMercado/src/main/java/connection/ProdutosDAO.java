@@ -8,15 +8,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Carros;
+import model.Produtos;
 
-public class CarrosDAO {
+public class ProdutosDAO {
     // atributo
     private Connection connection;
-    private List<Carros> carros;
+    private List<Produtos> carros;
 
     // construtor
-    public CarrosDAO() {
+    public ProdutosDAO() {
         this.connection = ConnectionFactory.getConnection();
     }
 
@@ -35,7 +35,7 @@ public class CarrosDAO {
     }
 
     // Listar todos os valores cadastrados
-    public List<Carros> listarTodos() {
+    public List<Produtos> listarTodos() {
         PreparedStatement stmt = null;
         // Declaração do objeto PreparedStatement para executar a consulta
         ResultSet rs = null;
@@ -51,7 +51,7 @@ public class CarrosDAO {
                 // Para cada registro no ResultSet, cria um objeto Carros com os valores do
                 // registro
 
-                Carros carro = new Carros(
+                Produtos carro = new Produtos(
                         rs.getString("marca"),
                         rs.getString("modelo"),
                         rs.getString("ano"),
@@ -131,7 +131,7 @@ public class CarrosDAO {
         }
     }
 
-    public List<Carros> pesquisar(String termoPesquisa) {
+    public List<Produtos> pesquisar(String termoPesquisa) {
         return null;
     }
 }

@@ -13,7 +13,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import connection.CarrosDAO;
+import connection.ProdutosDAO;
 import connection.ClientesDAO;
 import connection.VendasDAO;
 
@@ -22,7 +22,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controller.CarrosControl;
+import controller.ProdutosControl;
 import controller.ClientesControl;
 import controller.VendasControl;
 
@@ -32,7 +32,7 @@ import java.util.Date;
 
 import java.awt.*;
 
-import model.Carros;
+import model.Produtos;
 import model.Vendas;
 import model.Clientes;
 
@@ -54,7 +54,7 @@ public class VendasPainel extends JPanel {
     private DefaultTableModel tableModel; // lógica
     private JTable table; // visual
     private List<Vendas> vendas = new ArrayList<>();
-    private List<Carros> carros;
+    private List<Produtos> carros;
     private List<Clientes> clientes;
     private int linhaSelecionada = -1;
     private JButton cadastrarButton, apagarButton, editarButton, atualizarButton;
@@ -125,8 +125,8 @@ public class VendasPainel extends JPanel {
         frame1.add(botoes, BorderLayout.NORTH);
 
         carrosComboBox.addItem("Selecione um Carro");
-        carros = new CarrosDAO().listarTodos();
-        for (Carros carro : carros) {
+        carros = new ProdutosDAO().listarTodos();
+        for (Produtos carro : carros) {
             carrosComboBox.addItem(carro.getMarca() + " " + carro.getModelo());
         }
 
@@ -192,7 +192,7 @@ public class VendasPainel extends JPanel {
                         inputValor.setText("");
                         clientesComboBox.setSelectedIndex(0);
                         carrosComboBox.setSelectedIndex(0);
-                        new CarrosDAO().apagar(carroSelecionado);
+                        new ProdutosDAO().apagar(carroSelecionado);
                         JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
                     } catch (ParseException ex) {
                         JOptionPane.showMessageDialog(null, "Formato de data inválido. Utilize o formato dd/MM/yyyy.");
@@ -283,8 +283,8 @@ public class VendasPainel extends JPanel {
     private void atualizarComboBoxCarros() {
         carrosComboBox.removeAllItems();
         carrosComboBox.addItem("Selecione um Carro");
-        carros = new CarrosDAO().listarTodos();
-        for (Carros carro : carros) {
+        carros = new ProdutosDAO().listarTodos();
+        for (Produtos carro : carros) {
             carrosComboBox.addItem(carro.getMarca() + " " + carro.getModelo());
         }
     }

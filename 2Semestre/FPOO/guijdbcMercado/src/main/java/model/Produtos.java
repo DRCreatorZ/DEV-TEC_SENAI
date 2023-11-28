@@ -16,37 +16,36 @@ public class Produtos {
         this.codigo = codigo;
         this.valor = valor;
     }
-
     // gets and sets
-    public String getMarca() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setMarca(String quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 
-    public String getModelo() {
+    public String getProduto() {
         return produto;
     }
 
-    public void setModelo(String produto) {
+    public void setProduto(String produto) {
         this.produto = produto;
     }
 
-    public String getAno() {
+    public String getMarca() {
         return marca;
     }
 
-    public void setAno(String marca) {
+    public void setMarca(String marca) {
         this.marca = marca;
     }
 
-    public String getPlaca() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setPlaca(String codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

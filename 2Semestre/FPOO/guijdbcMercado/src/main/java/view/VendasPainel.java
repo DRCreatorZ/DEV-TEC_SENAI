@@ -127,7 +127,7 @@ public class VendasPainel extends JPanel {
         produtosComboBox.addItem("Selecione um Produto");
         produtos = new ProdutosDAO().listarTodos();
         for (Produtos produto : produtos) {
-            produtosComboBox.addItem(produto.getMarca() + " " + produto.getModelo());
+            produtosComboBox.addItem(produto.getQuantidade() + " " + produto.getProduto());
         }
 
         clientesComboBox.addItem("Selecione um cliente");
@@ -285,7 +285,7 @@ public class VendasPainel extends JPanel {
         produtosComboBox.addItem("Selecione um Produto");
         produtos = new ProdutosDAO().listarTodos();
         for (Produtos produto : produtos) {
-            produtosComboBox.addItem(produto.getMarca() + " " + produto.getModelo());
+            produtosComboBox.addItem(produto.getQuantidade() + " " + produto.getProduto());
         }
     }
 }

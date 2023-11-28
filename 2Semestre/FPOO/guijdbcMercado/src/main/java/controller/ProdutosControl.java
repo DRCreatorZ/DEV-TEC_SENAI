@@ -32,8 +32,8 @@ this.table = table;
         // Obtém os produtos atualizados do banco de dados
         for (Produtos produto : produtos) {
             // Adiciona os dados de cada produto como uma nova linha na tabela Swing
-            tableModel.addRow(new Object[] { produto.getMarca(), produto.getModelo(),
-                produto.getAno(), produto.getPlaca(), produto.getValor() });
+            tableModel.addRow(new Object[] { produto.getQuantidade(), produto.getProduto(),
+                produto.getMarca(), produto.getCodigo(), produto.getValor() });
         }
     }
 

@@ -12,8 +12,8 @@ import model.Produtos;
 public class ProdutosPainel extends JPanel {
     // Atributos(componentes)
     private JButton cadastrar, apagar, editar;
-    private JTextField carMarcaField, carModeloField, carAnoField, carPlacaField,
-            carValorField;
+    private JTextField pQuantidadeField, pProdutoField, pMarcaField, pCodigoField,
+            pValorField;
     private List<Produtos> produtos;
     private JTable table;
     private DefaultTableModel tableModel;
@@ -28,20 +28,20 @@ public class ProdutosPainel extends JPanel {
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(5, 2));
         inputPanel.add(new JLabel("Quantidade"));
-        carMarcaField = new JTextField(20);
-        inputPanel.add(carMarcaField);
+        pQuantidadeField = new JTextField(20);
+        inputPanel.add(pQuantidadeField);
         inputPanel.add(new JLabel("Produto"));
-        carModeloField = new JTextField(20);
-        inputPanel.add(carModeloField);
+        pProdutoField = new JTextField(20);
+        inputPanel.add(pProdutoField);
         inputPanel.add(new JLabel("Marca"));
-        carAnoField = new JTextField(20);
-        inputPanel.add(carAnoField);
+        pMarcaField = new JTextField(20);
+        inputPanel.add(pMarcaField);
         inputPanel.add(new JLabel("Código"));
-        carPlacaField = new JTextField(20);
-        inputPanel.add(carPlacaField);
+        pCodigoField = new JTextField(20);
+        inputPanel.add(pCodigoField);
         inputPanel.add(new JLabel("Valor"));
-        carValorField = new JTextField(20);
-        inputPanel.add(carValorField);
+        pValorField = new JTextField(20);
+        inputPanel.add(pValorField);
         add(inputPanel);
         JPanel botoes = new JPanel();
         botoes.add(cadastrar = new JButton("Cadastrar"));
@@ -67,11 +67,11 @@ public class ProdutosPainel extends JPanel {
             public void mouseClicked(MouseEvent evt) {
                 linhaSelecionada = table.rowAtPoint(evt.getPoint());
                 if (linhaSelecionada != -1) {
-                    carMarcaField.setText((String) table.getValueAt(linhaSelecionada, 0));
-                    carModeloField.setText((String) table.getValueAt(linhaSelecionada, 1));
-                    carAnoField.setText((String) table.getValueAt(linhaSelecionada, 2));
-                    carPlacaField.setText((String) table.getValueAt(linhaSelecionada, 3));
-                    carValorField.setText((String) table.getValueAt(linhaSelecionada, 4));
+                    pQuantidadeField.setText((String) table.getValueAt(linhaSelecionada, 0));
+                    pProdutoField.setText((String) table.getValueAt(linhaSelecionada, 1));
+                    pMarcaField.setText((String) table.getValueAt(linhaSelecionada, 2));
+                    pCodigoField.setText((String) table.getValueAt(linhaSelecionada, 3));
+                    pValorField.setText((String) table.getValueAt(linhaSelecionada, 4));
                 }
             }
         });
@@ -82,37 +82,37 @@ public class ProdutosPainel extends JPanel {
         // Configura a ação do botão "cadastrar" para adicionar um novo registro no
         // bancco de dados
         cadastrar.addActionListener(e -> {
-            operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(), carAnoField.getText(),
-                    carPlacaField.getText(), carValorField.getText());
+            operacoes.cadastrar(pQuantidadeField.getText(), pProdutoField.getText(), pMarcaField.getText(),
+                    pCodigoField.getText(), pValorField.getText());
             // Limpa os campos de entrada após a operação de cadastro
-            carMarcaField.setText("");
-            carModeloField.setText("");
-            carAnoField.setText("");
-            carPlacaField.setText("");
-            carValorField.setText("");
+            pQuantidadeField.setText("");
+            pProdutoField.setText("");
+            pMarcaField.setText("");
+            pCodigoField.setText("");
+            pValorField.setText("");
         });
         // Configura a ação do botão "editar" para atualizar um registro no banco de
         // dados
         editar.addActionListener(e -> {
-            operacoes.atualizar(carMarcaField.getText(), carModeloField.getText(), carAnoField.getText(),
-                    carPlacaField.getText(), carValorField.getText());
+            operacoes.atualizar(pQuantidadeField.getText(), pProdutoField.getText(), pMarcaField.getText(),
+                    pCodigoField.getText(), pValorField.getText());
             // Limpa os campos de entrada após a operação de atualização
-            carMarcaField.setText("");
-            carModeloField.setText("");
-            carAnoField.setText("");
-            carPlacaField.setText("");
-            carValorField.setText("");
+            pQuantidadeField.setText("");
+            pProdutoField.setText("");
+            pMarcaField.setText("");
+            pCodigoField.setText("");
+            pValorField.setText("");
         });
         // Configura a ação do botão "apagar" para excluir um registro no banco de dados
         apagar.addActionListener(e -> {
-            operacoes.apagar(carPlacaField.getText());
+            operacoes.apagar(pCodigoField.getText());
             // Limpa os campos de entrada após a operação de exclusão
-            carMarcaField.setText("");
-            carModeloField.setText("");
-            carAnoField.setText("");
+            pQuantidadeField.setText("");
+            pProdutoField.setText("");
+            pMarcaField.setText("");
 
-            carPlacaField.setText("");
-            carValorField.setText("");
+            pCodigoField.setText("");
+            pValorField.setText("");
         });
     }
 

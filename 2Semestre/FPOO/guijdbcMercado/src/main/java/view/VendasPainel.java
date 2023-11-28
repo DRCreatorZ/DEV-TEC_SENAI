@@ -166,11 +166,11 @@ public class VendasPainel extends JPanel {
                 String valor = inputValor.getText();
                 String clienteSelecionado = (String) clientesComboBox.getSelectedItem(); // pegar o cliente selecionado
                                                                                          // no ComboBox
-                String carroSelecionado = (String) produtosComboBox.getSelectedItem(); // pegar o produto selecionado no
+                String produtoSelecionado = (String) produtosComboBox.getSelectedItem(); // pegar o produto selecionado no
                                                                                      // ComboBox
 
                 if (data.isEmpty() || valor.isEmpty() || clienteSelecionado.equals("Selecione um cliente")
-                        || carroSelecionado.equals("Selecione um Produto")) {
+                        || produtoSelecionado.equals("Selecione um Produto")) {
                     JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
                 } else {
                     if (!valor.matches("[0-9]+")) {
@@ -187,12 +187,12 @@ public class VendasPainel extends JPanel {
                         }
         
                         String cliente = clienteSelecionado.split(" ")[0];
-                        operacoes.cadastrar(data, cliente, valor, carroSelecionado);
+                        operacoes.cadastrar(data, cliente, valor, produtoSelecionado);
                         inputData.setText("");
                         inputValor.setText("");
                         clientesComboBox.setSelectedIndex(0);
                         produtosComboBox.setSelectedIndex(0);
-                        new ProdutosDAO().apagar(carroSelecionado);
+                        new ProdutosDAO().apagar(produtoSelecionado);
                         JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
                     } catch (ParseException ex) {
                         JOptionPane.showMessageDialog(null, "Formato de data inválido. Utilize o formato dd/MM/yyyy.");
@@ -204,12 +204,12 @@ public class VendasPainel extends JPanel {
         editarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String clienteSelecionado = (String) clientesComboBox.getSelectedItem(); // pegar o cliente selecionad no ComboBox
-                String carroSelecionado = (String) produtosComboBox.getSelectedItem(); // pegar o produto selecionado no ComboBox
+                String produtoSelecionado = (String) produtosComboBox.getSelectedItem(); // pegar o produto selecionado no ComboBox
                 if (inputProduto.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Selecione algo para editar");
                 } else {
                     operacoes.atualizar(inputData.getText(), clienteSelecionado, inputValor.getText(),
-                            carroSelecionado);
+                            produtoSelecionado);
 
                     // Limpa os campos de entrada após a operação de atualização
                     inputData.setText("");
@@ -225,7 +225,7 @@ public class VendasPainel extends JPanel {
         // Configura a ação do botão "apagar" para excluir um registro no banco de dados
         apagarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String carroSelecionado = (String) produtosComboBox.getSelectedItem(); // pegar o produto selecionado no ComboBox
+                String produtoSelecionado = (String) produtosComboBox.getSelectedItem(); // pegar o produto selecionado no ComboBox
                 if (inputProduto.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Selecione um registro para apagar.");
                 } else {

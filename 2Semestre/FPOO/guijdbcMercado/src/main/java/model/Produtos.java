@@ -2,52 +2,52 @@ package model;
 
 public class Produtos {
     // atributos
+    private String quantidade;
+    private String produto;
     private String marca;
-    private String modelo;
-    private String ano;
-    private String placa;
+    private String codigo;
     private String valor;
 
     // construtor
-    public Produtos(String marca, String modelo, String ano, String placa, String valor) {
+    public Produtos(String quantidade, String produto, String marca, String codigo, String valor) {
+        this.quantidade = quantidade;
+        this.produto = produto;
         this.marca = marca;
-        this.modelo = modelo;
-        this.ano = ano;
-        this.placa = placa;
+        this.codigo = codigo;
         this.valor = valor;
     }
 
     // gets and sets
     public String getMarca() {
-        return marca;
+        return quantidade;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setMarca(String quantidade) {
+        this.quantidade = quantidade;
     }
 
     public String getModelo() {
-        return modelo;
+        return produto;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setModelo(String produto) {
+        this.produto = produto;
     }
 
     public String getAno() {
-        return ano;
+        return marca;
     }
 
-    public void setAno(String ano) {
-        this.ano = ano;
+    public void setAno(String marca) {
+        this.marca = marca;
     }
 
     public String getPlaca() {
-        return placa;
+        return codigo;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setPlaca(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getValor() {

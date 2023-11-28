@@ -13,7 +13,7 @@ import model.Produtos;
 public class ProdutosDAO {
     // atributo
     private Connection connection;
-    private List<Produtos> carros;
+    private List<Produtos> produtos;
 
     // construtor
     public ProdutosDAO() {
@@ -22,7 +22,7 @@ public class ProdutosDAO {
 
     // criar Tabela
     public void criaTabela() {
-        String sql = "CREATE TABLE IF NOT EXISTS carros_lojacarros (MARCA VARCHAR(255),MODELO VARCHAR(255),ANO VARCHAR(255),PLACA VARCHAR(255) PRIMARY KEY, VALOR VARCHAR(255))";
+        String sql = "CREATE TABLE IF NOT EXISTS produtos_mercado (QUANTIDADE VARCHAR(255),PRODUTO VARCHAR(255),MARCA VARCHAR(255),CODIGO VARCHAR(255) PRIMARY KEY, VALOR VARCHAR(255))";
         try (Statement stmt = this.connection.createStatement()) {
             stmt.execute(sql);
             System.out.println("Tabela criada com sucesso.");
@@ -40,24 +40,24 @@ public class ProdutosDAO {
         // Declaração do objeto PreparedStatement para executar a consulta
         ResultSet rs = null;
         // Declaração do objeto ResultSet para armazenar os resultados da consulta
-        carros = new ArrayList<>();
-        // Cria uma lista para armazenar os carros recuperados do banco de dados
+        produtos = new ArrayList<>();
+        // Cria uma lista para armazenar os produtos recuperados do banco de dados
         try {
-            stmt = connection.prepareStatement("SELECT * FROM carros_lojacarros");
+            stmt = connection.prepareStatement("SELECT * FROM produtos_mercado");
             // Prepara a consulta SQL para selecionar todos os registros da tabela
             rs = stmt.executeQuery();
             // Executa a consulta e armazena os resultados no ResultSet
             while (rs.next()) {
-                // Para cada registro no ResultSet, cria um objeto Carros com os valores do
+                // Para cada registro no ResultSet, cria um objeto Produtos com os valores do
                 // registro
 
-                Produtos carro = new Produtos(
+                Produtos produto = new Produtos(
+                        rs.getString("quantidade"),
+                        rs.getString("produto"),
                         rs.getString("marca"),
-                        rs.getString("modelo"),
-                        rs.getString("ano"),
-                        rs.getString("placa"),
+                        rs.getString("codigo"),
                         rs.getString("valor"));
-                carros.add(carro); // Adiciona o objeto Carros à lista de carros
+                produtos.add(produto); // Adiciona o objeto Produtos à lista de produtos
             }
         } catch (SQLException ex) {
             System.out.println(ex); // Em caso de erro durante a consulta, imprime o erro
@@ -66,21 +66,21 @@ public class ProdutosDAO {
 
             // Fecha a conexão, o PreparedStatement e o ResultSet
         }
-        return carros; // Retorna a lista de carros recuperados do banco de dados
+        return produtos; // Retorna a lista de produtos recuperados do banco de dados
     }
 
-    // Cadastrar Carro no banco
-    public void cadastrar(String marca, String modelo, String ano, String placa, String valor) {
+    // Cadastrar Produto no banco
+    public void cadastrar(String quantidade, String produto, String marca, String codigo, String valor) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para cadastrar na tabela
-        String sql = "INSERT INTO carros_lojacarros (marca, modelo, ano, placa, valor) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO produtos_mercado (quantidade, produto, marca, codigo, valor) VALUES (?, ?, ?, ?, ?)";
         try {
             stmt = connection.prepareStatement(sql);
 
-            stmt.setString(1, marca);
-            stmt.setString(2, modelo);
-            stmt.setString(3, ano);
-            stmt.setString(4, placa);
+            stmt.setString(1, quantidade);
+            stmt.setString(2, produto);
+            stmt.setString(3, marca);
+            stmt.setString(4, codigo);
             stmt.setString(5, valor);
             stmt.executeUpdate();
             System.out.println("Dados inseridos com sucesso");
@@ -92,18 +92,18 @@ public class ProdutosDAO {
     }
 
     // Atualizar dados no banco
-    public void atualizar(String marca, String modelo, String ano, String placa, String valor) {
+    public void atualizar(String quantidade, String produto, String marca, String codigo, String valor) {
         PreparedStatement stmt = null;
-        // Define a instrução SQL parametrizada para atualizar dados pela placa
-        String sql = "UPDATE carros_lojacarros SET marca = ?, modelo = ?, ano = ?, valor = ? WHERE placa = ?";
+        // Define a instrução SQL parametrizada para atualizar dados pela codigo
+        String sql = "UPDATE produtos_mercado SET quantidade = ?, produto = ?, marca = ?, valor = ? WHERE codigo = ?";
         try {
             stmt = connection.prepareStatement(sql);
-            stmt.setString(1, marca);
-            stmt.setString(2, modelo);
-            stmt.setString(3, ano);
+            stmt.setString(1, quantidade);
+            stmt.setString(2, produto);
+            stmt.setString(3, marca);
             stmt.setString(4, valor);
-            // placa é chave primaria não pode ser alterada.
-            stmt.setString(5, placa);
+            // codigo é chave primaria não pode ser alterada.
+            stmt.setString(5, codigo);
             stmt.executeUpdate();
             System.out.println("Dados atualizados com sucesso");
         } catch (SQLException e) {
@@ -114,13 +114,13 @@ public class ProdutosDAO {
     }
 
     // Apagar dados do banco
-    public void apagar(String placa) {
+    public void apagar(String codigo) {
         PreparedStatement stmt = null;
-        // Define a instrução SQL parametrizada para apagar dados pela placa
-        String sql = "DELETE FROM carros_lojacarros WHERE placa = ?";
+        // Define a instrução SQL parametrizada para apagar dados pela codigo
+        String sql = "DELETE FROM produtos_mercado WHERE codigo = ?";
         try {
             stmt = connection.prepareStatement(sql);
-            stmt.setString(1, placa);
+            stmt.setString(1, codigo);
             stmt.executeUpdate(); // Executa a instrução SQL
             System.out.println("Dado apagado com sucesso");
         } catch (SQLException e) {

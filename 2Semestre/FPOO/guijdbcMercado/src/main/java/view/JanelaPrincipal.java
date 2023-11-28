@@ -11,7 +11,7 @@ public class JanelaPrincipal extends JFrame {
         jTPane = new JTabbedPane();
         add(jTPane);
         // criandos as tabs
-        // tab1 carros
+        // tab1 produtos
         ProdutosPainel tab1 = new ProdutosPainel();
         jTPane.add("Produtos", tab1);
         setBounds(100, 100, 600, 600);

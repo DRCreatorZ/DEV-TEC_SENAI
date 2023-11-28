@@ -25,7 +25,7 @@ public class ClientesDAO {
 
     // criar Tabela
     public void criaTabela() {
-        String sql = "CREATE TABLE IF NOT EXISTS clientes_lojacarros (nome VARCHAR(255),endereco VARCHAR(255),telefone VARCHAR(255),cpf VARCHAR(255) PRIMARY KEY)";
+        String sql = "CREATE TABLE IF NOT EXISTS clientes_mercado (nome VARCHAR(255),endereco VARCHAR(255),telefone VARCHAR(255),cpf VARCHAR(255) PRIMARY KEY)";
         try (Statement stmt = this.connection.createStatement()) {
             stmt.execute(sql);
             System.out.println("Tabela criada com sucesso.");
@@ -44,14 +44,14 @@ public class ClientesDAO {
         ResultSet rs = null;
         // Declaração do objeto ResultSet para armazenar os resultados da consulta
         clientes = new ArrayList<>();
-        // Cria uma lista para armazenar os carros recuperados do banco de dados
+        // Cria uma lista para armazenar os produtos recuperados do banco de dados
         try {
-            stmt = connection.prepareStatement("SELECT * FROM clientes_lojacarros");
+            stmt = connection.prepareStatement("SELECT * FROM clientes_mercado");
             // Prepara a consulta SQL para selecionar todos os registros da tabela
             rs = stmt.executeQuery();
             // Executa a consulta e armazena os resultados no ResultSet
             while (rs.next()) {
-                // Para cada registro no ResultSet, cria um objeto Carros com os valores do
+                // Para cada registro no ResultSet, cria um objeto Produtos com os valores do
                 // registro
 
                 Clientes cliente = new Clientes(
@@ -59,7 +59,7 @@ public class ClientesDAO {
                         rs.getString("endereco"),
                         rs.getString("telefone"),
                         rs.getString("cpf"));
-                clientes.add(cliente); // Adiciona o objeto Carros à lista de carros
+                clientes.add(cliente); // Adiciona o objeto Produtos à lista de produtos
             }
         } catch (SQLException ex) {
             System.out.println(ex); // Em caso de erro durante a consulta, imprime o erro
@@ -68,14 +68,14 @@ public class ClientesDAO {
 
             // Fecha a conexão, o PreparedStatement e o ResultSet
         }
-        return clientes; // Retorna a lista de carros recuperados do banco de dados
+        return clientes; // Retorna a lista de produtos recuperados do banco de dados
     }
 
-    // Cadastrar Carro no banco
+    // Cadastrar Produto no banco
     public void cadastrar(String nome, String endereco, String telefone, String cpf) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para cadastrar na tabela
-        String sql = "INSERT INTO clientes_lojacarros (NOME, ENDERECO, TELEFONE, CPF) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO clientes_mercado (NOME, ENDERECO, TELEFONE, CPF) VALUES (?, ?, ?, ?)";
         try {
             stmt = connection.prepareStatement(sql);
 
@@ -96,7 +96,7 @@ public class ClientesDAO {
     public void atualizar(String nome, String endereco, String telefone, String cpf) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para atualizar dados pela cpf
-        String sql = "UPDATE clientes_lojacarros SET nome = ?, endereco = ?, telefone = ?, valor = ? WHERE cpf = ?";
+        String sql = "UPDATE clientes_mercado SET nome = ?, endereco = ?, telefone = ?, valor = ? WHERE cpf = ?";
         try {
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, nome);
@@ -116,7 +116,7 @@ public class ClientesDAO {
     public void apagar(String cpf) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para apagar dados pela cpf
-        String sql = "DELETE FROM clientes_lojacarros WHERE cpf = ?";
+        String sql = "DELETE FROM clientes_mercado WHERE cpf = ?";
         try {
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, cpf);

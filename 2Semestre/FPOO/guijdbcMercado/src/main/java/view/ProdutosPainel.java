@@ -14,7 +14,7 @@ public class ProdutosPainel extends JPanel {
     private JButton cadastrar, apagar, editar;
     private JTextField carMarcaField, carModeloField, carAnoField, carPlacaField,
             carValorField;
-    private List<Produtos> carros;
+    private List<Produtos> produtos;
     private JTable table;
     private DefaultTableModel tableModel;
     private int linhaSelecionada = -1;
@@ -27,16 +27,16 @@ public class ProdutosPainel extends JPanel {
         add(new JLabel("Cadastro Produtos"));
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(5, 2));
-        inputPanel.add(new JLabel("Marca"));
+        inputPanel.add(new JLabel("Quantidade"));
         carMarcaField = new JTextField(20);
         inputPanel.add(carMarcaField);
-        inputPanel.add(new JLabel("Modelo"));
+        inputPanel.add(new JLabel("Produto"));
         carModeloField = new JTextField(20);
         inputPanel.add(carModeloField);
-        inputPanel.add(new JLabel("Ano"));
+        inputPanel.add(new JLabel("Marca"));
         carAnoField = new JTextField(20);
         inputPanel.add(carAnoField);
-        inputPanel.add(new JLabel("Placa"));
+        inputPanel.add(new JLabel("Código"));
         carPlacaField = new JTextField(20);
         inputPanel.add(carPlacaField);
         inputPanel.add(new JLabel("Valor"));
@@ -48,11 +48,11 @@ public class ProdutosPainel extends JPanel {
         botoes.add(editar = new JButton("Editar"));
         botoes.add(apagar = new JButton("Apagar"));
         add(botoes);
-        // tabela de carros
+        // tabela de produtos
         JScrollPane jSPane = new JScrollPane();
         add(jSPane);
         tableModel = new DefaultTableModel(new Object[][] {},
-                new String[] { "Marca", "Modelo", "Ano", "Placa", "Valor" });
+                new String[] { "Quantidade", "Produto", "Marca", "Codigo", "Valor" });
         table = new JTable(tableModel);
         jSPane.setViewportView(table);
 
@@ -75,9 +75,9 @@ public class ProdutosPainel extends JPanel {
                 }
             }
         });
-        // Cria um objeto operacoes da classe CarrosControl para executar operações no
+        // Cria um objeto operacoes da classe ProdutosControl para executar operações no
         // banco de dados
-        ProdutosControl operacoes = new ProdutosControl(carros, tableModel, table);
+        ProdutosControl operacoes = new ProdutosControl(produtos, tableModel, table);
 
         // Configura a ação do botão "cadastrar" para adicionar um novo registro no
         // bancco de dados
@@ -120,12 +120,12 @@ public class ProdutosPainel extends JPanel {
     // Método para atualizar a tabela de exibição com dados do banco de dados
     private void atualizarTabela() {
         tableModel.setRowCount(0); // Limpa todas as linhas existentes na tabela
-        carros = new ProdutosDAO().listarTodos();
-        // Obtém os carros atualizados do banco de dados
-        for (Produtos carro : carros) {
-            // Adiciona os dados de cada carro como uma nova linha na tabela Swing
-            tableModel.addRow(new Object[] { carro.getMarca(), carro.getModelo(),
-                    carro.getAno(), carro.getPlaca(), carro.getValor() });
+        produtos = new ProdutosDAO().listarTodos();
+        // Obtém os produtos atualizados do banco de dados
+        for (Produtos produto : produtos) {
+            // Adiciona os dados de cada produto como uma nova linha na tabela Swing
+            tableModel.addRow(new Object[] { produto.getMarca(), produto.getModelo(),
+                    produto.getAno(), produto.getPlaca(), produto.getValor() });
         }
     }
 }

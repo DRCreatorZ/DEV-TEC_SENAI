@@ -6,14 +6,14 @@ public class Vendas {
     private String data;
     private String cliente;
     private String valor;
-    private String tipoCarro;
+    private String tipoProduto;
     
     // construtor
-    public Vendas(String data, String cliente, String valor, String tipoCarro) {
+    public Vendas(String data, String cliente, String valor, String tipoProduto) {
         this.data = data;
         this.cliente = cliente;
         this.valor = valor;
-        this.tipoCarro = tipoCarro;
+        this.tipoProduto = tipoProduto;
     }
 
     // getters and setters
@@ -41,12 +41,12 @@ public class Vendas {
         this.valor = valor;
     }
 
-    public String getTipoCarro() {
-        return tipoCarro;
+    public String getTipoProduto() {
+        return tipoProduto;
     }
 
-    public void setTipoCarro(String tipoCarro) {
-        this.tipoCarro = tipoCarro;
+    public void setTipoProduto(String tipoProduto) {
+        this.tipoProduto = tipoProduto;
     }
 
 }

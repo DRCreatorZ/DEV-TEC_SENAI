@@ -43,23 +43,23 @@ public class VendasPainel extends JPanel {
     private JTextField inputData;
     private JTextField inputCliente;
     private JTextField inputValor;
-    private JTextField inputCarro;
+    private JTextField inputProduto;
 
     // campo escrito - JLabel
     private JLabel labelData;
     private JLabel labelCliente;
     private JLabel labelValor;
-    private JLabel labelCarro;
+    private JLabel labelProduto;
 
     private DefaultTableModel tableModel; // lógica
     private JTable table; // visual
     private List<Vendas> vendas = new ArrayList<>();
-    private List<Produtos> carros;
+    private List<Produtos> produtos;
     private List<Clientes> clientes;
     private int linhaSelecionada = -1;
     private JButton cadastrarButton, apagarButton, editarButton, atualizarButton;
 
-    JComboBox<String> carrosComboBox;
+    JComboBox<String> produtosComboBox;
     JComboBox<String> clientesComboBox;
 
     public VendasPainel() {
@@ -67,7 +67,7 @@ public class VendasPainel extends JPanel {
         JPanel inputFrame = new JPanel();
         JPanel botoes = new JPanel();
 
-        carrosComboBox = new JComboBox<>();
+        produtosComboBox = new JComboBox<>();
         clientesComboBox = new JComboBox<>();
 
         // construir a tabela
@@ -75,7 +75,7 @@ public class VendasPainel extends JPanel {
         
         tableModel.addColumn("Cliente");
         tableModel.addColumn("Data");
-        tableModel.addColumn("Carro");
+        tableModel.addColumn("Produto");
         tableModel.addColumn("Valor");
         
         table = new JTable(tableModel);
@@ -85,11 +85,11 @@ public class VendasPainel extends JPanel {
         // criar os componentes
         inputCliente = new JTextField(20);
         inputData = new JTextField(10);
-        inputCarro = new JTextField(20);
+        inputProduto = new JTextField(20);
         inputValor = new JTextField(10);
 
         // criar os componentes - labels
-         labelCarro = new JLabel("Carro");
+         labelProduto = new JLabel("Produto");
 
         labelData = new JLabel("Data");
        
@@ -107,7 +107,7 @@ public class VendasPainel extends JPanel {
 
         // adicionar os componentes
          inputFrame.add(clientesComboBox);
-        inputFrame.add(carrosComboBox);
+        inputFrame.add(produtosComboBox);
         inputFrame.add(labelData);
         inputFrame.add(inputData);
 
@@ -124,10 +124,10 @@ public class VendasPainel extends JPanel {
         frame1.add(inputFrame, BorderLayout.SOUTH);
         frame1.add(botoes, BorderLayout.NORTH);
 
-        carrosComboBox.addItem("Selecione um Carro");
-        carros = new ProdutosDAO().listarTodos();
-        for (Produtos carro : carros) {
-            carrosComboBox.addItem(carro.getMarca() + " " + carro.getModelo());
+        produtosComboBox.addItem("Selecione um Produto");
+        produtos = new ProdutosDAO().listarTodos();
+        for (Produtos produto : produtos) {
+            produtosComboBox.addItem(produto.getMarca() + " " + produto.getModelo());
         }
 
         clientesComboBox.addItem("Selecione um cliente");
@@ -153,7 +153,7 @@ public class VendasPainel extends JPanel {
                    inputCliente.setText((String) table.getValueAt(linhaSelecionada, 0));
                      inputData.setText((String) table.getValueAt(linhaSelecionada, 1));
                     inputValor.setText((String) table.getValueAt(linhaSelecionada, 2));
-                    inputCarro.setText((String) table.getValueAt(linhaSelecionada, 3));
+                    inputProduto.setText((String) table.getValueAt(linhaSelecionada, 3));
                 }
             }
         });
@@ -166,11 +166,11 @@ public class VendasPainel extends JPanel {
                 String valor = inputValor.getText();
                 String clienteSelecionado = (String) clientesComboBox.getSelectedItem(); // pegar o cliente selecionado
                                                                                          // no ComboBox
-                String carroSelecionado = (String) carrosComboBox.getSelectedItem(); // pegar o carro selecionado no
+                String carroSelecionado = (String) produtosComboBox.getSelectedItem(); // pegar o produto selecionado no
                                                                                      // ComboBox
 
                 if (data.isEmpty() || valor.isEmpty() || clienteSelecionado.equals("Selecione um cliente")
-                        || carroSelecionado.equals("Selecione um Carro")) {
+                        || carroSelecionado.equals("Selecione um Produto")) {
                     JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos.");
                 } else {
                     if (!valor.matches("[0-9]+")) {
@@ -191,7 +191,7 @@ public class VendasPainel extends JPanel {
                         inputData.setText("");
                         inputValor.setText("");
                         clientesComboBox.setSelectedIndex(0);
-                        carrosComboBox.setSelectedIndex(0);
+                        produtosComboBox.setSelectedIndex(0);
                         new ProdutosDAO().apagar(carroSelecionado);
                         JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!");
                     } catch (ParseException ex) {
@@ -204,8 +204,8 @@ public class VendasPainel extends JPanel {
         editarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String clienteSelecionado = (String) clientesComboBox.getSelectedItem(); // pegar o cliente selecionad no ComboBox
-                String carroSelecionado = (String) carrosComboBox.getSelectedItem(); // pegar o carro selecionado no ComboBox
-                if (inputCarro.getText().isEmpty()) {
+                String carroSelecionado = (String) produtosComboBox.getSelectedItem(); // pegar o produto selecionado no ComboBox
+                if (inputProduto.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Selecione algo para editar");
                 } else {
                     operacoes.atualizar(inputData.getText(), clienteSelecionado, inputValor.getText(),
@@ -215,7 +215,7 @@ public class VendasPainel extends JPanel {
                     inputData.setText("");
                     inputValor.setText("");
                     clientesComboBox.setSelectedIndex(0);
-                    carrosComboBox.setSelectedIndex(0);
+                    produtosComboBox.setSelectedIndex(0);
                     JOptionPane.showMessageDialog(null, "Editado com Sucesso!");
                 }
 
@@ -225,22 +225,22 @@ public class VendasPainel extends JPanel {
         // Configura a ação do botão "apagar" para excluir um registro no banco de dados
         apagarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String carroSelecionado = (String) carrosComboBox.getSelectedItem(); // pegar o carro selecionado no ComboBox
-                if (inputCarro.getText().isEmpty()) {
+                String carroSelecionado = (String) produtosComboBox.getSelectedItem(); // pegar o produto selecionado no ComboBox
+                if (inputProduto.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Selecione um registro para apagar.");
                 } else {
                     int resposta = JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja apagar os campos?", "Confirmação", JOptionPane.YES_NO_OPTION);
                     if (resposta == JOptionPane.YES_OPTION) {
                     // Chama o método "apagar" do objeto operacoes com o valor do campo de entrada
-                    // "placa"
-                    operacoes.apagar(inputCarro.getText());
+                    // "codigo"
+                    operacoes.apagar(inputProduto.getText());
                     JOptionPane.showMessageDialog(null, "A venda deletada com Sucesso!");
 
                     // Limpa os campos de entrada após a operação de exclusão
                     inputData.setText("");
                     inputValor.setText("");
                     clientesComboBox.setSelectedIndex(0);
-                    carrosComboBox.setSelectedIndex(0);
+                    produtosComboBox.setSelectedIndex(0);
                 } else{
                     JOptionPane.showMessageDialog(null,"A venda foi Cancelada!");
                 }
@@ -252,19 +252,19 @@ public class VendasPainel extends JPanel {
         atualizarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 atualizarComboBoxClientes();
-                atualizarComboBoxCarros();
+                atualizarComboBoxProdutos();
             }
         });
 
     }
 
-     // atualizar Tabela de Carros com o Banco de Dados
+     // atualizar Tabela de Produtos com o Banco de Dados
      private void atualizarTabela() {
         // atualizar tabela pelo banco de dados
         tableModel.setRowCount(0);
         vendas = new VendasDAO().listarTodos();
         for (Vendas venda : vendas) {
-            tableModel.addRow(new Object[] { venda.getCliente(), venda.getData(), venda.getTipoCarro(), venda.getValor()});
+            tableModel.addRow(new Object[] { venda.getCliente(), venda.getData(), venda.getTipoProduto(), venda.getValor()});
         }
 
     }
@@ -279,13 +279,13 @@ public class VendasPainel extends JPanel {
         }
     }
 
-    // Método para atualizar ComboBox de Carros
-    private void atualizarComboBoxCarros() {
-        carrosComboBox.removeAllItems();
-        carrosComboBox.addItem("Selecione um Carro");
-        carros = new ProdutosDAO().listarTodos();
-        for (Produtos carro : carros) {
-            carrosComboBox.addItem(carro.getMarca() + " " + carro.getModelo());
+    // Método para atualizar ComboBox de Produtos
+    private void atualizarComboBoxProdutos() {
+        produtosComboBox.removeAllItems();
+        produtosComboBox.addItem("Selecione um Produto");
+        produtos = new ProdutosDAO().listarTodos();
+        for (Produtos produto : produtos) {
+            produtosComboBox.addItem(produto.getMarca() + " " + produto.getModelo());
         }
     }
 }

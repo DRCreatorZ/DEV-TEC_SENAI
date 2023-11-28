@@ -46,7 +46,7 @@ public class ClientesPainel extends JPanel {
         botoes.add(editar = new JButton("Editar"));
         botoes.add(apagar = new JButton("Apagar"));
         add(botoes);
-        // tabela de carros
+        // tabela de produtos
         JScrollPane jSPane = new JScrollPane();
         add(jSPane);
         tableModel = new DefaultTableModel(new Object[][] {},
@@ -72,7 +72,7 @@ public class ClientesPainel extends JPanel {
                 }
             }
         });
-        // Cria um objeto operacoes da classe CarrosControl para executar operações no
+        // Cria um objeto operacoes da classe ProdutosControl para executar operações no
         // banco de dados
         ClientesControl operacoes = new ClientesControl(clientes, tableModel, table);
 
@@ -114,9 +114,9 @@ public class ClientesPainel extends JPanel {
     private void atualizarTabela() {
         tableModel.setRowCount(0); // Limpa todas as linhas existentes na tabela
         clientes = new ClientesDAO().listarTodos();
-        // Obtém os carros atualizados do banco de dados
+        // Obtém os produtos atualizados do banco de dados
         for (Clientes cliente : clientes) {
-            // Adiciona os dados de cada carro como uma nova linha na tabela Swing
+            // Adiciona os dados de cada produto como uma nova linha na tabela Swing
             tableModel.addRow(new Object[] { cliente.getNome(), cliente.getEndereco(),
                     cliente.getTelefone(), cliente.getCpf() });
         }

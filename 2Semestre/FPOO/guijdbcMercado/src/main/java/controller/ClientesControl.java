@@ -45,8 +45,8 @@ this.table = table;
     }
 
     // Método para atualizar os dados de um produto no banco de dados
-    public void atualizar(String quantidade, String produto, String telefone, String cpf) {
-        new ClientesDAO().atualizar(quantidade, produto, telefone, cpf);
+    public void atualizar(String nome, String endereco, String telefone, String cpf) {
+        new ClientesDAO().atualizar(nome, endereco, telefone, cpf);
         // Chama o método de atualização no banco de dados
         atualizarTabela(); // Atualiza a tabela de exibição após a atualização
     }

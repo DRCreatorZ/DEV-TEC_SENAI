@@ -10,9 +10,6 @@ import java.util.List;
 
 import model.Clientes;
 
-/**
- * ClientesDAO
- */
 public class ClientesDAO {
     // atributo
     private Connection connection;
@@ -46,7 +43,8 @@ public class ClientesDAO {
         clientes = new ArrayList<>();
         // Cria uma lista para armazenar os produtos recuperados do banco de dados
         try {
-            stmt = connection.prepareStatement("SELECT * FROM clientes_mercado");
+            String sql = "SELECT * FROM clientes_mercado";
+            stmt = connection.prepareStatement(sql);
             // Prepara a consulta SQL para selecionar todos os registros da tabela
             rs = stmt.executeQuery();
             // Executa a consulta e armazena os resultados no ResultSet
@@ -71,7 +69,7 @@ public class ClientesDAO {
         return clientes; // Retorna a lista de produtos recuperados do banco de dados
     }
 
-    // Cadastrar Produto no banco
+    // Cadastrar Cliente no banco
     public void cadastrar(String nome, String endereco, String telefone, String cpf) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para cadastrar na tabela
@@ -96,12 +94,13 @@ public class ClientesDAO {
     public void atualizar(String nome, String endereco, String telefone, String cpf) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para atualizar dados pela cpf
-        String sql = "UPDATE clientes_mercado SET nome = ?, endereco = ?, telefone = ?, valor = ? WHERE cpf = ?";
+        String sql = "UPDATE clientes_mercado SET nome = ?, endereco = ?, telefone = ? WHERE cpf = ?";
         try {
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, nome);
             stmt.setString(2, endereco);
             stmt.setString(3, telefone);
+            stmt.setString(4, cpf);
            // cpf é chave primaria não pode ser alterada.
             stmt.executeUpdate();
             System.out.println("Dados atualizados com sucesso");
@@ -119,7 +118,7 @@ public class ClientesDAO {
         String sql = "DELETE FROM clientes_mercado WHERE cpf = ?";
         try {
             stmt = connection.prepareStatement(sql);
-            stmt.setString(1, cpf);
+            stmt.setString(4, cpf);
             stmt.executeUpdate(); // Executa a instrução SQL
             System.out.println("Dado apagado com sucesso");
         } catch (SQLException e) {

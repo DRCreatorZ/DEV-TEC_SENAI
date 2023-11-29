@@ -95,7 +95,7 @@ public class ProdutosDAO {
     public void atualizar(String quantidade, String produto, String marca, String codigo, String valor) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para atualizar dados pela codigo
-        String sql = "UPDATE produtos_mercado SET quantidade = ?, produto = ?, marca = ?, valor = ? WHERE codigo = ?";
+        String sql = "UPDATE produtos_mercado SET quantidade = ?, produto = ?, marca = ?, valor = ?, WHERE codigo = ?";
         try {
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, quantidade);
@@ -103,7 +103,7 @@ public class ProdutosDAO {
             stmt.setString(3, marca);
             stmt.setString(4, valor);
             // codigo é chave primaria não pode ser alterada.
-            stmt.setString(5, codigo);
+            // stmt.setString(5, codigo);
             stmt.executeUpdate();
             System.out.println("Dados atualizados com sucesso");
         } catch (SQLException e) {

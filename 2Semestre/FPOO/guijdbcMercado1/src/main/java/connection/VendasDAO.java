@@ -24,7 +24,7 @@ public class VendasDAO {
     // Criar a Tabela no banco de dados
     public void criaTabela() {
 
-        String sql = "CREATE TABLE IF NOT EXISTS vendas_mercado (DATA VARCHAR(255),CLIENTE VARCHAR(255),VALOR VARCHAR(255),CARRO VARCHAR(255) PRIMARY KEY)";
+        String sql = "CREATE TABLE IF NOT EXISTS vendas_mercado (CODIGO VARCHAR(255) PRIMARY KEY,PRODUTO VARCHAR(255),MARCA VARCHAR(255),QUANTIDADE VARCHAR(255), VALOR VARCHAR(255))";
         try (Statement stmt = this.connection.createStatement()) {
             stmt.execute(sql);
             System.out.println("Tabela criada com sucesso.");
@@ -50,10 +50,11 @@ public class VendasDAO {
             while (rs.next()) {
                 // Para cada registro no ResultSet, cria um objeto Produtos com os valores do registro
                 Vendas venda = new Vendas(
-                    rs.getString("data"),
-                    rs.getString("cliente"),
-                    rs.getString("valor"),
-                    rs.getString("produto")
+                    rs.getString("codigo"),
+                    rs.getString("produto"),
+                    rs.getString("marca"),
+                    rs.getString("quantidade"),
+                    rs.getString("valor"), null, null
                 );
                 vendas.add(venda); // Adiciona o objeto Produtos à lista de produtos
             }

@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 class Elevador {
     private int andarAtual;
@@ -10,9 +12,21 @@ class Elevador {
         andarAtual = 1;
     }
 
-    public void moverParaAndar(int andarDestino) {
+    public void moverParaAndar(int andarDestino, List<Elevador> elevadores) {
         if (andarDestino < 1 || andarDestino > 9) {
             JOptionPane.showMessageDialog(null, "Andar inválido. Escolha um andar entre 1 e 9.");
+            return;
+        }
+
+        int elevadoresNoAndar = 0;
+        for (Elevador elevador : elevadores) {
+            if (elevador.getAndarAtual() == andarDestino) {
+                elevadoresNoAndar++;
+            }
+        }
+
+        if (elevadoresNoAndar >= 2) {
+            JOptionPane.showMessageDialog(null, "Há dois elevadores no andar " + andarDestino + ". Espere um momento.");
             return;
         }
 
@@ -33,12 +47,16 @@ class Elevador {
 
 public class ElevadorGUI {
     private JFrame frame;
-    private Elevador elevador;
+    private List<Elevador> elevadores;
     private JComboBox<String> andarComboBox;
 
     public ElevadorGUI() {
         frame = new JFrame("Elevador");
-        elevador = new Elevador();
+        elevadores = new ArrayList<>();
+
+        for (int i = 0; i < 2; i++) {
+            elevadores.add(new Elevador());
+        }
 
         andarComboBox = new JComboBox<>();
         for (int i = 1; i <= 9; i++) {
@@ -50,7 +68,7 @@ public class ElevadorGUI {
             public void actionPerformed(ActionEvent e) {
                 String selectedAndar = (String) andarComboBox.getSelectedItem();
                 int andar = Integer.parseInt(selectedAndar.substring(selectedAndar.lastIndexOf(" ") + 1));
-                elevador.moverParaAndar(andar);
+                elevadores.get(0).moverParaAndar(andar, elevadores);
                 atualizarLabel();
             }
         });
@@ -70,7 +88,7 @@ public class ElevadorGUI {
     }
 
     private void atualizarLabel() {
-        JOptionPane.showMessageDialog(null, "O elevador está atualmente no andar " + elevador.getAndarAtual() + ".");
+        JOptionPane.showMessageDialog(null, "O elevador está atualmente no andar " + elevadores.get(0).getAndarAtual() + ".");
     }
 
     public static void main(String[] args) {

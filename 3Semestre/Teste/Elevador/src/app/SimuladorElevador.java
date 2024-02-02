@@ -23,9 +23,11 @@ public class SimuladorElevador extends JFrame {
 
         // Inicializa os botões dos andares
         botoesAndares = new JButton[9];
+        String[] andaresRotulos = {"S2", "S1", "Térreo", "1°", "2°", "3°", "4°", "5°", "6°"};
+
         for (int i = 0; i < 9; i++) {
             final int andar = i + 1;
-            botoesAndares[i] = new JButton("Andar " + andar);
+            botoesAndares[i] = new JButton("Andar " + andaresRotulos[i]);
             botoesAndares[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -60,40 +62,77 @@ public class SimuladorElevador extends JFrame {
             elevador2.solicitarAndar(andar);
         }
     }
-
     private class Elevador extends Thread {
         private int numero;
         private int andarAtual;
-
+    
         public Elevador(int numero) {
             this.numero = numero;
-            this.andarAtual = 1;
+            this.andarAtual = 0; // Modificação aqui para iniciar no térreo
             start(); // Inicia a thread do elevador
         }
-
+    
         public int getAndarAtual() {
             return andarAtual;
         }
-
-        public void solicitarAndar(int andar) {
-            // Simula o movimento do elevador até o andar solicitado
-            areaMensagens.append("Elevador " + numero + " se deslocando para o Andar " + andar + "\n");
-            while (andarAtual != andar) {
-                if (andarAtual < andar) {
-                    andarAtual++;
-                } else {
-                    andarAtual--;
-                }
-
-                areaMensagens.append("Elevador " + numero + " chegou ao Andar " + andarAtual + "\n");
-                try {
-                    Thread.sleep(1000); // Simula o tempo de deslocamento entre os andares
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+    
+        private String obterNomeAndar(int andar) {
+            switch (andar) {
+                case 1:
+                    return "S2";
+                case 2:
+                    return "S1";
+                case 3:
+                    return "Térreo";
+                case 4:
+                    return "1°";
+                case 5:
+                    return "2°";
+                case 6:
+                    return "3°";
+                case 7:
+                    return "4°";
+                case 8:
+                    return "5°";
+                case 9:
+                    return "6°";
+                default:
+                    return "Andar " + andar;
             }
         }
-
+    
+        private void limparTela() {
+            // Limpa a área de mensagens
+            areaMensagens.setText("");
+        }
+    
+        public void solicitarAndar(int andar) {
+            // Limpa a tela antes de exibir o movimento do elevador
+            limparTela();
+    
+            // Verifica se o elevador já está no andar chamado
+            if (andarAtual == andar) {
+                areaMensagens.append("Elevador " + numero + " já está no " + obterNomeAndar(andarAtual) + "\n");
+                return;
+            }else{
+    
+            // Simula o movimento do elevador até o andar solicitado
+            areaMensagens.append("Elevador " + numero + " se deslocando para o " + obterNomeAndar(andar) + "\n");
+    
+            // Espera um tempo para simular o deslocamento entre andares
+            try {
+                Thread.sleep(1000 * Math.abs(andar - andarAtual));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+    
+            // Atualiza o andar atual
+            andarAtual = andar;
+    
+            // Exibe a mensagem de chegada ao destino
+            areaMensagens.append("Elevador " + numero + " chegou ao " + obterNomeAndar(andarAtual) + "\n");
+        }
+    }
         @Override
         public void run() {
             // Método run da thread do elevador

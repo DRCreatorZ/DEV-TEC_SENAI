@@ -1,22 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDo List</title>
-    <link rel="stylesheet" href="style.css">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 0 auto;
+            width: 50%;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 5px 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #3E8E41;
+        }
+    </style>
 </head>
 <body>
-    <h1>ToDo List</h1>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <form action="add_task.php" method="post">
+            <label for="task">New task:</label>
+            <input type="text" id="task" name="task" placeholder="Enter task">
+            <button type="submit">Add</button>
+        </form>
+        <ul id="task-list">
 
-    <form id="taskForm">
-        <label for="taskInput">Nova Tarefa:</label>
-        <input type="text" id="taskInput" name="taskInput" required>
-        <button type="submit">Adicionar</button>
-    </form>
-
-    <ul id="taskList"></ul>
-
-    <script src="script.js"></script>
+        </ul>
+    </div>
 </body>
 </html>

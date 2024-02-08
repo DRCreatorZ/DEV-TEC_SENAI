@@ -1,13 +1,39 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
 }
-
-#taskList {
-    list-style-type: none;
+.container {
+    margin: 0 auto;
+    width: 50%;
+}
+h1 {
+    text-align: center;
+}
+ul {
+    list-style: none;
     padding: 0;
 }
-
-.taskItem {
+li:not(:last-child) {
     margin-bottom: 10px;
+}
+label {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+button {
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+}
+button:hover {
+    background-color: #3E8E41;
 }

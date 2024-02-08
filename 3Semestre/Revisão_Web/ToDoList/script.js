@@ -1,46 +1,22 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const taskForm = document.getElementById('taskForm');
-    const taskInput = document.getElementById('taskInput');
-    const taskList = document.getElementById('taskList');
+function addTask() {
+    // Get the input field and value
+    var taskInput = document.getElementById("task");
+    var taskValue = taskInput.value;
 
-    // Função para carregar as tarefas do banco de dados
-    function loadTasks() {
-        fetch('get_tasks.php')
-            .then(response => response.json())
-            .then(data => {
-                taskList.innerHTML = ''; // Limpa a lista
-                data.forEach(task => {
-                    const listItem = document.createElement('li');
-                    listItem.className = 'taskItem';
-                    listItem.innerHTML = `
-                        <input type="checkbox" ${task.completed ? 'checked' : ''} disabled>
-                        <span>${task.task_name}</span>
-                    `;
-                    taskList.appendChild(listItem);
-                });
-            });
-    }
+    // Create a new list item and check box
+    var li = document.createElement("li");
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    li.appendChild(checkbox);
 
-    // Evento de envio do formulário para adicionar uma nova tarefa
-    taskForm.addEventListener('submit', function (event) {
-        event.preventDefault();
+    // Add the task text to the list item
+    var textNode = document.createTextNode(taskValue);
+    li.appendChild(textNode);
 
-        fetch('add_task.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ task_name: taskInput.value }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    loadTasks(); // Recarrega a lista de tarefas
-                    taskInput.value = ''; // Limpa o campo de entrada
-                }
-            });
-    });
+    // Add the list item to the task list
+    var ul = document.getElementById("task-list");
+    ul.appendChild(li);
 
-    // Carrega as tarefas ao carregar a página
-    loadTasks();
-});
+    // Clear the input field
+    taskInput.value = "";
+}

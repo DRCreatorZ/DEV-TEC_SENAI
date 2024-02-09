@@ -1,13 +1,13 @@
 <?php
 
 // Configurações do banco de dados PostgreSQL
-$host = 'postgres';
-$dbname = 'postgres';
-$user = 'postgres';
-$password = 'postgres';
+$host = 'localhost';
+$dbname = 'banco';
+$user = 'root';
+$password = '';
 
 // Conexão com o banco de dados
-$conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+$conn = new PDO($host,$dbname, $user);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // Verifica se a tabela tasks já existe, se não, a cria

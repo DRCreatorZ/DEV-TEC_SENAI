@@ -1,43 +1,38 @@
 <?php
-
-// Configurações do banco de dados PostgreSQL
-$host = 'localhost';
-$dbname = 'banco';
-$user = 'root';
-$password = '';
-
-// Conexão com o banco de dados
-$conn = new PDO($host,$dbname, $user);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-// Verifica se a tabela tasks já existe, se não, a cria
-$stmt = $conn->query("SELECT EXISTS (
-                          SELECT FROM information_schema.tables 
-                          WHERE table_schema = 'public' 
-                          AND table_name = 'tasks'
-                       )");
-$tableExists = $stmt->fetchColumn();
-if (!$tableExists) {
-    $conn->exec("CREATE TABLE tasks (
-                    id SERIAL PRIMARY KEY,
-                    description TEXT NOT NULL
-                )");
-}
-
-// Verifica se o formulário foi enviado
+// Verifica se a requisição é do tipo POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtém a tarefa do formulário
-    $task = $_POST["task"];
+    // Verifica se o campo de tarefa foi enviado
+    if (isset($_POST["task"]) && !empty($_POST["task"])) {
+        $task = $_POST["task"];
 
-    // Prepara a consulta SQL para inserir a tarefa no banco de dados
-    $stmt = $conn->prepare("INSERT INTO tasks (description) VALUES (:task)");
-    $stmt->bindParam(':task', $task);
-    
-    // Executa a consulta
-    $stmt->execute();
+        // Conexão com o banco de dados (ajuste as credenciais conforme necessário)
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "todolist";
 
-    // Redireciona de volta para a página inicial
-    header("Location: index.html");
-    exit();
+        // Cria a conexão
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Verifica a conexão
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Prepara e executa a query SQL para inserir a tarefa no banco de dados
+        $sql = "INSERT INTO tasks (task_description) VALUES ('$task')";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
+    } else {
+        echo "Task field is empty";
+    }
+} else {
+    echo "Invalid request method";
 }
 ?>

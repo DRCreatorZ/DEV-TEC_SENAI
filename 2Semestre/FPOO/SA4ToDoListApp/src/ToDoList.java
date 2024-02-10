@@ -23,13 +23,16 @@ public class ToDoList extends JFrame {
         super("To-Do List App");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBounds(100, 100, 435, 350);
+
         // Adiciona painel principal
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
+
         // cria arrays das tarefas e painel da lista
         tasks = new ArrayList<>();
         listModel = new DefaultListModel<>();
         taskList = new JList<>(listModel);
+
         // cria campo de inserção de tarefa, botões e filtro
         taskInputField = new JTextField();
         addButton = new JButton("Adicionar");
@@ -37,30 +40,38 @@ public class ToDoList extends JFrame {
         markDoneButton = new JButton("Concluir");
         filterComboBox = new JComboBox<>(new String[] { "Todas", "Ativas", "Concluídas" });
         clearCompletedButton = new JButton("Limpar Concluídas");
+
         // adiciona campo de inserção e botão de adesão ao painel
         JPanel inputPanel = new JPanel(new BorderLayout());
         inputPanel.add(taskInputField, BorderLayout.CENTER);
         inputPanel.add(addButton, BorderLayout.EAST);
+
         // adiciona botões ao painel de botão na parte inferior do painel
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         buttonPanel.add(deleteButton);
         buttonPanel.add(markDoneButton);
         buttonPanel.add(filterComboBox);
         buttonPanel.add(clearCompletedButton);
+
         // Crie um painel para conter o JLabel e o inputPanel
         JPanel titleAndInputPanel = new JPanel(new BorderLayout());
+
         // Adiciona o JLabel "Lista de Tarefas" ao painel no norte
         JLabel titleLabel = new JLabel("Aplicativo de Tarefas");
         titleAndInputPanel.add(titleLabel, BorderLayout.NORTH);
+
         // Adicione o inputPanel ao painel no centro
         titleAndInputPanel.add(inputPanel, BorderLayout.CENTER);
+
         // Adiciona o JLabel "Lista de Tarefas" ao painel no norte
         JLabel titLabel2 = new JLabel("Painel de Tarefas");
         titleAndInputPanel.add(titLabel2, BorderLayout.SOUTH);
+
         // Agora, adicione o titleAndInputPanel ao mainPanel na região norte
         mainPanel.add(titleAndInputPanel, BorderLayout.NORTH);
         mainPanel.add(new JScrollPane(taskList), BorderLayout.CENTER);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
+
         // Adicione descrições (tooltips) aos botões
         addButton.setToolTipText("Adicionar uma nova tarefa");
         deleteButton.setToolTipText("Excluir a tarefa selecionada");
@@ -68,6 +79,7 @@ public class ToDoList extends JFrame {
         clearCompletedButton.setToolTipText("Limpar tarefas concluídas");
         taskInputField.setToolTipText("Digite a tarefa que deseja adicionar e pressione Enter ou clique em 'Adicionar'.");
         filterComboBox.setToolTipText("Filtrar tarefas por status: Todas, Ativas ou Concluídas");
+        
         // seta o painel como visivel
         this.add(mainPanel);
         this.setVisible(true);

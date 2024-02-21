@@ -24,6 +24,7 @@ class _AdivinhaState extends State<Adivinha> {
   int numeroSort = Random().nextInt(100) + 1;
   String _resultado = '';
   int _tentativas = 0;
+  bool acertou = false;
 
   void _verificar() {
     int palpite = int.tryParse(_palpite.text) ?? 0;
@@ -31,6 +32,7 @@ class _AdivinhaState extends State<Adivinha> {
       _tentativas++;
       if (palpite == numeroSort) {
         _resultado = 'Você Acertou!';
+        acertou = true;
       } else if (palpite < numeroSort) {
         _resultado = 'Tente um Número Maior!';
       } else if (palpite > numeroSort) {
@@ -47,6 +49,7 @@ class _AdivinhaState extends State<Adivinha> {
       _palpite.clear();
       _resultado = '';
       _tentativas = 0;
+      acertou = false;
     });
   }
 
@@ -77,16 +80,16 @@ class _AdivinhaState extends State<Adivinha> {
               _resultado,
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16.0),
-            if (_resultado.isNotEmpty)
-              ElevatedButton(
-                onPressed: () => _reiniciarJogo(),
-                child: Text('Jogar Novamente'),
-              ),
             Text(
               'Tentativas: $_tentativas',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
+            SizedBox(height: 16.0),
+            if (acertou)
+              ElevatedButton(
+                onPressed: () => _reiniciarJogo(),
+                child: Text('Jogar Novamente'),
+              ),
           ],
         ),
       ),

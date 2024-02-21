@@ -13,10 +13,8 @@ if (!empty($_POST)) {
     session_start();
     try {
         // Montar a SQL
-        $sql = "SELECT 
-        nome, email, telefone, data_nascimento
-        FROM usuarios 
-        WHERE email = :email AND senha = :senha";
+        $sql = "SELECT nome, email, telefone, data_nascimento FROM usuario WHERE email =
+    :email AND senha = :senha";
         // Preparar a SQL (pdo)
         $stmt = $pdo->prepare($sql);
         // Definir/Organizar os dados p/ SQL
@@ -51,3 +49,4 @@ if (!empty($_POST)) {
     header("Location: index.php?msgErro=Você não tem permissão para acessar esta página..");
 }
 die();
+?>

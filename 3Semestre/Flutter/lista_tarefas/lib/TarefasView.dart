@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lista_tarefas/TarefasController.dart';
 import 'package:provider/provider.dart';
 
-class ListaTarefasScreen extends StatelessWidget {
+class TarefasScreen extends StatelessWidget {
   // Controlador para o campo de texto de nova tarefa
   final TextEditingController _controller = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +51,15 @@ class ListaTarefasScreen extends StatelessWidget {
                       trailing: Checkbox(
                         value: model.tarefas[index].concluida,
                         onChanged: (value) {
-                          // Chamando o método marcarComoConcluida do Provider para atualizar o estado
-                          model.marcarComoConcluida(index);
+                          if (value != null) {
+                            if (value) {
+                              model.marcarComoConcluida(
+                                  index); // Marca como concluída se o valor for true
+                            } else {
+                              model.desmarcarComoConcluida(
+                                  index); // Desmarca se o valor for false
+                            }
+                          }
                         },
                       ),
                       // Exclui a tarefa ao manter pressionado
@@ -72,4 +78,3 @@ class ListaTarefasScreen extends StatelessWidget {
     );
   }
 }
-

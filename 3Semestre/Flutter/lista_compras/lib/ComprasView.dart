@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lista_compras/ComprasController.dart';
 import 'package:provider/provider.dart';
-
 class ComprasScreen extends StatelessWidget {
   // Controlador para o campo de texto de nova compra
   final TextEditingController _controller = TextEditingController();
@@ -12,23 +11,70 @@ class ComprasScreen extends StatelessWidget {
       // Barra superior do aplicativo
       appBar: AppBar(
         title: Text('Lista de Compras'),
+        actions: [
+          // Botão na barra de aplicativos para excluir todos os itens
+          IconButton(
+            icon: Icon(Icons.delete),
+            onPressed: () {
+              // Exibe um AlertDialog para confirmação antes de excluir todos os itens
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text('Confirmar exclusão'),
+                  
+                  content: Text(
+                    'Deseja realmente excluir todos os itens da lista de compras?'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop(); // Fecha o diálogo
+                      },
+                      child: Text('Cancelar'),
+                    ),
+                    // TextButton(
+                    //             onPressed: () {
+                    //               // Chamando o método excluirItem do Provider para atualizar o estado
+                    //               Provider.of<ComprasController>(context, listen: false)
+                    //                   .excluirItem(index);
+                    //               Navigator.of(context).pop(); // Fecha o diálogo
+                    //             },
+                    //             child: Text('Excluir'),
+                    TextButton(
+                      onPressed: () {
+                        // Chamando o método excluirTodosItens do Provider para atualizar o estado
+                        Provider.of<ComprasController>(context, listen: false).excluirTodosItens();
+                        Navigator.of(context).pop(); // Fecha o diálogo
+                      },
+                      child: Text('Excluir'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ],
       ),
       // Corpo principal do aplicativo
       body: Column(
         children: [
-          // Campo de texto para adicionar nova compra
+          // Campo de texto para adicionar novo Item com "Enter"
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               controller: _controller,
+              onSubmitted: (value) {
+                // Chamando o método adicionar Item do Provider para atualizar o estado
+                Provider.of<ComprasController>(context, listen: false).adicionarItem(value);
+                // Limpar o campo de texto após adicionar a compra
+                _controller.clear();
+              },
               decoration: InputDecoration(
-                labelText: 'Nova Tarefa',
+                labelText: 'Novo Item',
                 // Ícone para adicionar compra ao pressionar o botão
                 suffixIcon: IconButton(
                   onPressed: () {
-                    // Chamando o método adicionarTarefa do Provider para atualizar o estado
-                    Provider.of<ComprasController>(context, listen: false)
-                        .adicionarTarefa(_controller.text);
+                    // Chamando o método adicionar Item do Provider para atualizar o estado
+                    Provider.of<ComprasController>(context, listen: false).adicionarItem(_controller.text);
                     // Limpar o campo de texto após adicionar a compra
                     _controller.clear();
                   },
@@ -53,10 +99,10 @@ class ComprasScreen extends StatelessWidget {
                         onChanged: (value) {
                           if (value != null) {
                             if (value) {
-                              model.marcarComoConcluida(
+                              model.marcarComoComprado(
                                   index); // Marca como concluída se o valor for true
                             } else {
-                              model.desmarcarComoConcluida(
+                              model.desmarcarComoComprado(
                                   index); // Desmarca se o valor for false
                             }
                           }
@@ -64,8 +110,32 @@ class ComprasScreen extends StatelessWidget {
                       ),
                       // Exclui a compra ao manter pressionado
                       onLongPress: () {
-                        // Chamando o método excluirTarefa do Provider para atualizar o estado
-                        model.excluirTarefa(index);
+                        // Exibe o diálogo de confirmação antes de excluir
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text('Confirmar exclusão'),
+                            content: Text(
+                                'Deseja realmente excluir o item "${model.compras[index].descricao}"?'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop(); // Fecha o diálogo
+                                },
+                                child: Text('Cancelar'),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  // Chamando o método excluirItem do Provider para atualizar o estado
+                                  Provider.of<ComprasController>(context, listen: false)
+                                      .excluirItem(index);
+                                  Navigator.of(context).pop(); // Fecha o diálogo
+                                },
+                                child: Text('Excluir'),
+                              ),
+                            ],
+                          ),
+                        );
                       },
                     );
                   },

@@ -1,5 +1,3 @@
-// import 'package:app_todolist_02_22/main.dart';
-// import 'package:app_todolist_02_22/tarefas_model.dart';
 import 'package:flutter/material.dart';
 import 'package:lista_compras/ComprasModel.dart';
 
@@ -8,32 +6,38 @@ class ComprasController extends ChangeNotifier {
   List<Compras> get compras => _tarefas;
 
   //metodo para adiconar  uma nova compra
-  void adicionarTarefa(String descricao) {
+  void adicionarItem(String descricao) {
     if (descricao.isNotEmpty) {
       _tarefas.add(Compras(descricao, false));
       notifyListeners();
     }
   }
 
-  void marcarComoConcluida(int indice) {
+  void marcarComoComprado(int indice) {
     if (indice >= 0 && indice < _tarefas.length) {
       _tarefas[indice].concluida = true;
       notifyListeners();
     }
   }
 
-  void desmarcarComoConcluida(int indice) {
+  void desmarcarComoComprado(int indice) {
     if (indice >= 0 && indice < _tarefas.length) {
       _tarefas[indice].concluida = false;
       notifyListeners();
     }
   }
 
-  void excluirTarefa(int indice) {
+  void excluirItem(int indice) {
     if (indice >= 0 && indice < _tarefas.length) {
-      _tarefas.remove(indice);
+      _tarefas.removeAt(indice);
       // Notifica os ouvintes sobre a mudança no estado
       notifyListeners();
     }
+  }
+
+  void excluirTodosItens() {
+    _tarefas.clear();
+    // Notifica os ouvintes sobre a mudança no estado
+    notifyListeners();
   }
 }

@@ -11,7 +11,20 @@ class ComprasScreen extends StatelessWidget {
     return Scaffold(
       // Barra superior do aplicativo
       appBar: AppBar(
-        title: Text('Lista de Compras'),
+        title: Row(
+          children: [
+            // Ícone de carrinho de compras
+            Icon(Icons.shopping_cart ,color: Colors.grey[800]),
+            SizedBox(width: 8), // Espaçamento entre o ícone e o texto
+            Text(
+              'Lista de Compras',
+              style: TextStyle(
+                color: Colors.grey[800], // Cor do texto cinza escuro
+              ),
+            ),
+          ],
+        ),
+        backgroundColor: Colors.deepOrange[700], // Cor de fundo laranja escuro
       ),
       // Corpo principal do aplicativo
       body: Column(
@@ -147,6 +160,7 @@ class ComprasScreen extends StatelessWidget {
             ),
           ],
         ),
+        color: Colors.deepOrange[700], // Cor de fundo laranja escuro
       ),
     );
   }

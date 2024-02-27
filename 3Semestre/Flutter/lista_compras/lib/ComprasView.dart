@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lista_compras/ComprasController.dart';
 import 'package:provider/provider.dart';
+
 class ComprasScreen extends StatelessWidget {
   // Controlador para o campo de texto de nova compra
   final TextEditingController _controller = TextEditingController();
@@ -11,48 +12,6 @@ class ComprasScreen extends StatelessWidget {
       // Barra superior do aplicativo
       appBar: AppBar(
         title: Text('Lista de Compras'),
-        actions: [
-          // Botão na barra de aplicativos para excluir todos os itens
-          IconButton(
-            icon: Icon(Icons.delete),
-            onPressed: () {
-              // Exibe um AlertDialog para confirmação antes de excluir todos os itens
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: Text('Confirmar exclusão'),
-                  
-                  content: Text(
-                    'Deseja realmente excluir todos os itens da lista de compras?'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop(); // Fecha o diálogo
-                      },
-                      child: Text('Cancelar'),
-                    ),
-                    // TextButton(
-                    //             onPressed: () {
-                    //               // Chamando o método excluirItem do Provider para atualizar o estado
-                    //               Provider.of<ComprasController>(context, listen: false)
-                    //                   .excluirItem(index);
-                    //               Navigator.of(context).pop(); // Fecha o diálogo
-                    //             },
-                    //             child: Text('Excluir'),
-                    TextButton(
-                      onPressed: () {
-                        // Chamando o método excluirTodosItens do Provider para atualizar o estado
-                        Provider.of<ComprasController>(context, listen: false).excluirTodosItens();
-                        Navigator.of(context).pop(); // Fecha o diálogo
-                      },
-                      child: Text('Excluir'),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-        ],
       ),
       // Corpo principal do aplicativo
       body: Column(
@@ -127,8 +86,7 @@ class ComprasScreen extends StatelessWidget {
                               TextButton(
                                 onPressed: () {
                                   // Chamando o método excluirItem do Provider para atualizar o estado
-                                  Provider.of<ComprasController>(context, listen: false)
-                                      .excluirItem(index);
+                                      model.excluirItem(index);
                                   Navigator.of(context).pop(); // Fecha o diálogo
                                 },
                                 child: Text('Excluir'),
@@ -144,6 +102,51 @@ class ComprasScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            // Botão na barra de aplicativos para excluir todos os itens
+            IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () {
+                // Exibe um AlertDialog para confirmação antes de excluir todos os itens
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text('Confirmar exclusão'),
+                    content: Text('Deseja realmente excluir todos os itens da lista de compras?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(); // Fecha o diálogo
+                        },
+                        child: Text('Cancelar'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          // Chamando o método excluirTodosItens do Provider para atualizar o estado
+                          Provider.of<ComprasController>(context, listen: false).excluirTodosItens();
+                          Navigator.of(context).pop(); // Fecha o diálogo
+                        },
+                        child: Text('Excluir'),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+            // Botão na barra de aplicativos para ordenar por ordem alfabética
+            IconButton(
+              icon: Icon(Icons.sort_by_alpha),
+              onPressed: () {
+                // Chamando o método ordenarListaPorNome do Provider para ordenar a lista alfabeticamente
+                Provider.of<ComprasController>(context, listen: false).ordemAZ();
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -40,4 +40,10 @@ class ComprasController extends ChangeNotifier {
     // Notifica os ouvintes sobre a mudança no estado
     notifyListeners();
   }
+
+// Método para ordenar a lista por ordem alfabética
+  void ordemAZ() {
+    _tarefas.sort((a, b) => a.descricao.compareTo(b.descricao));
+    notifyListeners();
+  }
 }

@@ -14,12 +14,13 @@ class ComprasScreen extends StatelessWidget {
         title: Row(
           children: [
             // Ícone de carrinho de compras
-            Icon(Icons.shopping_cart ,color: Colors.grey[800]),
+            Icon(Icons.shopping_cart, color: Colors.grey[800]),
             SizedBox(width: 8), // Espaçamento entre o ícone e o texto
             Text(
               'Lista de Compras',
               style: TextStyle(
                 color: Colors.grey[800], // Cor do texto cinza escuro
+                fontWeight: FontWeight.bold, // Texto em negrito
               ),
             ),
           ],
@@ -36,7 +37,8 @@ class ComprasScreen extends StatelessWidget {
               controller: _controller,
               onSubmitted: (value) {
                 // Chamando o método adicionar Item do Provider para atualizar o estado
-                Provider.of<ComprasController>(context, listen: false).adicionarItem(value);
+                Provider.of<ComprasController>(context, listen: false)
+                    .adicionarItem(value);
                 // Limpar o campo de texto após adicionar a compra
                 _controller.clear();
               },
@@ -46,7 +48,8 @@ class ComprasScreen extends StatelessWidget {
                 suffixIcon: IconButton(
                   onPressed: () {
                     // Chamando o método adicionar Item do Provider para atualizar o estado
-                    Provider.of<ComprasController>(context, listen: false).adicionarItem(_controller.text);
+                    Provider.of<ComprasController>(context, listen: false)
+                        .adicionarItem(_controller.text);
                     // Limpar o campo de texto após adicionar a compra
                     _controller.clear();
                   },
@@ -92,15 +95,17 @@ class ComprasScreen extends StatelessWidget {
                             actions: <Widget>[
                               TextButton(
                                 onPressed: () {
-                                  Navigator.of(context).pop(); // Fecha o diálogo
+                                  Navigator.of(context)
+                                      .pop(); // Fecha o diálogo
                                 },
                                 child: Text('Cancelar'),
                               ),
                               TextButton(
                                 onPressed: () {
                                   // Chamando o método excluirItem do Provider para atualizar o estado
-                                      model.excluirItem(index);
-                                  Navigator.of(context).pop(); // Fecha o diálogo
+                                  model.excluirItem(index);
+                                  Navigator.of(context)
+                                      .pop(); // Fecha o diálogo
                                 },
                                 child: Text('Excluir'),
                               ),
@@ -129,7 +134,8 @@ class ComprasScreen extends StatelessWidget {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: Text('Confirmar exclusão'),
-                    content: Text('Deseja realmente excluir todos os itens da lista de compras?'),
+                    content: Text(
+                        'Deseja realmente excluir todos os itens da lista de compras?'),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () {
@@ -140,7 +146,8 @@ class ComprasScreen extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           // Chamando o método excluirTodosItens do Provider para atualizar o estado
-                          Provider.of<ComprasController>(context, listen: false).excluirTodosItens();
+                          Provider.of<ComprasController>(context, listen: false)
+                              .excluirTodosItens();
                           Navigator.of(context).pop(); // Fecha o diálogo
                         },
                         child: Text('Excluir'),
@@ -155,7 +162,8 @@ class ComprasScreen extends StatelessWidget {
               icon: Icon(Icons.sort_by_alpha),
               onPressed: () {
                 // Chamando o método ordenarListaPorNome do Provider para ordenar a lista alfabeticamente
-                Provider.of<ComprasController>(context, listen: false).ordemAZ();
+                Provider.of<ComprasController>(context, listen: false)
+                    .ordemAZ();
               },
             ),
           ],

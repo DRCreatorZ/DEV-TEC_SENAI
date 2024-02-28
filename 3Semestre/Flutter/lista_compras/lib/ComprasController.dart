@@ -1,8 +1,10 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:lista_compras/ComprasModel.dart';
 
 class ComprasController extends ChangeNotifier {
-  List<Compras> _tarefas = [];
+  final List<Compras> _tarefas = [];
   List<Compras> get compras => _tarefas;
 
   //metodo para adiconar  uma nova compra

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:lista_compras/ComprasController.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +7,8 @@ import 'package:provider/provider.dart';
 class ComprasScreen extends StatelessWidget {
   // Controlador para o campo de texto de nova compra
   final TextEditingController _controller = TextEditingController();
+
+  ComprasScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,7 @@ class ComprasScreen extends StatelessWidget {
           children: [
             // Ícone de carrinho de compras
             Icon(Icons.shopping_cart, color: Colors.grey[800]),
-            SizedBox(width: 8), // Espaçamento entre o ícone e o texto
+            const SizedBox(width: 8), // Espaçamento entre o ícone e o texto
             Text(
               'Lista de Compras',
               style: TextStyle(
@@ -53,7 +57,7 @@ class ComprasScreen extends StatelessWidget {
                     // Limpar o campo de texto após adicionar a compra
                     _controller.clear();
                   },
-                  icon: Icon(Icons.add),
+                  icon: const Icon(Icons.add),
                 ),
               ),
             ),
@@ -89,7 +93,7 @@ class ComprasScreen extends StatelessWidget {
                         showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
-                            title: Text('Confirmar exclusão'),
+                            title: const Text('Confirmar exclusão'),
                             content: Text(
                                 'Deseja realmente excluir o item "${model.compras[index].descricao}"?'),
                             actions: <Widget>[
@@ -98,7 +102,7 @@ class ComprasScreen extends StatelessWidget {
                                   Navigator.of(context)
                                       .pop(); // Fecha o diálogo
                                 },
-                                child: Text('Cancelar'),
+                                child: const Text('Cancelar'),
                               ),
                               TextButton(
                                 onPressed: () {
@@ -107,7 +111,7 @@ class ComprasScreen extends StatelessWidget {
                                   Navigator.of(context)
                                       .pop(); // Fecha o diálogo
                                 },
-                                child: Text('Excluir'),
+                                child: const Text('Excluir'),
                               ),
                             ],
                           ),
@@ -122,26 +126,27 @@ class ComprasScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Colors.deepOrange[700],
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             // Botão na barra de aplicativos para excluir todos os itens
             IconButton(
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
               onPressed: () {
                 // Exibe um AlertDialog para confirmação antes de excluir todos os itens
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: Text('Confirmar exclusão'),
-                    content: Text(
+                    title: const Text('Confirmar exclusão'),
+                    content: const Text(
                         'Deseja realmente excluir todos os itens da lista de compras?'),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).pop(); // Fecha o diálogo
                         },
-                        child: Text('Cancelar'),
+                        child: const Text('Cancelar'),
                       ),
                       TextButton(
                         onPressed: () {
@@ -150,7 +155,7 @@ class ComprasScreen extends StatelessWidget {
                               .excluirTodosItens();
                           Navigator.of(context).pop(); // Fecha o diálogo
                         },
-                        child: Text('Excluir'),
+                        child: const Text('Excluir'),
                       ),
                     ],
                   ),
@@ -159,7 +164,7 @@ class ComprasScreen extends StatelessWidget {
             ),
             // Botão na barra de aplicativos para ordenar por ordem alfabética
             IconButton(
-              icon: Icon(Icons.sort_by_alpha),
+              icon: const Icon(Icons.sort_by_alpha),
               onPressed: () {
                 // Chamando o método ordenarListaPorNome do Provider para ordenar a lista alfabeticamente
                 Provider.of<ComprasController>(context, listen: false)
@@ -167,8 +172,7 @@ class ComprasScreen extends StatelessWidget {
               },
             ),
           ],
-        ),
-        color: Colors.deepOrange[700], // Cor de fundo laranja escuro
+        ), // Cor de fundo laranja escuro
       ),
     );
   }

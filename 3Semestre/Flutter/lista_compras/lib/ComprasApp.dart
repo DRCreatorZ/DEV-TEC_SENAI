@@ -4,6 +4,8 @@ import 'package:lista_compras/ComprasView.dart';
 import 'package:provider/provider.dart';
 
 class ComprasApp extends StatelessWidget {
+  const ComprasApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

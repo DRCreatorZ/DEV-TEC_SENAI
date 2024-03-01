@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 class TelaListaCarros extends StatelessWidget {
   final CarrosController controllerCarros;
-  TelaListaCarros (this.controllerCarros);
+  TelaListaCarros(this.controllerCarros);
 
   @override
   Widget build(BuildContext context) {
@@ -20,30 +20,31 @@ class TelaListaCarros extends StatelessWidget {
       body: Column(
         children: [
           // Lista de carros usando um Consumer do Provider para atualização automática
-         Expanded(
-             child:// Consumer<CarrosController>(
-            //   builder: (context, model, child) {
-               // return 
+          Expanded(
+            child:
+                // Consumer<CarrosController>(
+                //  builder: (context, model, child) {
+                // return
                 ListView.builder(
-                  itemCount: controllerCarros.listarCarros.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      // Exibição dos carros listados no Controller
-                      title: Text(controllerCarros.listarCarros[index].modelo),
-                      // Quando clicado, muda de tela para Descriçao do carro
-                      onTap: () {
-                        // Chamando o método pra troca de tela
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                TelaDetalheCarro(controllerCarros.listarCarros[index]),
-                          ),
-                        );
-                      },
+              itemCount: controllerCarros.listarCarros.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  // Exibição dos carros listados no Controller
+                  title: Text(controllerCarros.listarCarros[index].modelo),
+                  // Quando clicado, muda de tela para Descriçao do carro
+                  onTap: () {
+                    // Chamando o método pra troca de tela
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TelaDetalheCarro(
+                            controllerCarros.listarCarros[index]),
+                      ),
                     );
                   },
-                ),
+                );
+              },
+            ),
             //   },
             // ),
           ),

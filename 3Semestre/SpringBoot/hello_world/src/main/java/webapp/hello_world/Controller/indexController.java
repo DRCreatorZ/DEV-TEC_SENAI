@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-/** @author Rolfi Luz - Senai * */
 @Controller
 public class indexController {
 
@@ -21,33 +20,24 @@ public class indexController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ModelAndView nomeIndex(@RequestParam("nome") String nome) {
+    public ModelAndView buscarIndex(@RequestParam("nome") String nome,
+            @RequestParam("email") String email,
+            @RequestParam("telefone") String telefone,
+            @RequestParam("endereco") String endereco) {
         ModelAndView mv = new ModelAndView("index");
 
-        String mensagem = "Insira seus dados!";
-        mv.addObject("msg", mensagem);
-        mv.addObject("nome", nome);
+        // Criar uma breve história usando os elementos do formulário
+        String historia = "Era uma vez, em uma rua tranquila chamada " + endereco.split(",")[0] + ", ";
+        historia += "vivia uma pessoa chamada " + nome + ". ";
+        historia += "Um belo dia, " + nome + " recebeu um email muito importante em seu endereço de email " + email
+                + ". ";
+        historia += "Ele ficou tão emocionado que ligou imediatamente para seus amigos e familiares no telefone "
+                + telefone + " para compartilhar a notícia.";
+
+        // Adicionar a história ao modelo da view
+        mv.addObject("historia", historia);
 
         return mv;
     }
 
-    public ModelAndView idadeIndex(@RequestParam("idade") String idade) {
-        ModelAndView mv = new ModelAndView("index");
-
-        String mensagem = "Insira seus dados!";
-        mv.addObject("msg", mensagem);
-        mv.addObject("idade", idade);
-
-        return mv;
-    }
-
-    public ModelAndView sexoIndex(@RequestParam("sexo") String sexo) {
-        ModelAndView mv = new ModelAndView("index");
-
-        String mensagem = "Insira seus dados!";
-        mv.addObject("msg", mensagem);
-        mv.addObject("sexo", sexo);
-
-        return mv;
-    }
 }

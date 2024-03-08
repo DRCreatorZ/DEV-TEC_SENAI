@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
           title: Text('Exercicio 01'),
         ),
         body: Container(
-          color: Colors.blue,
+          color: const Color.fromARGB(255, 39, 54, 67),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -23,29 +23,13 @@ class MyApp extends StatelessWidget {
                 height: 100,
                 margin: EdgeInsets.all(5),
                 padding: EdgeInsets.all(10),
-                color: Colors.green,
+                color: Color.fromARGB(255, 22, 168, 115),
                 child: Center(
                   child: Text(
-                    'Layout Básico com Container:',
+                    'CONTAINER 1',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                height: 100,
-                margin: EdgeInsets.all(5),
-                padding: EdgeInsets.all(10),
-                color: Colors.orange,
-                child: Center(
-                  child: Text(
-                    'Crie um aplicativo Flutter que utilize o widget Container para criar um layout básico.',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
+                      fontSize: 26,
                       fontStyle: FontStyle.italic,
                     ),
                   ),
@@ -56,13 +40,30 @@ class MyApp extends StatelessWidget {
                 height: 100,
                 margin: EdgeInsets.all(5),
                 padding: EdgeInsets.all(10),
-                color: const Color.fromARGB(255, 255, 0, 89),
+                color: Color.fromARGB(255, 209, 81, 22),
                 child: Center(
                   child: Text(
-                    'Adicione pelo menos três widgets filhos dentro do Container com diferentes estilos e cores.',
+                    'CONTAINER 2',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 16,
+                      fontSize: 26,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Container(
+                height: 100,
+                margin: EdgeInsets.all(5),
+                padding: EdgeInsets.all(10),
+                color: Color.fromARGB(255, 7, 106, 188),
+                child: Center(
+                  child: Text(
+                    'CONTAINER 3',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 26,
                       fontStyle: FontStyle.italic,
                     ),
                   ),

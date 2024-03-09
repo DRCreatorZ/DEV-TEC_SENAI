@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   final List<String> items = List.generate(10, (index) => 'Item ${index + 1}');
+  final List<String> subtitles = List.generate(10, (index) => 'Subtítulo ${index + 1}'); // Lista de subtítulos
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class MyHomePage extends StatelessWidget {
           return Card(
             child: ListTile(
               title: Text(items[index]),
-              subtitle: Text('Informações fictícias'),
+              subtitle: Text(subtitles[index]), // Acessando o subtítulo correspondente ao índice
               leading: Icon(Icons.info),
               onTap: () {
                 // Ação ao clicar no card

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,6 +25,12 @@ class _MyHomePageState extends State<MyHomePage> {
     Text('Index 0: Home'),
     Text('Index 1: Business'),
     Text('Index 2: School'),
+  ];
+
+  static const List<Widget> _widgetOptionsWithImages = <Widget>[
+    Image(image: AssetImage('assets/home.png')),
+    Image(image: AssetImage('assets/business.png')),
+    Image(image: AssetImage('assets/school.png')),
   ];
 
   void _onItemTapped(int index) {

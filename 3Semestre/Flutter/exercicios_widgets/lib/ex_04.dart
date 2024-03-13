@@ -31,12 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
     School(),
   ];
 
-  // static const List<Widget> _widgetOptionsWithImages = <Widget>[
-  //   Image(image: AssetImage('../lib/assets/home.png')),
-  //   Image(image: AssetImage('../lib/assets/business.png')),
-  //   Image(image: AssetImage('../lib/assets/school.png')),
-  // ];
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;

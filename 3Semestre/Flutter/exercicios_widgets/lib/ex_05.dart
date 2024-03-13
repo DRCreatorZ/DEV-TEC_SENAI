@@ -43,24 +43,24 @@ class _ContactFormState extends State<ContactForm> {
             SizedBox(height: 16.0),
             TextField(
               controller: _emailController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'E-mail',
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             TextField(
               controller: _messageController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Mensagem',
               ),
-              maxLines: 4,
+              maxLines: 3,
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
                 _submitForm();
               },
-              child: Text('Enviar'),
+              child: const Text('Enviar'),
             ),
           ],
         ),

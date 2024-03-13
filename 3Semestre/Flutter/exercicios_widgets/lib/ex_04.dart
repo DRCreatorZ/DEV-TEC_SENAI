@@ -5,6 +5,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,6 +16,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -22,16 +26,16 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('Index 0: Home'),
-    Text('Index 1: Business'),
-    Text('Index 2: School'),
+    Home(),
+    Business(),
+    School(),
   ];
 
-  static const List<Widget> _widgetOptionsWithImages = <Widget>[
-    Image(image: AssetImage('assets/home.png')),
-    Image(image: AssetImage('assets/business.png')),
-    Image(image: AssetImage('assets/school.png')),
-  ];
+  // static const List<Widget> _widgetOptionsWithImages = <Widget>[
+  //   Image(image: AssetImage('../lib/assets/home.png')),
+  //   Image(image: AssetImage('../lib/assets/business.png')),
+  //   Image(image: AssetImage('../lib/assets/school.png')),
+  // ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -66,6 +70,83 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
+      ),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.home,
+            size: 100,
+            color: Color.fromARGB(255, 182, 83, 34),
+          ),
+          SizedBox(height: 5),
+          Image.asset('../lib/assets/home.png', width: 150),
+          SizedBox(height: 5),
+          Text(
+            'Página Início do exercício 04',
+            style: TextStyle(fontSize: 30, color: Colors.black),
+          ),
+        ],
+      ),
+    );
+  }
+}
+class Business extends StatelessWidget {
+  const Business({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.business,
+            size: 100,
+            color: Color.fromARGB(255, 141, 22, 143),
+          ),
+          SizedBox(height: 5),
+          Image.asset('../lib/assets/business.png', width: 150),
+          SizedBox(height: 5),
+          Text(
+            'Página Início do exercício 04',
+            style: TextStyle(fontSize: 30, color: Colors.black),
+          ),
+        ],
+      ),
+    );
+  }
+}
+class School extends StatelessWidget {
+  const School({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.school,
+            size: 100,
+            color: Color.fromARGB(255, 9, 145, 120),
+          ),
+          SizedBox(height: 5),
+          Image.asset('../lib/assets/school.png', width: 150),
+          SizedBox(height: 5),
+          Text(
+            'Página Início do exercício 04',
+            style: TextStyle(fontSize: 30, color: Colors.black),
+          ),
+        ],
       ),
     );
   }

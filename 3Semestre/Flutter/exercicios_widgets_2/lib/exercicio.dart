@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Exercicio 04 e 05',
+      title: 'Exercicio',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Exercicio 04 e 05'),
+        title: Text('Exercicio'),
       ),
       // Corpo do aplicativo varia de acordo com o item selecionado
       body: _widgetOptions.elementAt(_selectedIndex),
@@ -133,7 +133,7 @@ class InicioPage extends StatelessWidget {
           Image.asset('../lib/assets/senai.png', width: 150),
           SizedBox(height: 5),
           Text(
-            'Página Início do exercício 04',
+            'Página Início',
             style: TextStyle(fontSize: 30, color: Colors.black),
           ),
         ],
@@ -229,7 +229,7 @@ class StorePage extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         children: [
           _buildProductCard(
-            imageUrl: '../lib/assets/product.webp',
+            imageUrl: '../lib/assets/sky.jpg',
             title: 'Produto 1',
             description: 'Descrição do Produto 1',
           ),

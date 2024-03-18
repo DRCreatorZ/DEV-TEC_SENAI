@@ -1,0 +1,56 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "João Silva",
+      "email": "joao@email.com",
+      "senha": "senha123",
+      "postagens": [
+        {
+          "id": "1",
+          "conteudo": "Primeira postagem do João."
+        },
+        {
+          "id": "2",
+          "conteudo": "Segunda postagem do João."
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "nome": "Maria Oliveira",
+      "email": "maria@email.com",
+      "senha": "senha456",
+      "postagens": [
+        {
+          "id": "3",
+          "conteudo": "Primeira postagem da Maria."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "nome": "Teste",
+      "email": "teste@teste.com.br",
+      "senha": "1234",
+      "postagem": [
+        {
+          "id": "1",
+          "conteudo": "postagem Teste"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "nome": "Teste2",
+      "email": "teste2@teste.com.br",
+      "senha": "1234",
+      "postagem": [
+        {
+          "id": "2",
+          "conteudo": "postagem Teste2"
+        }
+      ]
+    }
+  ]
+}

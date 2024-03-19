@@ -1,0 +1,60 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Smartphone Samsung Galaxy S21",
+      "descricao": "O Samsung Galaxy S21 é um smartphone topo de gama produzido pela Samsung Electronics.",
+      "preco": 4999.99,
+      "categorias": ["Smartphones", "Tecnologia"],
+      "avaliacoes": []
+    },
+    {
+      "id": "2",
+      "nome": "Notebook Dell XPS 13",
+      "descricao": "O Dell XPS 13 é um notebook premium com design elegante e alto desempenho.",
+      "preco": 7999.99,
+      "categorias": ["Notebooks", "Tecnologia"],
+      "avaliacoes": []
+    },
+    {
+      "id": "3",
+      "nome": "Fone de Ouvido Sony WH-1000XM4",
+      "descricao": "Os fones de ouvido Sony WH-1000XM4 oferecem cancelamento de ruído avançado e qualidade de som excepcional.",
+      "preco": 1799.99,
+      "categorias": ["Acessórios de Áudio", "Tecnologia"],
+      "avaliacoes": []
+    },
+    {
+      "id": "4",
+      "nome": "Monitor LG UltraGear 27GL850-B",
+      "descricao": "O monitor LG UltraGear 27GL850-B é ideal para gamers, oferecendo alta taxa de atualização e tempo de resposta rápido.",
+      "preco": 2999.99,
+      "categorias": ["Monitores", "Tecnologia", "Gaming"],
+      "avaliacoes": []
+    },
+    {
+      "id": "5",
+      "nome": "Livro 'Harry Potter e a Pedra Filosofal'",
+      "descricao": "O primeiro livro da série Harry Potter, escrito por J.K. Rowling, conta a história de um jovem bruxo.",
+      "preco": 39.99,
+      "categorias": ["Livros", "Ficção"],
+      "avaliacoes": []
+    },
+    {
+      "id": 6,
+      "nome": "Câmera Canon EOS Rebel T7i",
+      "descricao": "A Canon EOS Rebel T7i é uma câmera DSLR de alta qualidade, ideal para fotógrafos amadores e entusiastas.",
+      "preco": 3999.99,
+      "categorias": ["Câmeras Fotográficas", "Tecnologia"],
+      "avaliacoes": []
+    },
+    {
+      "id": 7,
+      "nome": "Teste",
+      "descricao": "teste.",
+      "preco": 0.99,
+      "categorias": ["teste", "teste2"],
+      "avaliacoes": []
+    }
+  ]
+}

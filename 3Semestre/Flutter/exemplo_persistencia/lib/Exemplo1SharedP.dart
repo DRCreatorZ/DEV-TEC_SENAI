@@ -1,5 +1,6 @@
 import 'package:exemplo_persistencia/main.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,20 +20,20 @@ class MyApp extends StatelessWidget {
 }
 
 class TaskListScreen extends StatefulWidget {
-  _TaskListScreen createState() => _TaskListScreenState();
+  @override
+  _TaskListScreenState createState() => _TaskListScreenState();
 }
+
 class _TaskListScreenState extends State<TaskListScreen> {
   List<String> tasks = []; // Lista de tarefas
   final TextEditingController _controller =
       TextEditingController(); // Controlador de texto para o campo de entrada de nova tarefa
-
 
   @override
   void initState() {
     super.initState();
     loadTasks(); // Carrega as tarefas ao iniciar a tela
   }
-
 
   Future<void> loadTasks() async {
     SharedPreferences prefs = await SharedPreferences
@@ -42,7 +43,6 @@ class _TaskListScreenState extends State<TaskListScreen> {
           []; // Carrega as tarefas armazenadas ou uma lista vazia se não houver tarefas
     });
   }
-
 
   Future<void> saveTasks() async {
     SharedPreferences prefs = await SharedPreferences

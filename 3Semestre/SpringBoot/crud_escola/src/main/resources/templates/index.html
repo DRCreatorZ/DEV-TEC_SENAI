@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página Inicial Maneira</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" th:href="@{style.css}">
+</head>
+<body>
+<div class="container">
+    <div th:insert="~{fragmentos/header :: header}">
+</div>
+<div class="carousel">
+    <img th:src="@{img/escola.png}" alt="Minha Imagem">
+  <div class="carousel-content">
+    <h2>Bem-vindo ao Nosso Site</h2>
+    <p>Explore nossos serviços incríveis e saiba mais sobre nós!</p>
+    <a href="#">Saiba Mais</a>
+  </div>
+</div>
+
+<!-- Adicione mais slides conforme necessário -->
+
+</body>
+</html>

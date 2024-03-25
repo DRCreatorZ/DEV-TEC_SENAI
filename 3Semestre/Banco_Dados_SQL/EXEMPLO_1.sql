@@ -1,0 +1,4 @@
+-- Create a new database called 'AULA_SQL;'
+CREATE DATABASE AULA_SQL;
+
+DROP DATABASE AULA_SQL;

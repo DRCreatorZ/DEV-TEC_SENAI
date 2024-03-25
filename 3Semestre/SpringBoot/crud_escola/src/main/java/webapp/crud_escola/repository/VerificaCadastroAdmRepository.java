@@ -1,7 +1,8 @@
-package webapp.crud_escola.repository;
+package webapp.crud_escola.Repository;
 
 import org.springframework.data.repository.CrudRepository;
-import webapp.crud_escola.model.VerificaCadastroAdm;
+
+import webapp.crud_escola.Model.VerificaCadastroAdm;
 
 public interface VerificaCadastroAdmRepository extends CrudRepository<VerificaCadastroAdm, String> {
 

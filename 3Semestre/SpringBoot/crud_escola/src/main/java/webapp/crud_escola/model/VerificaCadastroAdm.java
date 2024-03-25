@@ -1,4 +1,4 @@
-package webapp.crud_escola.model;
+package webapp.crud_escola.Model;
 
 import java.io.Serializable;
 

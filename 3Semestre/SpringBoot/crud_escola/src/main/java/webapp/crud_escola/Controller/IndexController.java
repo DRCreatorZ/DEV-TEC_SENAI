@@ -28,5 +28,9 @@ public class IndexController {
         ModelAndView mv = new ModelAndView("adm/cad-adm");
         return mv;
     }
-
+    @GetMapping("/contato")//endereço da pagina no site
+    public ModelAndView abrirContato() {
+        ModelAndView mv = new ModelAndView("contato");
+        return mv;
+    }
 }

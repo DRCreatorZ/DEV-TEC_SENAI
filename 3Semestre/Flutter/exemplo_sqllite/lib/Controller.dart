@@ -1,8 +1,7 @@
-//controller.dart
-//Montar estrutura para o banco de dados
+import 'package:exemplo_sqllite/Model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'Model.dart';
+
 
 class BancoDadosCrud {
   static const String DB_NOME = 'contacts.db'; // Nome do banco de dados
@@ -10,12 +9,14 @@ class BancoDadosCrud {
   static const String
       CREATE_CONTACTS_TABLE_SCRIPT = // Script SQL para criar a tabela
       "CREATE TABLE IF NOT EXISTS contacts(id INTEGER PRIMARY KEY," +
-          "name TEXT, email TEXT, telefone TEXT," +
+          "nome TEXT, email TEXT, telefone TEXT," +
           "endereco TEXT)";
 
+  
   Future<Database> _getDatabase() async {
     return openDatabase(
-      join(await getDatabasesPath(), DB_NOME), // Caminho do banco de dados
+      join(
+          await getDatabasesPath(), DB_NOME), // Caminho do banco de dados
       onCreate: (db, version) {
         return db.execute(
             CREATE_CONTACTS_TABLE_SCRIPT); // Executa o script de criação da tabela quando o banco é criado
@@ -23,7 +24,6 @@ class BancoDadosCrud {
       version: 1,
     );
   }
-
   // Método para criar um novo contato no banco de dados
   Future<void> create(ContatoModel model) async {
     try {
@@ -37,7 +37,7 @@ class BancoDadosCrud {
   }
 
   // Método para obter todos os contatos do banco de dados
-  Future<List<ContactModel>> getContacts() async {
+  Future<List<ContatoModel>> getContacts() async {
     try {
       final Database db = await _getDatabase();
       final List<Map<String, dynamic>> maps =
@@ -46,7 +46,7 @@ class BancoDadosCrud {
       return List.generate(
         maps.length,
         (i) {
-          return ContactModel.fromMap(maps[
+          return ContatoModel.fromMap(maps[
               i]); // Converte os resultados da consulta para objetos ContactModel
         },
       );
@@ -57,7 +57,7 @@ class BancoDadosCrud {
   }
 
   // Método para atualizar um contato no banco de dados
-  Future<void> update(ContactModel model) async {
+  Future<void> update(ContatoModel model) async {
     try {
       final Database db = await _getDatabase();
       await db.update(
@@ -86,7 +86,4 @@ class BancoDadosCrud {
       return;
     }
   }
-}
-
-class ContactModel {
 }

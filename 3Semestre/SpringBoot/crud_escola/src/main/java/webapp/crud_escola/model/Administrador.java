@@ -7,15 +7,14 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Administrador implements Serializable{
-    //atributos (colunas da Tabela)
+    //atributos
     @Id
     private String cpf;
     private String nome;
     private String email;
     private String senha;
-
     //métodos
-    public String getCpf(){
+    public String getCpf() {
         return cpf;
     }
     public void setCpf(String cpf) {
@@ -40,5 +39,4 @@ public class Administrador implements Serializable{
         this.senha = senha;
     }
     
-
 }
